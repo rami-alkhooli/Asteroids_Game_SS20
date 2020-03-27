@@ -1,1 +1,1 @@
-# Asteroids_Game_SS20
+# Asteroids Game (Sommersemester 2020)
