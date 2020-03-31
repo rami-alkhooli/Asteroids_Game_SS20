@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Shield
+comment0.text=\r\n\ <h1>Shield\ of\ the\ fighter\ space\ ship</h1>\r\n\r\n\ @author\ person1\r\n\ @version\ 0.0\r\n
+comment1.params=
+comment1.target=Shield()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Shield\r\n
+comment2.params=yShield
+comment2.target=int\ sampleMethod(int)
+comment2.text=\r\n\ This\ methode\ adds\ two\ numbers\ together\r\n\r\n\ @param\ \ yShield\ \ the\ number\ to\ add\ to\ xShield\r\n\ @return\ \ \ \ the\ sum\ of\ xShield\ and\ yShield\r\n
+numComments=3
