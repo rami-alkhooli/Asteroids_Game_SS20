@@ -1,0 +1,59 @@
+import de.bezier.data.sql.*;
+
+// created 2005-05-10 by fjenett
+// updated fjenett 20080605
+
+
+MySQL dbconnection;
+
+
+void setup()
+{
+    size( 100, 100 );
+	
+    // this example assumes that you are running the 
+    // mysql server locally (on "localhost").
+    //
+	
+    // replace --username--, --password-- with your mysql-account.
+    //
+    String user     = "DBHandler";
+    String pass     = "1234";
+	
+    // name of the database to use
+    //
+    String database = "test";
+	
+    // name of the table that will be created
+    //
+    String table    = "test";
+	
+    // connect to database of server "localhost"
+    //
+    dbconnection = new MySQL( this, "localhost", database, user, pass );
+    
+    if ( dbconnection.connect() )
+    {
+        // now read it back out
+        //
+        
+        
+        dbconnection.query("insert into test (wort,zahl) values ('vom Programm',456)");
+        dbconnection.query( "SELECT * FROM test" );
+        while (dbconnection.next())
+        {
+            String s = dbconnection.getString("wort");
+            int n = dbconnection.getInt("zahl");
+            println(s + "   " + n);
+        }
+    }
+    else
+    {
+        // connection failed !
+    }
+}
+
+void draw()
+{
+    // i know this is not really a visual sketch ...
+}
