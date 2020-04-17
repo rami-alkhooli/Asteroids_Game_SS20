@@ -21,15 +21,13 @@ class SpaceShip
     collectedItems = 0;
     lives = 3;
     shieldStrength = 2;
-    accState = new AccStateStopped();
+    accState = new AccStateStoppedF();
   }
   
   void show() {
     triangle(x-50,y+50,x,y-100,x+50,y+50);
-    accState.accelerate();
-    // Accelerate
-    if (v<20) v = v + 0.2;
-    
+    v = accState.accelerate(v);
+    y = y - (int) v;
   }
   
   void setState(AccelerationState newState) {

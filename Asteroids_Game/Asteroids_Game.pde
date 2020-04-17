@@ -15,9 +15,11 @@ void draw()
 void keyPressed()
 {
   if(key == 'w') sh.setState(new AccStateMoving());
+  if(key == 's') sh.setState(new AccStateReturning());
 }
 
 void keyReleased()
 {
-  if(key == 'w') sh.setState(new AccStateStopped());
+  if(key == 'w') sh.setState(new AccStateStoppedF());
+  if(key == 's') sh.setState(new AccStateStoppedR());
 }
