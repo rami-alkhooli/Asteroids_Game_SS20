@@ -1,10 +1,12 @@
+SpaceShip sh;
 
 void setup()
 {
   size(800,800);
+  sh = new SpaceShip(400,400);
 }
 
 void draw()
 {
-  rect(300,300,200,200);
+  sh.show();
 }
