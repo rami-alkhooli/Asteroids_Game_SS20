@@ -8,5 +8,14 @@ void setup()
 
 void draw()
 {
+  background(0,0,0);
   sh.show();
+}
+
+void keyPressed()
+{
+  if(keyCode == UP)
+  {
+    sh.accelerate();
+  }
 }

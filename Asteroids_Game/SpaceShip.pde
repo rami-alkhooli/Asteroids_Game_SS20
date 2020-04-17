@@ -23,7 +23,11 @@ class SpaceShip
     shieldStrength = 2;
   }
   
-  void show(){
+  void show() {
     triangle(x-50,y+50,x,y-100,x+50,y+50);
+  }
+  
+  void accelerate() {
+    y= y - 20;
   }
 }
