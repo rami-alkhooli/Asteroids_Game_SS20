@@ -1,33 +1,38 @@
 class SpaceShip
 {
   private short m;
+  private double phi;
   private int x;
   private int y;
-  private double vx;
-  private double vy;
+  private double v;
   private short collectedItems;
   private short lives;
   private short shieldStrength;
   // Hier muss noch ein Laser-Waffe kommen
   // Hier muss noch ein Schub kommen
+  private AccelerationState accState;
   
   // Hier muss eine Funktion zur Kollisionserkennung
   SpaceShip(int myX, int myY) {
     m = 20;
     x = myX;
     y = myY;
-    vx = 0;
-    vy = 0;
+    v = 0;
     collectedItems = 0;
     lives = 3;
     shieldStrength = 2;
+    accState = new AccStateStopped();
   }
   
   void show() {
     triangle(x-50,y+50,x,y-100,x+50,y+50);
+    accState.accelerate();
+    // Accelerate
+    if (v<20) v = v + 0.2;
+    
   }
   
-  void accelerate() {
-    y= y - 20;
+  void setState(AccelerationState newState) {
+  accState = newState;
   }
 }

@@ -14,8 +14,10 @@ void draw()
 
 void keyPressed()
 {
-  if(keyCode == UP)
-  {
-    sh.accelerate();
-  }
+  if(key == 'w') sh.setState(new AccStateMoving());
+}
+
+void keyReleased()
+{
+  if(key == 'w') sh.setState(new AccStateStopped());
 }
