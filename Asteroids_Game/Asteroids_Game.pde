@@ -18,6 +18,11 @@ void keyPressed()
   if(keyCode == DOWN) sh.setAccState(new AccStateReturning());
   if(keyCode == RIGHT) sh.setRotState(new RotStateRight());
   if(keyCode == LEFT) sh.setRotState(new RotStateLeft());
+  
+  if(key == 'q') sh.setShieldState(new Full());
+  if(key == 'w') sh.setShieldState(new Damaged());
+  if(key == 'e') sh.setShieldState(new Critical());
+  if(key == 'r') sh.setShieldState(new Destroyed());
 }
 
 void keyReleased()

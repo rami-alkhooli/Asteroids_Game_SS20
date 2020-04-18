@@ -2,8 +2,8 @@ class SpaceShip
 {
   private PImage body;
   private PImage thrust;
-  private static final float UPSIDE = 100;
-  private static final float DOWNSIDE = 50;
+  private static final float UPSIDE = 50;
+  private static final float DOWNSIDE = 25;
   private final float HEAD;
   private final float SIDE;
   private short m;
@@ -25,6 +25,7 @@ class SpaceShip
   // Hier muss noch ein Schub kommen
   private AccelerationState accState;
   private RotationState rotState;
+  private Shield shield;
   
   // Hier muss eine Funktion zur Kollisionserkennung
   SpaceShip(int myX, int myY) {
@@ -38,9 +39,9 @@ class SpaceShip
     v = 0;
     collectedItems = 0;
     lives = 3;
-    shieldStrength = 2;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
+    shield = new Full();
   }
   
   void show() {
@@ -55,18 +56,27 @@ class SpaceShip
     updateCoordinatesCenter();
     updateCoordinatesTriangle();
     
-    // drawing
+    // drawing shield
+    shieldStrength = shield.protect(x,y,UPSIDE);
+    
+    // drawing space ship
     fill(255,255,255);
     triangle(x1,y1,x2,y2,x3,y3);
+    
+    // drawing thrust
     accState.thrust(x,y);
   }
   
   void setAccState(AccelerationState newState) {
-  accState = newState;
+    accState = newState;
   }
   
   void setRotState(RotationState newState) {
-  rotState = newState;
+    rotState = newState;
+  }
+  
+  void setShieldState(Shield newShield) {
+    shield = newShield;
   }
   
   void updateCoordinatesCenter() {
