@@ -1,10 +1,10 @@
-# Asteroids Game
+﻿# Asteroids Game
 
 ## Version
-0.1
+0.2
 
 ## Stand
-18.04.2020
+19.04.2020
 
 ## Komponenten
 
@@ -16,7 +16,7 @@
 ### Engine
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
-- [ ] Thrust anzeigen im Zustand "AcceleratingForwards"
+- [x] Thrust anzeigen im Zustand "AcceleratingForwards"
 - [ ] Laser-Waffe mit Möglichkeit zum Abfeuern implementieren
 
 ### Datenbank

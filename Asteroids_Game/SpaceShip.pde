@@ -1,9 +1,7 @@
 class SpaceShip
 {
-  private PImage body;
-  private PImage thrust;
-  private static final float UPSIDE = 50;
-  private static final float DOWNSIDE = 25;
+  private static final float UPSIDE = 60;
+  private static final float DOWNSIDE = 40;
   private final float HEAD;
   private final float SIDE;
   private short m;
@@ -26,9 +24,10 @@ class SpaceShip
   private AccelerationState accState;
   private RotationState rotState;
   private Shield shield;
+  private Thrust thrust;
   
   // Hier muss eine Funktion zur Kollisionserkennung
-  SpaceShip(int myX, int myY) {
+  public SpaceShip(int myX, int myY) {
     m = 20;
     phi = 90;
     phiRot = 0;
@@ -42,9 +41,10 @@ class SpaceShip
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new Full();
+    thrust = new Thrust(UPSIDE,DOWNSIDE);
   }
   
-  void show() {
+  public void show() {
     // updating the angle
     phiRot = rotState.rotate(phiRot);
     phi += phiRot;
@@ -64,27 +64,27 @@ class SpaceShip
     triangle(x1,y1,x2,y2,x3,y3);
     
     // drawing thrust
-    accState.thrust(x,y);
+    accState.generateThrust(x,y,UPSIDE,DOWNSIDE,phi);
   }
   
-  void setAccState(AccelerationState newState) {
+  public void setAccState(AccelerationState newState) {
     accState = newState;
   }
   
-  void setRotState(RotationState newState) {
+  public void setRotState(RotationState newState) {
     rotState = newState;
   }
   
-  void setShieldState(Shield newShield) {
+  public void setShieldState(Shield newShield) {
     shield = newShield;
   }
   
-  void updateCoordinatesCenter() {
+  private void updateCoordinatesCenter() {
     x = x - v*cos(radians(phi));
     y = y - v*sin(radians(phi));
   }
   
-  void updateCoordinatesTriangle() {
+  private void updateCoordinatesTriangle() {
     x1 = x - SIDE*cos(radians(phi-135));
     y1 = y - SIDE*sin(radians(phi-135));
     x2 = x - HEAD*cos(radians(phi));

@@ -1,7 +1,7 @@
 interface AccelerationState
 {
   public float accelerate(float speed);
-  public void thrust(float x, float y);
+  public void generateThrust(float x, float y, float up, float down, float angle);
   
   public static final float ACCELERATING_STEP = 0.5;
   public static final float ACCELERATING_LIMIT = 10;
@@ -15,9 +15,10 @@ class AccStateMoving implements AccelerationState
   return speed;
   }
   
-  public void thrust(float x, float y) {
-    fill(255,0,0);
-    circle(x,y,50);
+  public void generateThrust(float x, float y, float up, float down, float angle) {
+    Thrust myThrust = new Thrust(up,down);
+    myThrust.show(x,y,angle);
+    myThrust = null;
   }
 }
 
@@ -29,7 +30,7 @@ class AccStateStoppedF implements AccelerationState
   return speed;
   }
   
-  public void thrust(float x, float y) {
+  public void generateThrust(float x, float y, float up, float down, float angle) {
   }
 }
 
@@ -40,7 +41,7 @@ class AccStateReturning implements AccelerationState
   return speed;
   }
   
-  public void thrust(float x, float y) {
+  public void generateThrust(float x, float y, float up, float down, float angle) {
   }
 }
 
@@ -52,6 +53,6 @@ class AccStateStoppedR implements AccelerationState
   return speed;
   }
   
-  public void thrust(float x, float y) {
+  public void generateThrust(float x, float y, float up, float down, float angle) {
   }
 }
