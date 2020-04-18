@@ -2,8 +2,10 @@ class SpaceShip
 {
   private PImage body;
   private PImage thrust;
-  private final float bodyHeight = 80;
-  private final float bodyWidth = 80;
+  private static final float UPSIDE = 100;
+  private static final float DOWNSIDE = 50;
+  private final float HEAD;
+  private final float SIDE;
   private short m;
   private float phi;
   private float phiRot;
@@ -31,7 +33,8 @@ class SpaceShip
     phiRot = 0;
     x = myX;
     y = myY;
-    //body = createShape(TRIANGLE,x-50,y+50,x,y-100,x+50,y+50);
+    HEAD = UPSIDE*sin(radians(90));
+    SIDE = DOWNSIDE/sin(radians(45));
     v = 0;
     collectedItems = 0;
     lives = 3;
@@ -55,6 +58,7 @@ class SpaceShip
     // drawing
     fill(255,255,255);
     triangle(x1,y1,x2,y2,x3,y3);
+    accState.thrust(x,y);
   }
   
   void setAccState(AccelerationState newState) {
@@ -71,12 +75,12 @@ class SpaceShip
   }
   
   void updateCoordinatesTriangle() {
-    x1 = x - 70.7*cos(radians(phi-135));
-    y1 = y - 70.7*sin(radians(phi-135));
-    x2 = x - 100*cos(radians(phi));
-    y2 = y - 100*sin(radians(phi));
-    x3 = x - 70.7*cos(radians(phi+135));
-    y3 = y - 70.7*sin(radians(phi+135));
+    x1 = x - SIDE*cos(radians(phi-135));
+    y1 = y - SIDE*sin(radians(phi-135));
+    x2 = x - HEAD*cos(radians(phi));
+    y2 = y - HEAD*sin(radians(phi));
+    x3 = x - SIDE*cos(radians(phi+135));
+    y3 = y - SIDE*sin(radians(phi+135));
   }
   
   public float getX() {return x;}

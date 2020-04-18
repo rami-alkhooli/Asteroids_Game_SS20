@@ -1,6 +1,7 @@
 interface AccelerationState
 {
   public float accelerate(float speed);
+  public void thrust(float x, float y);
   
   public static final float ACCELERATING_STEP = 0.5;
   public static final float ACCELERATING_LIMIT = 10;
@@ -13,6 +14,11 @@ class AccStateMoving implements AccelerationState
   if (speed<ACCELERATING_LIMIT) {speed = speed + ACCELERATING_STEP;}
   return speed;
   }
+  
+  public void thrust(float x, float y) {
+    fill(255,0,0);
+    circle(x,y,50);
+  }
 }
 
 class AccStateStoppedF implements AccelerationState
@@ -22,6 +28,9 @@ class AccStateStoppedF implements AccelerationState
   if (speed<=ACCELERATING_CRITICAL) {speed = 0;}
   return speed;
   }
+  
+  public void thrust(float x, float y) {
+  }
 }
 
 class AccStateReturning implements AccelerationState
@@ -29,6 +38,9 @@ class AccStateReturning implements AccelerationState
   public float accelerate(float speed) {
   if (speed>-ACCELERATING_LIMIT) {speed = speed - ACCELERATING_STEP;}
   return speed;
+  }
+  
+  public void thrust(float x, float y) {
   }
 }
 
@@ -38,5 +50,8 @@ class AccStateStoppedR implements AccelerationState
   if (speed<-ACCELERATING_CRITICAL)  {speed = speed + ACCELERATING_STEP;}
   if (speed>=-ACCELERATING_CRITICAL) {speed = 0;}
   return speed;
+  }
+  
+  public void thrust(float x, float y) {
   }
 }
