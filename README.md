@@ -2,3 +2,4 @@
 ## Komponenten
 ### Engine
 - [x] SpaceShip
+- [x] Shield
