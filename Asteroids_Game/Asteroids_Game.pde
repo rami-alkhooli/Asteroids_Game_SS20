@@ -9,22 +9,21 @@ void setup()
 void draw()
 {
   background(0,0,0);
-  translate(sh.getX(),sh.getY());
   sh.show();
 }
 
 void keyPressed()
 {
-  if(key == 'w') sh.setAccState(new AccStateMoving());
-  if(key == 's') sh.setAccState(new AccStateReturning());
-  if(key == 'd') sh.setRotState(new RotStateRight());
-  if(key == 'a') sh.setRotState(new RotStateLeft());
+  if(keyCode == UP) sh.setAccState(new AccStateMoving());
+  if(keyCode == DOWN) sh.setAccState(new AccStateReturning());
+  if(keyCode == RIGHT) sh.setRotState(new RotStateRight());
+  if(keyCode == LEFT) sh.setRotState(new RotStateLeft());
 }
 
 void keyReleased()
 {
-  if(key == 'w') sh.setAccState(new AccStateStoppedF());
-  if(key == 's') sh.setAccState(new AccStateStoppedR());
-  if(key == 'd') sh.setRotState(new RotStateStoppedR());
-  if(key == 'a') sh.setRotState(new RotStateStoppedL());
+  if(keyCode == UP) sh.setAccState(new AccStateStoppedF());
+  if(keyCode == DOWN) sh.setAccState(new AccStateStoppedR());
+  if(keyCode == RIGHT) sh.setRotState(new RotStateStoppedR());
+  if(keyCode == LEFT) sh.setRotState(new RotStateStoppedL());
 }

@@ -1,11 +1,21 @@
 class SpaceShip
 {
+  private PImage body;
+  private PImage thrust;
+  private final float bodyHeight = 80;
+  private final float bodyWidth = 80;
   private short m;
-  private double phi;
-  private double phiRot;
-  private int x;
-  private int y;
-  private double v;
+  private float phi;
+  private float phiRot;
+  private float x;
+  private float y;
+  private float x1;
+  private float y1;
+  private float x2;
+  private float y2;
+  private float x3;
+  private float y3;
+  private float v;
   private short collectedItems;
   private short lives;
   private short shieldStrength;
@@ -21,29 +31,32 @@ class SpaceShip
     phiRot = 0;
     x = myX;
     y = myY;
+    //body = createShape(TRIANGLE,x-50,y+50,x,y-100,x+50,y+50);
     v = 0;
     collectedItems = 0;
     lives = 3;
     shieldStrength = 2;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
+    setBody("body.png");
+    setThrust("thrust.png");
   }
   
   void show() {
+    // updating the angle
     phiRot = rotState.rotate(phiRot);
-    phi = (phi + phiRot)%360;
-    fill(255,0,0);
-    circle(x,y,100);
-    fill(255,255,255);
-    
-    x = (int) (x -  v*cos(radians((float)phi)));
-    y = (int) (y - v*sin(radians((float)phi)));    
-    rotate(radians((float)phi-90));
-    //triangle(x+70*cos((float)phi+135) , y-70*sin((float)phi+135) , x+100*cos((float)phi) , y-100*sin((float)phi) , x+70*cos((float)phi+225) , y-70*sin((float)phi+225));
-    triangle(x-50,y+50,x,y-100,x+50,y+50);
+    phi += phiRot;
+
+    // updating the speed v
     v = accState.accelerate(v);
-    y = y - (int) v;
+
+    // updating coodinates
+    updateCoordinatesCenter();
+    updateCoordinatesTriangle();
     
+    // drawing
+    fill(255,255,255);
+    triangle(x1,y1,x2,y2,x3,y3);
   }
   
   void setAccState(AccelerationState newState) {
@@ -54,6 +67,32 @@ class SpaceShip
   rotState = newState;
   }
   
-  public int getX() {return x;}
-  public int getY() {return y;}
+  void setBody(String path) {
+    body = loadImage(path);
+  }
+  
+  void setThrust(String path) {
+    thrust = loadImage(path);
+  }
+  
+  float updateAngle(float newAngle, float rotationAmount) {
+    return (newAngle + rotationAmount) % 360;
+  }
+  
+  void updateCoordinatesCenter() {
+    x = x - v*cos(radians(phi));
+    y = y - v*sin(radians(phi));
+  }
+  
+  void updateCoordinatesTriangle() {
+    x1 = x - 70.7*cos(radians(phi-135));
+    y1 = y - 70.7*sin(radians(phi-135));
+    x2 = x - 100*cos(radians(phi));
+    y2 = y - 100*sin(radians(phi));
+    x3 = x - 70.7*cos(radians(phi+135));
+    y3 = y - 70.7*sin(radians(phi+135));
+  }
+  
+  public float getX() {return x;}
+  public float getY() {return y;}
 }
