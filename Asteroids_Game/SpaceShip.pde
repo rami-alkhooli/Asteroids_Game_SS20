@@ -38,8 +38,6 @@ class SpaceShip
     shieldStrength = 2;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
-    setBody("body.png");
-    setThrust("thrust.png");
   }
   
   void show() {
@@ -65,18 +63,6 @@ class SpaceShip
   
   void setRotState(RotationState newState) {
   rotState = newState;
-  }
-  
-  void setBody(String path) {
-    body = loadImage(path);
-  }
-  
-  void setThrust(String path) {
-    thrust = loadImage(path);
-  }
-  
-  float updateAngle(float newAngle, float rotationAmount) {
-    return (newAngle + rotationAmount) % 360;
   }
   
   void updateCoordinatesCenter() {
