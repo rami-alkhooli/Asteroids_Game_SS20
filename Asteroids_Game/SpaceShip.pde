@@ -24,7 +24,6 @@ class SpaceShip
   private AccelerationState accState;
   private RotationState rotState;
   private Shield shield;
-  private Thrust thrust;
   
   // Hier muss eine Funktion zur Kollisionserkennung
   public SpaceShip(int myX, int myY) {
@@ -41,7 +40,6 @@ class SpaceShip
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new Full();
-    thrust = new Thrust(UPSIDE,DOWNSIDE);
   }
   
   public void show() {
@@ -95,4 +93,5 @@ class SpaceShip
   
   public float getX() {return x;}
   public float getY() {return y;}
+  public float getPhi() {return phi;}
 }

@@ -1,4 +1,5 @@
 SpaceShip sh;
+Laser laser;
 
 void setup()
 {
@@ -9,6 +10,15 @@ void setup()
 void draw()
 {
   background(0,0,0);
+  if(laser!=null) {
+    if(laser.shoot() == true) {
+    }
+    else{
+      laser.finalize();
+      laser = null;
+  }
+  }
+  else {}
   sh.show();
 }
 
@@ -23,6 +33,7 @@ void keyPressed()
   if(key == 'w') sh.setShieldState(new Damaged());
   if(key == 'e') sh.setShieldState(new Critical());
   if(key == 'r') sh.setShieldState(new Destroyed());
+  if(key == ' ') laser = new Laser(sh.getX(),sh.getY(),sh.getPhi());
 }
 
 void keyReleased()
