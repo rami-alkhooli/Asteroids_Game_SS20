@@ -33,7 +33,9 @@ void keyPressed()
   if(key == 'w') sh.setShieldState(new Damaged());
   if(key == 'e') sh.setShieldState(new Critical());
   if(key == 'r') sh.setShieldState(new Destroyed());
-  if(key == ' ') laser = new Laser(sh.getX(),sh.getY(),sh.getPhi());
+  if(key == ' ') {
+    if(laser == null ) laser = new Laser (sh.getX(),sh.getY(),sh.getPhi());
+  }
 }
 
 void keyReleased()

@@ -8,6 +8,12 @@ class Laser
   private int ttl;
   private Laser thisLaser;
   
+  public Laser() {
+    x=0;
+    y=0;
+    phi=0;
+  }
+  
   private Laser(float myX, float myY, float myPhi) {
     x = myX;
     y = myY;
@@ -21,7 +27,7 @@ class Laser
   public boolean shoot() {
       if(ttl>0) {
         ttl--;
-        i+=15;
+        i+=20;
         float movingX = x - i*cos(radians(phi));
         float movingY = y - i*sin(radians(phi));
         fill(255,0,0,195+(2*ttl));

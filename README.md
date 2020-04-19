@@ -17,7 +17,9 @@
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
-- [ ] Laser-Waffe mit Möglichkeit zum Abfeuern implementieren
+- [x] Laser-Waffe mit Möglichkeit zum Abfeuern implementieren
+- [ ] Asteroiden automatisch generieren und bewegen
+- [ ] Kollisionen erkennen
 
 ### Datenbank
 - [x] erstellen
