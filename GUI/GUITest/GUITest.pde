@@ -1,0 +1,13 @@
+void setup() {
+  size(1000, 618);
+}
+
+void draw() {
+  background(204);
+  if (mousePressed == true) {
+    fill(255); // White
+  } else {
+    fill(0); // Black
+  }
+  rect(25, 25, 50, 50);
+}
