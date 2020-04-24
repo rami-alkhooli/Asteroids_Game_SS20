@@ -1,13 +1,13 @@
 void setup() {
-  size(1000, 618);
+  size(1600, 900);
 }
 
+int gray = 0;
+
 void draw() {
-  background(204);
-  if (mousePressed == true) {
-    fill(255); // White
-  } else {
-    fill(0); // Black
-  }
-  rect(25, 25, 50, 50);
+  background(gray);
+} 
+
+void mousePressed() {
+  gray += 20;
 }
