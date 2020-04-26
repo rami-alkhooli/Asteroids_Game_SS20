@@ -33,7 +33,7 @@ class Thrust
     yb2 = y - HEAD1*sin(radians(angle-180));
     xb3 = x - SIDE1*cos(radians(angle+157.5));
     yb3 = y - SIDE1*sin(radians(angle+157.5));
-    fill(#fff68a);
+    fill(#fff68a,200);
     triangle(xb1,yb1,xb2,yb2,xb3,yb3);
     
     xs1 = x - SIDE2*cos(radians(angle-168.75));
@@ -42,7 +42,7 @@ class Thrust
     ys2 = y - HEAD2*sin(radians(angle-180));
     xs3 = x - SIDE2*cos(radians(angle+168.75));
     ys3 = y - SIDE2*sin(radians(angle+168.75));
-    fill(#ff5050);
+    fill(#ff5050,200);
     triangle(xs1,ys1,xs2,ys2,xs3,ys3);
   }
 }

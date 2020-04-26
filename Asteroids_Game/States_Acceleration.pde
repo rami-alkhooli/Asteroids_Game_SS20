@@ -3,7 +3,7 @@ interface AccelerationState
   public float accelerate(float speed);
   public void generateThrust(float x, float y, float up, float down, float angle);
   
-  public static final float ACCELERATING_STEP = 0.5;
+  public static final float ACCELERATING_STEP = 0.2;
   public static final float ACCELERATING_LIMIT = 10;
   public static final float ACCELERATING_CRITICAL = 0.5;
 }
