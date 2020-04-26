@@ -1,7 +1,7 @@
-# Asteroids Game
+﻿# Asteroids Game
 
 ## Version
-0.3
+0.4
 
 ## Stand
 26.04.2020
@@ -20,6 +20,7 @@
 - [x] Laser-Waffe mit Möglichkeit zum Abfeuern implementieren
 - [ ] Asteroiden automatisch generieren und bewegen
 - [ ] Kollisionen erkennen
+- [ ] Töne beim Fliegen und Abfeuern abspielen
 
 ### Datenbank
 - [x] erstellen
@@ -30,3 +31,4 @@
 
 ## Anmerkungen
 - Für die Verwendung von Buttons der Klasse ControlP5 muss man die Bibliothek ControlP5 zum Processing-Framework hinzufügen und mit "import" einbinden
+- Für die Erstellung und Anbindung von Datenbanken muss man die Bibliothek BezierSQLib zum Processing-Framework hinzufügen und mit "import" einbinden
