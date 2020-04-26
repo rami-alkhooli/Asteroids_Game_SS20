@@ -1,17 +1,17 @@
-﻿# Asteroids Game
+# Asteroids Game
 
 ## Version
-0.2
+0.3
 
 ## Stand
-19.04.2020
+26.04.2020
 
 ## Komponenten
 
 ### GUI
 - [ ] Zustände realisiern
 - [ ] Buttons, Eingabefelder etc. platzieren
-- [ ] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
+- [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 
 ### Engine
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
@@ -25,5 +25,8 @@
 - [x] erstellen
 - [x] Datensätze machen
 - [x] lokal ansprechen
-- [ ] von der Ferne ansprechen
+- [x] von der Ferne ansprechen
 - [ ] Daten austauschen
+
+## Anmerkungen
+- Für die Verwendung von Buttons der Klasse ControlP5 muss man die Bibliothek ControlP5 zum Processing-Framework hinzufügen und mit "import" einbinden
