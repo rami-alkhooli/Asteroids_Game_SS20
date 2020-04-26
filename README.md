@@ -20,7 +20,7 @@
 - [x] Laser-Waffe mit Möglichkeit zum Abfeuern implementieren
 - [ ] Asteroiden automatisch generieren und bewegen
 - [ ] Kollisionen erkennen
-- [ ] Töne beim Fliegen und Abfeuern abspielen
+- [x] Töne beim Fliegen und Abfeuern abspielen
 
 ### Datenbank
 - [x] erstellen
