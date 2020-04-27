@@ -30,5 +30,6 @@
 - [ ] Daten austauschen
 
 ## Anmerkungen
-- Für die Verwendung von Buttons der Klasse ControlP5 muss man die Bibliothek ControlP5 zum Processing-Framework hinzufügen und mit "import" einbinden
-- Für die Erstellung und Anbindung von Datenbanken muss man die Bibliothek BezierSQLib zum Processing-Framework hinzufügen und mit "import" einbinden
+- Für die Verwendung von Buttons der Klasse ControlP5 muss man **die Bibliothek ControlP5** zum Processing-Framework hinzufügen und mit "import" einbinden
+- Für die Erstellung und Anbindung von Datenbanken muss man die **Bibliothek BezierSQLib** zum Processing-Framework hinzufügen und mit "import" einbinden
+- Damit der Ton funktioniert, muss man die **Bilbliothek Sound** zum Processing-Framework hinzufügen und mit import "einbinden"
