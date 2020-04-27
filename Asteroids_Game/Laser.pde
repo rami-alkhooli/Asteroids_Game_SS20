@@ -21,7 +21,7 @@ class Laser
     ttl=30;
     i=0;
     born = second();
-    print("\nconstructor");
+    //print("\nconstructor");
   }
   
   public boolean shoot() {
@@ -44,6 +44,6 @@ class Laser
   }
   
   public void finalize() {
-    print("\ndestructor");
+    //print("\ndestructor");
   }
 }

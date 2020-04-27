@@ -4,6 +4,8 @@ SpaceShip sh;
 Laser laser;
 SoundFile file;
 SoundFile laserShoot;
+Game myGame;
+boolean end;
 
 void statistics()
 {
@@ -23,6 +25,9 @@ void setup()
   sh = new SpaceShip(width/2,height/2);
   file = new SoundFile(this, "thrust.mp3");
   laserShoot = new SoundFile(this,"laser.mp3");
+  myGame = new Game();
+  myGame.generateAsteroids(8,18);
+  end = false;
 }
 
 void draw()
@@ -38,7 +43,9 @@ void draw()
   }
   else {}
   sh.show();
+  myGame.drawAsteroids();
   statistics();
+  if(end) {delay(1000); exit();}
 }
 
 void keyPressed()
@@ -49,6 +56,7 @@ void keyPressed()
   if(keyCode == LEFT) sh.setRotState(new RotStateLeft());
   
   if(key == 'q') sh.setShieldState(new Full());
+  if(key == 'f') end = true;
   if(key == 'w') sh.setShieldState(new Damaged());
   if(key == 'e') sh.setShieldState(new Destroyed());
   if(key == ' ') {
