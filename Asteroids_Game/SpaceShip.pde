@@ -4,7 +4,7 @@ class SpaceShip
   private static final float DOWNSIDE = 40;
   private final float HEAD;
   private final float SIDE;
-  private short m;
+  private final short m;
   private float phi;
   private float phiRot;
   private float x;
@@ -20,7 +20,6 @@ class SpaceShip
   private short lives;
   private short shieldStrength;
   // Hier muss noch ein Laser-Waffe kommen
-  // Hier muss noch ein Schub kommen
   private AccelerationState accState;
   private RotationState rotState;
   private Shield shield;
@@ -45,7 +44,7 @@ class SpaceShip
   public void show() {
     // updating the angle
     phiRot = rotState.rotate(phiRot);
-    phi += phiRot;
+    phi = (phi + phiRot)%360;
 
     // updating the speed v
     v = accState.accelerate(v);
@@ -93,5 +92,10 @@ class SpaceShip
   
   public float getX() {return x;}
   public float getY() {return y;}
+  public short getMass() {return m;}
   public float getPhi() {return phi;}
+  public float getSpeed() {return v;}
+  public short getLives() {return lives;}
+  public short getItems() {return collectedItems;}
+  public short getShield() {return shieldStrength;}
 }

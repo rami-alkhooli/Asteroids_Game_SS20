@@ -18,7 +18,7 @@ public class DBProxy
   {
     
   }
-  public DBproxy(MySQL dbcon)
+  public DBProxy(MySQL dbcon)
   {
       dbconnection=dbcon;
   }
