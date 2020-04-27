@@ -11,16 +11,11 @@ void statistics()
 {
   fill(255,255,255);
   textSize(30);
-  text("x: " + (int)sh.getX(),10,30);
-  text("y: " + (int)sh.getY(),190,30);
-  text("v: " + (int)sh.getSpeed(), 360,30);
-  text("phi: " + (int)sh.getPhi(),480,30);
-  text("Shield: " + sh.getShield()+"%",630,30);
+  text("x: " + (int)sh.getX() + " | y: " + (int)sh.getY() + "| v: " + (int)sh.getSpeed() + "| phi: " + (int)sh.getPhi() + " | Shield: " + sh.getShield()+"%",10,30);
 }
 
 void setup()
 {
-  //size(1000,618);
   fullScreen();
   sh = new SpaceShip(width/2,height/2);
   file = new SoundFile(this, "thrust.mp3");
