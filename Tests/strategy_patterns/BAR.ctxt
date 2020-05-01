@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=BAR
+comment1.params=
+comment1.target=void\ preProcess()
+comment2.params=
+comment2.target=void\ postProcess()
+comment3.params=
+comment3.target=boolean\ search()
+numComments=4

@@ -1,5 +1,6 @@
 abstract class Asteroid
 {
+  protected int SIZE;
   protected float xCor = 0;
   protected float yCor = 0;
   protected float speedX;
@@ -18,7 +19,8 @@ abstract class Asteroid
   protected float y6;
   
   protected Asteroid() {
-    speedX = random(-1,1); speedY = random(-1,1);
+    speedX = random(-2,2); speedY = random(-2,2);
+    SIZE = 20;
   }
   
   protected void displayAndMove() {
@@ -35,14 +37,17 @@ abstract class Asteroid
     endShape(CLOSE);
     
     // Randbedingungen
-    if((x1>width)||(x2>width)||(x3>width)||(x4>width)||(x5>width)||(x6>width))
-    { speedX = -speedX; }
-    else if((x1<0)||(x2<0)||(x3<0)||(x4<0)||(x5<0)||(x6<0))
-    { speedX = -speedX; }
-    else if((y1>height)||(y2>height)||(y3>height)||(y4>height)||(y5>height)||(y6>height))
-    { speedY = -speedY; }
-    else if((y1<0)||(y2<0)||(y3<0)||(y4<0)||(y5<0)||(y6<0))
-    { speedY = -speedY; }
+    if((x1>width)&&(x2>width)&&(x3>width)&&(x4>width)&&(x5>width)&&(x6>width))
+    { x1-=(width+SIZE); x2-=(width+SIZE); x3-=(width+SIZE); x4-=(width+SIZE); x5-=(width+SIZE); x6-=(width+SIZE); }
+    
+    if((x1<0)&&(x2<0)&&(x3<0)&&(x4<0)&&(x5<0)&&(x6<0))
+    { x1+=(width+SIZE); x2+=(width+SIZE); x3+=(width+SIZE); x4+=(width+SIZE); x5+=(width+SIZE); x6+=(width+SIZE); }
+    
+    if((y1>height)&&(y2>height)&&(y3>height)&&(y4>height)&&(y5>height)&&(y6>height))
+    { y1-=(height+SIZE); y2-=(height+SIZE); y3-=(height+SIZE); y4-=(height+SIZE); y5-=(height+SIZE); y6-=(height+SIZE); }
+    
+    if((y1<0)&&(y2<0)&&(y3<0)&&(y4<0)&&(y5<0)&&(y6<0))
+    { y1+=(height+SIZE); y2+=(height+SIZE); y3+=(height+SIZE); y4+=(height+SIZE); y5+=(height+SIZE); y6+=(height+SIZE); }
   }
 }
 
@@ -51,6 +56,7 @@ class AsteroidSmall extends Asteroid
   AsteroidSmall(float inX, float inY) {
     xCor = inX ;
     yCor = inY ;
+    SIZE = 50;
     
     x1 = random( xCor+00 , xCor+20 ); 
     y1 = random( yCor+00 , yCor+20 );
@@ -77,6 +83,7 @@ class AsteroidBig extends Asteroid
   AsteroidBig(float inX, float inY) {
     xCor = inX ;
     yCor = inY ;
+    SIZE = 180;
     
     x1 = random( xCor+40 , xCor+120 ); 
     y1 = random( yCor+00 , yCor+20 );
