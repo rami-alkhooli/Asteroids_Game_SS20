@@ -52,6 +52,7 @@ class SpaceShip
     // updating coodinates
     updateCoordinatesCenter();
     updateCoordinatesTriangle();
+    boundingConditions();
     
     // drawing shield
     shieldStrength = shield.protect(x,y,UPSIDE);
@@ -88,6 +89,13 @@ class SpaceShip
     y2 = y - HEAD*sin(radians(phi));
     x3 = x - SIDE*cos(radians(phi+135));
     y3 = y - SIDE*sin(radians(phi+135));
+  }
+  
+  private void boundingConditions() {
+    if(x<(0-UPSIDE)) {x = width+UPSIDE;}
+    if(x>(width+UPSIDE)) {x = 0-UPSIDE;}
+    if(y<(0-UPSIDE)) {y = height+UPSIDE;}
+    if(y>(height+UPSIDE)) {y = 0-UPSIDE;}
   }
   
   public float getX() {return x;}

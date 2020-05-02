@@ -4,25 +4,25 @@ SpaceShip sh;
 Laser laser;
 SoundFile file;
 SoundFile laserShoot;
+Game myGame;
+boolean end;
 
 void statistics()
 {
   fill(255,255,255);
   textSize(30);
-  text("x: " + (int)sh.getX(),10,30);
-  text("y: " + (int)sh.getY(),190,30);
-  text("v: " + (int)sh.getSpeed(), 360,30);
-  text("phi: " + (int)sh.getPhi(),480,30);
-  text("Shield: " + sh.getShield()+"%",630,30);
+  text("x: " + (int)sh.getX() + " | y: " + (int)sh.getY() + "| v: " + (int)sh.getSpeed() + "| phi: " + (int)sh.getPhi() + " | Shield: " + sh.getShield()+"%",10,30);
 }
 
 void setup()
 {
-  //size(1000,618);
   fullScreen();
   sh = new SpaceShip(width/2,height/2);
   file = new SoundFile(this, "thrust.mp3");
   laserShoot = new SoundFile(this,"laser.mp3");
+  myGame = new Game();
+  myGame.generateAsteroids(8,18);
+  end = false;
 }
 
 void draw()
@@ -38,7 +38,9 @@ void draw()
   }
   else {}
   sh.show();
+  myGame.drawAsteroids();
   statistics();
+  if(end) {delay(1000); exit();}
 }
 
 void keyPressed()
@@ -49,6 +51,7 @@ void keyPressed()
   if(keyCode == LEFT) sh.setRotState(new RotStateLeft());
   
   if(key == 'q') sh.setShieldState(new Full());
+  if(key == 'f') end = true;
   if(key == 'w') sh.setShieldState(new Damaged());
   if(key == 'e') sh.setShieldState(new Destroyed());
   if(key == ' ') {
