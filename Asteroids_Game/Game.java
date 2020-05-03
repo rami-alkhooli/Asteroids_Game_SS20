@@ -55,6 +55,7 @@ class Game
     }
     sh.show();
     myGame.drawAsteroids();
+    myGame.statistics();
     if(end) {myApp.delay(1000); myApp.exit();}
   }
   
@@ -130,11 +131,16 @@ class Game
     myApp.noFill();
   }
   
-  public void statistics()
+  private void statistics()
   {
     myApp.fill(255,255,255);
     myApp.textSize(30);
-    myApp.text("x: " + (int)sh.getX() + " | y: " + (int)sh.getY() + "| v: " + (int)sh.getSpeed() + "| phi: " + (int)sh.getPhi() + " | Shield: " + sh.getShield()+"%",10,30);
+    myApp.textAlign(myApp.LEFT,myApp.TOP);
+    myApp.text("x: " + (int)sh.getX(),10,10);
+    myApp.text("y: " + (int)sh.getY(),140,10);
+    myApp.text("v: " + (int)sh.getSpeed(),270,10);
+    myApp.text("phi: " + (int)sh.getPhi(),360,10);
+    myApp.text("Shield: " + sh.getShield()+"%",520,10);
   }
   
    //... FEHLT!!!
