@@ -23,4 +23,10 @@ class Class2
   {
     myApp.print("Hi, I'm Class 2!\n");
   }
+  
+  void drawMe()
+  {
+    myApp.fill(0,255,0);
+    myApp.circle(500,250,100);
+  }
 }
