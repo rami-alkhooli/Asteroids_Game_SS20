@@ -8,15 +8,8 @@ class Laser
   private int born;
   private float i;
   private int ttl;
-  private Laser thisLaser;
   private static PApplet myApp;
-  
-  public Laser(PApplet theApp) {
-    myApp = theApp;
-    x=0;
-    y=0;
-    phi=0;
-  }
+  private static Laser myLaser;
   
   public Laser(PApplet theApp, float myX, float myY, float myPhi) {
     myApp = theApp;
@@ -26,7 +19,6 @@ class Laser
     ttl=30;
     i=0;
     born = myApp.second();
-    //print("\nconstructor");
   }
   
   public boolean shoot() {
@@ -41,14 +33,5 @@ class Laser
         return true;
     }
     else return false;
-  }
-  
-  //public Laser create(float myX, float myY, float myPhi) {
-  //  if(thisLaser==null) {return new Laser(this,myX,myY,myPhi);}
-  //  else return thisLaser;
-  //}
-  
-  public void finalize() {
-    //print("\ndestructor");
   }
 }

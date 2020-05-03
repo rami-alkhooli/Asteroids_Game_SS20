@@ -21,16 +21,26 @@ class Thrust
   private float xs3;
   private float ys3;
   
+  private static Thrust myThrust;
   private static PApplet myApp;
   
-  public Thrust(PApplet theApp, float upSide, float downSide) {
+  private Thrust(PApplet theApp, float upSide, float downSide) {
     myApp = theApp;
     HEAD1 = downSide + upSide/2 + downSide/2 ;
     SIDE1 = downSide/myApp.cos(myApp.radians(45/2)) ;
     HEAD2 = downSide + upSide/4 + downSide/4 ;
     SIDE2 = downSide/myApp.cos(myApp.radians(45/4)) ;
-    
   }
+  
+  public static Thrust generateThrust(PApplet theApp, float upSide, float downSide)
+  {
+    if(myThrust==null){
+      myThrust = new Thrust(theApp,upSide,downSide);
+    }
+    
+    return myThrust;
+  }
+  
   public void show(float x, float y, float angle) {
     xb1 = x - SIDE1*myApp.cos(myApp.radians((float)(angle-157.5)));
     yb1 = y - SIDE1*myApp.sin(myApp.radians((float)(angle-157.5)));

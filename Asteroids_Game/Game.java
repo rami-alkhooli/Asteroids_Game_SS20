@@ -1,6 +1,5 @@
 import processing.sound.*;
 import processing.core.*;
-
 import java.util.*;
 
 class Game
@@ -12,7 +11,12 @@ class Game
   private static Game myGame;
   private static PApplet myApp;
   
-  public boolean end;
+  private boolean end;
+  public int highscore;
+  public int hits;
+  public int shoots;
+  public int items;
+  public String time_played;
   
   private ArrayList <AsteroidSmall> listAsteroidSmall;
   private ArrayList <AsteroidBig> listAsteroidBig;
@@ -45,15 +49,10 @@ class Game
   
   void runGame()
   {
-    if(laser!=null) {
-      if(laser.shoot() == true) {
-      }
-      else{
-        laser.finalize();
-        laser = null;
-      }
+    if(laser!=null)
+    {
+      if(laser.shoot() == false) {laser = null;}
     }
-    else {}
     sh.show();
     myGame.drawAsteroids();
     if(end) {myApp.delay(1000); myApp.exit();}
@@ -61,7 +60,7 @@ class Game
   
   void setupGame(int amntBigAst, int amntSmlAst)
   {
-    sh = new SpaceShip(myApp,myApp.width/2,myApp.height/2);
+    sh = SpaceShip.create(myApp,myApp.width/2,myApp.height/2);
     file = new SoundFile(myApp, "thrust.mp3");
     laserShoot = new SoundFile(myApp,"laser.mp3");
     
@@ -89,7 +88,7 @@ class Game
     if(myApp.key == 'w') sh.setShieldState(new Damaged());
     if(myApp.key == 'e') sh.setShieldState(new Destroyed());
     if(myApp.key == ' ') {
-      if(laser == null ) {laser = new Laser (myApp, sh.getX(),sh.getY(),sh.getPhi()); laserShoot.play();}
+      if(laser == null ) {laser = new Laser(myApp, sh.getX(),sh.getY(),sh.getPhi()); laserShoot.play();}
     }
   }
   
@@ -138,11 +137,5 @@ class Game
     myApp.text("x: " + (int)sh.getX() + " | y: " + (int)sh.getY() + "| v: " + (int)sh.getSpeed() + "| phi: " + (int)sh.getPhi() + " | Shield: " + sh.getShield()+"%",10,30);
   }
   
-  int highscore;
-  int hits;
-  int shoots;
-  int items;
-  String time_played;
-   
    //... FEHLT!!!
 }

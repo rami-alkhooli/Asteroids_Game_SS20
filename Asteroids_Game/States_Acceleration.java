@@ -18,7 +18,7 @@ class AccStateMoving implements AccelerationState
   }
   
   public void generateThrust(PApplet theApp, float x, float y, float up, float down, float angle) {
-    Thrust myThrust = new Thrust(theApp,up,down);
+    Thrust myThrust = Thrust.generateThrust(theApp,up,down);
     myThrust.show(x,y,angle);
     myThrust = null;
   }

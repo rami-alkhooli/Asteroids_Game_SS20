@@ -21,14 +21,15 @@ class SpaceShip
   private short collectedItems;
   private short lives;
   private short shieldStrength;
-  // Hier muss noch ein Laser-Waffe kommen
+
+  private static SpaceShip mySpaceShip;
   private AccelerationState accState;
   private RotationState rotState;
   private Shield shield;
   private static PApplet myApp;
   
   // Hier muss eine Funktion zur Kollisionserkennung
-  public SpaceShip(PApplet theApp, int myX, int myY) {
+  private SpaceShip(PApplet theApp, int myX, int myY) {
     myApp = theApp;
     m = 20;
     phi = 90;
@@ -43,6 +44,13 @@ class SpaceShip
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new Full();
+  }
+  
+  public static SpaceShip create(PApplet theApp, int myX, int myY)
+  {
+    if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp,myX,myY);}
+    
+    return mySpaceShip;
   }
   
   public void show() {
