@@ -140,7 +140,9 @@ class Game
     myApp.text("y: " + (int)sh.getY(),140,10);
     myApp.text("v: " + (int)sh.getSpeed(),270,10);
     myApp.text("phi: " + (int)sh.getPhi(),360,10);
-    myApp.text("Shield: " + sh.getShield()+"%",520,10);
+    myApp.text("Shield: " + sh.getShield()+"%",515,10);
+    myApp.text("Lives: " + sh.getLives(),715,10);
+    myApp.text("Items: " + sh.getItems(),835,10);
   }
   
    //... FEHLT!!!
