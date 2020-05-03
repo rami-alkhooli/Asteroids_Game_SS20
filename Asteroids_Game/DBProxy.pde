@@ -282,9 +282,8 @@ public class DBProxy
   
   all parameters of Game are 0 when the Player hasnt played a Game at all.
   **/
-  public Game getStats()
+  public Game getStats(Game theGame)
   {
-    Game gamestats = new Game();
     int gameId=0;
      dbconnection.query("select idGame from GameHasDevice where id='"+playerid+"';");
     while(dbconnection.next())
@@ -297,11 +296,11 @@ public class DBProxy
         dbconnection.query("select highscore,shoots,hits,items,time_played from Game where idGame="+gameId+";");
         while(dbconnection.next())
         {
-          gamestats.highscore = dbconnection.getInt("highscore");
-          gamestats.shoots = dbconnection.getInt("shoots");
-          gamestats.hits = dbconnection.getInt("hits");
-          gamestats.items = dbconnection.getInt("items");
-          gamestats.time_played = dbconnection.getString("tifme_played");
+          theGame.highscore = dbconnection.getInt("highscore");
+          theGame.shoots = dbconnection.getInt("shoots");
+          theGame.hits = dbconnection.getInt("hits");
+          theGame.items = dbconnection.getInt("items");
+          theGame.time_played = dbconnection.getString("tifme_played");
         }
     }
     catch(Exception e)
@@ -309,7 +308,7 @@ public class DBProxy
       throw e;
     }
     
-    return gamestats;
+    return theGame;
   }
   
   

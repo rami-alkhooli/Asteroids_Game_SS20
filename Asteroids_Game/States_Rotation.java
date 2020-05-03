@@ -1,10 +1,12 @@
+import processing.core.*;
+
 interface RotationState
 {
   public float rotate(float angleRot);
   
-  public static final float ROTATING_STEP = 0.2;
-  public static final float ROTATING_LIMIT = 3;
-  public static final float ROTATING_CRITICAL = 0.5;
+  public static final float ROTATING_STEP = (float) 0.2;
+  public static final float ROTATING_LIMIT = (float) 3.0;
+  public static final float ROTATING_CRITICAL = (float) 0.5;
 }
 
 class RotStateRight implements RotationState
