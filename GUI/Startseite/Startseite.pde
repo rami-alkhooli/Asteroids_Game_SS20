@@ -5,17 +5,39 @@ ControlP5 controlP5;
 controlP5.Button Button1;
 controlP5.Button Button2;
 controlP5.Button Button3;
+controlP5.Button Button4;
+ 
 
 void setup() {
- size(2000 ,1500);
+ size(1500 ,1000);
  
  controlP5 = new ControlP5(this);
  
  // description : a button executes after release
  // parameters : name, value (float), x, y, width, height
- Button1 = controlP5.addButton("Button1",1,0,10,500,200);
- Button2 = controlP5.addButton("Button2",1,600,10,500,200);
- Button3 = controlP5.addButton("Button3",1,1200,10,500,200);
+ 
+ Button1 = controlP5.addButton("Button1")
+   .setValue(100)
+   .setPosition(0,10)
+   .setSize(200,100)
+   .setId(1);
+   
+ Button2 = controlP5.addButton("Button2")
+   .setValue(100)
+   .setPosition(250,10)
+   .setSize(200,100)
+   .setId(2);
+   
+ Button3 = controlP5.addButton("Button3")
+   .setValue(100)
+   .setPosition(500,10)
+   .setSize(200,100)
+   .setId(3);
+   
+ controlP5.addTextfield("n3")
+   .setPosition(10, 200)
+   .setSize(100, 50)
+   .setId(4);
 }
  
 void draw() { 
@@ -37,23 +59,25 @@ void controlEvent(ControlEvent theEvent) {
  
  if(theEvent.isController()) { 
  
- print("control event from : "+theEvent.getController().getName());
+ print("control event from : "+theEvent.getController().getId());
  println(", value : "+theEvent.getController().getValue());
  
- if(theEvent.getController().getName()=="Button3") {
-   Button1.hide();
-   Button2.show();
- }
- 
- if(theEvent.getController().getName()=="Button2") {
-   Button3.hide();
-   Button1.show();
- }
- 
- if(theEvent.getController().getName()=="Button1") {
-   Button2.hide();
-   Button3.show();
- }
- 
+ switch(theEvent.getController().getId()) {
+    case(1):
+    Button2.hide();
+    Button3.show();
+    break;
+    case(2):
+    Button3.hide();
+    Button1.show();
+    break;
+    case(3):
+    Button1.hide();
+    Button2.show();
+    break;
+    case(4):
+    println(theEvent.getController().getStringValue());
+    break;
  } 
+}
 }
