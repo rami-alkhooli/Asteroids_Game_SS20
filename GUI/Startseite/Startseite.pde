@@ -76,7 +76,8 @@ void controlEvent(ControlEvent theEvent) {
     Button2.show();
     break;
     case(4):
-    println(theEvent.getController().getStringValue());
+    String textinput = theEvent.getController().getStringValue();
+    println(textinput);
     break;
  } 
 }
