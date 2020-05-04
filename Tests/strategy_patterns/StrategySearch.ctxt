@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=StrategySearch
+comment1.params=
+comment1.target=void\ solve()
+comment2.params=
+comment2.target=void\ preProcess()
+comment3.params=
+comment3.target=boolean\ search()
+comment4.params=
+comment4.target=void\ postProcess()
+numComments=5

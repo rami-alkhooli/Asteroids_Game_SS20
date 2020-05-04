@@ -1,3 +1,5 @@
+import processing.core.*;
+
 class SpaceShip
 {
   private static final float UPSIDE = 60;
@@ -19,26 +21,36 @@ class SpaceShip
   private short collectedItems;
   private short lives;
   private short shieldStrength;
-  // Hier muss noch ein Laser-Waffe kommen
+
+  private static SpaceShip mySpaceShip;
   private AccelerationState accState;
   private RotationState rotState;
   private Shield shield;
+  private static PApplet myApp;
   
   // Hier muss eine Funktion zur Kollisionserkennung
-  public SpaceShip(int myX, int myY) {
+  private SpaceShip(PApplet theApp, int myX, int myY) {
+    myApp = theApp;
     m = 20;
     phi = 90;
     phiRot = 0;
     x = myX;
     y = myY;
-    HEAD = UPSIDE*sin(radians(90));
-    SIDE = DOWNSIDE/sin(radians(45));
+    HEAD = UPSIDE*myApp.sin(myApp.radians(90));
+    SIDE = DOWNSIDE/myApp.sin(myApp.radians(45));
     v = 0;
     collectedItems = 0;
     lives = 3;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new Full();
+  }
+  
+  public static SpaceShip create(PApplet theApp, int myX, int myY)
+  {
+    if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp,myX,myY);}
+    
+    return mySpaceShip;
   }
   
   public void show() {
@@ -52,16 +64,17 @@ class SpaceShip
     // updating coodinates
     updateCoordinatesCenter();
     updateCoordinatesTriangle();
+    boundingConditions();
     
     // drawing shield
-    shieldStrength = shield.protect(x,y,UPSIDE);
+    shieldStrength = shield.protect(myApp,x,y,UPSIDE);
     
     // drawing space ship
-    fill(255,255,255);
-    triangle(x1,y1,x2,y2,x3,y3);
+    myApp.fill(255,255,255);
+    myApp.triangle(x1,y1,x2,y2,x3,y3);
     
     // drawing thrust
-    accState.generateThrust(x,y,UPSIDE,DOWNSIDE,phi);
+    accState.generateThrust(myApp,x,y,UPSIDE,DOWNSIDE,phi);
   }
   
   public void setAccState(AccelerationState newState) {
@@ -77,17 +90,24 @@ class SpaceShip
   }
   
   private void updateCoordinatesCenter() {
-    x = x - v*cos(radians(phi));
-    y = y - v*sin(radians(phi));
+    x = x - v*myApp.cos(myApp.radians(phi));
+    y = y - v*myApp.sin(myApp.radians(phi));
   }
   
   private void updateCoordinatesTriangle() {
-    x1 = x - SIDE*cos(radians(phi-135));
-    y1 = y - SIDE*sin(radians(phi-135));
-    x2 = x - HEAD*cos(radians(phi));
-    y2 = y - HEAD*sin(radians(phi));
-    x3 = x - SIDE*cos(radians(phi+135));
-    y3 = y - SIDE*sin(radians(phi+135));
+    x1 = x - SIDE*myApp.cos(myApp.radians(phi-135));
+    y1 = y - SIDE*myApp.sin(myApp.radians(phi-135));
+    x2 = x - HEAD*myApp.cos(myApp.radians(phi));
+    y2 = y - HEAD*myApp.sin(myApp.radians(phi));
+    x3 = x - SIDE*myApp.cos(myApp.radians(phi+135));
+    y3 = y - SIDE*myApp.sin(myApp.radians(phi+135));
+  }
+  
+  private void boundingConditions() {
+    if(x<(0-UPSIDE)) {x = myApp.width+UPSIDE;}
+    if(x>(myApp.width+UPSIDE)) {x = 0-UPSIDE;}
+    if(y<(0-UPSIDE)) {y = myApp.height+UPSIDE;}
+    if(y>(myApp.height+UPSIDE)) {y = 0-UPSIDE;}
   }
   
   public float getX() {return x;}
