@@ -6,6 +6,8 @@ controlP5.Button Button1;
 controlP5.Button Button2;
 controlP5.Button Button3;
 controlP5.Button Button4;
+
+Textlabel AsteroidsText;
  
 
 void setup() {
@@ -16,27 +18,34 @@ void setup() {
  // description : a button executes after release
  // parameters : name, value (float), x, y, width, height
  
+ AsteroidsText = controlP5.addTextlabel("AsteroidsGame")
+                           .setText("Asteroids Game")
+                           .setPosition(250, 10)
+                           .setColorValue(255)
+                           .setFont(createFont("Georgia",50));
+                           
+ 
  Button1 = controlP5.addButton("Button1")
    .setValue(100)
-   .setPosition(0,10)
+   .setPosition(0,100)
    .setSize(200,100)
    .setId(1);
    
  Button2 = controlP5.addButton("Button2")
    .setValue(100)
-   .setPosition(250,10)
+   .setPosition(250,100)
    .setSize(200,100)
    .setId(2);
    
  Button3 = controlP5.addButton("Button3")
    .setValue(100)
-   .setPosition(500,10)
+   .setPosition(500,100)
    .setSize(200,100)
    .setId(3);
    
  controlP5.addTextfield("n3")
-   .setPosition(10, 200)
-   .setSize(100, 50)
+   .setPosition(10, 500)
+   .setSize(400, 100)
    .setId(4);
 }
  
@@ -66,6 +75,7 @@ void controlEvent(ControlEvent theEvent) {
     case(1):
     Button2.hide();
     Button3.show();
+    AsteroidsText.hide();
     break;
     case(2):
     Button3.hide();
@@ -74,6 +84,7 @@ void controlEvent(ControlEvent theEvent) {
     case(3):
     Button1.hide();
     Button2.show();
+    AsteroidsText.show();
     break;
     case(4):
     String textinput = theEvent.getController().getStringValue();
