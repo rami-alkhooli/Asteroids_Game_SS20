@@ -40,10 +40,10 @@ class Asteroid
     updateCoordinates();
     drawBoundary();
     drawShape();
-    checkBoundaries();
+    checkBorders();
   }
     
-  private void checkBoundaries()
+  private void checkBorders()
   {
     if( x > myApp.width+MAXRADIUS ) {x-=(myApp.width+(2*MAXRADIUS)) ;}
     if( x < (-MAXRADIUS) ) {x+=(myApp.width+(2*MAXRADIUS)) ;}

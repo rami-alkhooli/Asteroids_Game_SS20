@@ -27,7 +27,7 @@ class SpaceStation
   
   public void show()
   {
-    myApp.fill(200,233,233);
+    myApp.fill(250,250,250);
     myApp.circle(x,y,BREITE);
     myApp.fill(170,185,185);
     myApp.circle(x,y,BREITE/2);

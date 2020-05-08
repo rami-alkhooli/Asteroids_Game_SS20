@@ -11,12 +11,8 @@ class SpaceShip
   private float phiRot;
   private float x;
   private float y;
-  private float x1;
-  private float y1;
-  private float x2;
-  private float y2;
-  private float x3;
-  private float y3;
+  private float[] xPoint;
+  private float[] yPoint;
   private float v;
   private short collectedItems;
   private short lives;
@@ -28,7 +24,6 @@ class SpaceShip
   private Shield shield;
   private static PApplet myApp;
   
-  // Hier muss eine Funktion zur Kollisionserkennung
   private SpaceShip(PApplet theApp, int myX, int myY) {
     myApp = theApp;
     m = 20;
@@ -36,6 +31,8 @@ class SpaceShip
     phiRot = 0;
     x = myX;
     y = myY;
+    xPoint = new float[3];
+    yPoint = new float[3];
     HEAD = UPSIDE*myApp.sin(myApp.radians(90));
     SIDE = DOWNSIDE/myApp.sin(myApp.radians(45));
     v = 0;
@@ -64,17 +61,24 @@ class SpaceShip
     // updating coodinates
     updateCoordinatesCenter();
     updateCoordinatesTriangle();
-    boundingConditions();
+    checkBorders();
     
     // drawing shield
     shieldStrength = shield.protect(myApp,x,y,UPSIDE);
     
     // drawing space ship
     myApp.fill(255,255,255);
-    myApp.triangle(x1,y1,x2,y2,x3,y3);
+    myApp.triangle(xPoint[0],yPoint[0],xPoint[1],yPoint[1],xPoint[2],yPoint[2]);
     
     // drawing thrust
     accState.generateThrust(myApp,x,y,UPSIDE,DOWNSIDE,phi);
+  }
+  
+  private void checkBorders() {
+    if(x<(0-UPSIDE)) {x = myApp.width+UPSIDE;}
+    if(x>(myApp.width+UPSIDE)) {x = 0-UPSIDE;}
+    if(y<(0-UPSIDE)) {y = myApp.height+UPSIDE;}
+    if(y>(myApp.height+UPSIDE)) {y = 0-UPSIDE;}
   }
   
   public void setAccState(AccelerationState newState) {
@@ -95,19 +99,12 @@ class SpaceShip
   }
   
   private void updateCoordinatesTriangle() {
-    x1 = x - SIDE*myApp.cos(myApp.radians(phi-135));
-    y1 = y - SIDE*myApp.sin(myApp.radians(phi-135));
-    x2 = x - HEAD*myApp.cos(myApp.radians(phi));
-    y2 = y - HEAD*myApp.sin(myApp.radians(phi));
-    x3 = x - SIDE*myApp.cos(myApp.radians(phi+135));
-    y3 = y - SIDE*myApp.sin(myApp.radians(phi+135));
-  }
-  
-  private void boundingConditions() {
-    if(x<(0-UPSIDE)) {x = myApp.width+UPSIDE;}
-    if(x>(myApp.width+UPSIDE)) {x = 0-UPSIDE;}
-    if(y<(0-UPSIDE)) {y = myApp.height+UPSIDE;}
-    if(y>(myApp.height+UPSIDE)) {y = 0-UPSIDE;}
+    xPoint[0] = x - SIDE*myApp.cos(myApp.radians(phi-135));
+    yPoint[0] = y - SIDE*myApp.sin(myApp.radians(phi-135));
+    xPoint[1] = x - HEAD*myApp.cos(myApp.radians(phi));
+    yPoint[1] = y - HEAD*myApp.sin(myApp.radians(phi));
+    xPoint[2] = x - SIDE*myApp.cos(myApp.radians(phi+135));
+    yPoint[2] = y - SIDE*myApp.sin(myApp.radians(phi+135));
   }
   
   public float getX() {return x;}
