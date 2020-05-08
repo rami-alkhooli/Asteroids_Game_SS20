@@ -1,4 +1,4 @@
-# Asteroids Game
+﻿# Asteroids Game
 
 ## Version
 0.6
@@ -25,7 +25,7 @@
 - [ ] Items nach Explosion von Asteroiden generieren
 - [x] Töne beim Fliegen und Abfeuern abspielen
 - [x] Überwachung der Position von Raumschiff und Asteroiden und eine Schleife am Spielfeldrand einsetzen
-- [ ] Erstellung der SpaceStation
+- [x] Erstellung der SpaceStation
 
 ### Datenbank
 - [x] erstellen
