@@ -74,4 +74,8 @@ class Asteroid
     x += speedX;
     y += speedY;
   }
+  
+  public float getX() {return x;}
+  public float getY() {return y;}
+  public float getRadius() {return MAXRADIUS;}
 }

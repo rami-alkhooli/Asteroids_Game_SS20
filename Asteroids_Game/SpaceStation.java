@@ -33,4 +33,8 @@ class SpaceStation
     myApp.circle(x,y,BREITE/2);
     myApp.noFill();
   }
+  
+  public float getX() {return x;}
+  public float getY() {return y;}
+  public float getRadius() {return (float)(BREITE/2);}
 }

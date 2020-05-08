@@ -109,6 +109,7 @@ class SpaceShip
   
   public float getX() {return x;}
   public float getY() {return y;}
+  public float getRadius() {return UPSIDE;}
   public short getMass() {return m;}
   public float getPhi() {return phi;}
   public float getSpeed() {return v;}

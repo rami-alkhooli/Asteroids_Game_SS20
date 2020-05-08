@@ -45,12 +45,16 @@ class Game
     end = false;
   }
   
-  void runGame()
+  public void runGame()
   {
-    if(laser!=null)
+    detectCollisionsWithAsteroids(sh,listAsteroids);
+    detectCollisionsWithSpacestation(sh,st);
+    try
     {
+      detectCollisionsWithLaser(laser,listAsteroids);
       if(laser.shoot() == false) {laser = null;}
     }
+    catch(NullPointerException e) {}
     st.show();
     sh.show();
     myGame.drawAsteroids();
@@ -58,7 +62,7 @@ class Game
     if(end) {myApp.delay(1000); myApp.exit();}
   }
   
-  void setupGame(int amntBigAst, int amntSmlAst)
+  public void setupGame(int amntBigAst, int amntSmlAst)
   {
     sh = SpaceShip.create(myApp,myApp.width/2,myApp.height/2);
     st = SpaceStation.create(myApp);
@@ -77,7 +81,7 @@ class Game
     }
   }
   
-  void levelItUp(int amntBigAst, int amntSmlAst)
+  public void levelItUp(int amntBigAst, int amntSmlAst)
   {
     listAsteroids = new ArrayList <Asteroid> ();
     
@@ -93,7 +97,7 @@ class Game
     }
   }
   
-  void checkKeyPressed()
+  public void checkKeyPressed()
   {
     if(myApp.keyCode == myApp.UP) {sh.setAccState(new AccStateMoving()); file.loop();}
     if(myApp.keyCode == myApp.DOWN) sh.setAccState(new AccStateReturning());
@@ -109,7 +113,7 @@ class Game
     }
   }
   
-  void checkKeyReleased()
+  public void checkKeyReleased()
   {
     if(myApp.keyCode == myApp.UP) {sh.setAccState(new AccStateStoppedF()); file.stop();}
     if(myApp.keyCode == myApp.DOWN) sh.setAccState(new AccStateStoppedR());
@@ -152,6 +156,30 @@ class Game
     myApp.text("Shield: " + sh.getShield()+"%",515,10);
     myApp.text("Lives: " + sh.getLives(),715,10);
     myApp.text("Items: " + sh.getItems(),835,10);
+  }
+  
+  private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list)
+  {
+    for (int n=0 ; n<list.size() ; n++)
+    {
+      if ( myApp.dist( ship.getX() , ship.getY() , list.get(n).getX() , list.get(n).getY() ) < (ship.getRadius() + list.get(n).getRadius()) )
+      {myApp.background(255,0,0);}
+    }
+  }
+  
+  private void detectCollisionsWithSpacestation(SpaceShip ship, SpaceStation station)
+  {
+    if ( myApp.dist( ship.getX() , ship.getY() , station.getX() , station.getY() ) < (ship.getRadius() + station.getRadius()) )
+    {myApp.background(0,170,0);}
+  }
+  
+  private void detectCollisionsWithLaser(Laser lasershot, ArrayList<Asteroid> list)
+  {
+    for (int n=0 ; n<list.size() ; n++)
+    {
+        if ( myApp.dist( lasershot.getX() , lasershot.getY() , list.get(n).getX() , list.get(n).getY() ) < (lasershot.getRadius() + list.get(n).getRadius()) )
+        {myApp.background(0,0,170);}
+    }
   }
   
    //... FEHLT!!!

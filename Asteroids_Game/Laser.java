@@ -4,6 +4,8 @@ class Laser
 {    
   private final float x;
   private final float y;
+  private float movingX;
+  private float movingY;
   private final float phi;  
   private int born;
   private float i;
@@ -25,8 +27,8 @@ class Laser
       if(ttl>0) {
         ttl--;
         i+=20;
-        float movingX = x - i*myApp.cos(myApp.radians(phi));
-        float movingY = y - i*myApp.sin(myApp.radians(phi));
+        movingX = x - i*myApp.cos(myApp.radians(phi));
+        movingY = y - i*myApp.sin(myApp.radians(phi));
         myApp.fill(255,0,0,195+(2*ttl));
         myApp.circle(movingX,movingY,20);
         
@@ -34,4 +36,8 @@ class Laser
     }
     else return false;
   }
+  
+  public float getX() {return movingX;}
+  public float getY() {return movingY;}
+  public float getRadius() {return 10;}
 }

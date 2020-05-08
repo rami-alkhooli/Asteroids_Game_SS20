@@ -1,10 +1,10 @@
 ﻿# Asteroids Game
 
 ## Version
-0.6
+0.7
 
 ## Stand
-04.05.2020
+09.05.2020
 
 ## Komponenten
 
@@ -20,7 +20,10 @@
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
 - [x] Laser-Waffe mit Möglichkeit zum Abfeuern implementieren
 - [x] Asteroiden automatisch generieren und bewegen
-- [ ] Kollisionen erkennen (Laser mit Asteroiden - Raumschiff mit Asteroiden - Raumschiff mit Items - Raumschiff mit Raumstation)
+- [x] Kollisionen erkennen (Laser mit Asteroiden)
+- [x] Kollisionen erkennen (Raumschiff mit Asteroiden)
+- [x] Kollisionen erkennen (Raumschiff mit Raumstation)
+- [ ] Kollisionen erkennen (Raumschiff mit Items)
 - [ ] Explosion nach Kollision mit Asteroiden generieren
 - [ ] Items nach Explosion von Asteroiden generieren
 - [x] Töne beim Fliegen und Abfeuern abspielen
