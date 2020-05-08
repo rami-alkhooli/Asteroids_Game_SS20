@@ -136,7 +136,7 @@ class Game
     for(int i = 0 ; i<listAsteroids.size() ; i++)
     {
       Asteroid asteroid = listAsteroids.get(i);
-      asteroid.displayAndMove();
+      asteroid.show();
     }
   }
   

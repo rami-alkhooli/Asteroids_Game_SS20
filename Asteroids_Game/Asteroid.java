@@ -11,7 +11,6 @@ class Asteroid
   private float speedY;
   private float[] xPoint;
   private float[] yPoint;
-  
   private static PApplet myApp;
   
   public Asteroid(PApplet theApp, float theX, float theY, float rageddness, float radius, int maxVertices) {
@@ -37,13 +36,29 @@ class Asteroid
     }
   }
   
-  public void displayAndMove() {
-    x += speedX;
-    y += speedY;
+  public void show() {
+    updateCoordinates();
+    drawBoundary();
+    drawShape();
+    checkBoundaries();
+  }
     
+  private void checkBoundaries()
+  {
+    if( x > myApp.width+MAXRADIUS ) {x-=(myApp.width+(2*MAXRADIUS)) ;}
+    if( x < (-MAXRADIUS) ) {x+=(myApp.width+(2*MAXRADIUS)) ;}
+    if( y > myApp.height+MAXRADIUS ) {y-=(myApp.height+(2*MAXRADIUS)) ;}
+    if( y < (-MAXRADIUS) ) {y+=(myApp.height+(2*MAXRADIUS)) ;}
+  }
+  
+  private void drawBoundary()
+  {
     myApp.fill(150,150,150,100);
     myApp.circle(x,y,2*MAXRADIUS);
-    
+  }
+  
+  private void drawShape()
+  {
     myApp.fill(154,150,146);
     myApp.beginShape();
     for(int n=0 ; n<MAXVERTICES ; n++)
@@ -52,30 +67,11 @@ class Asteroid
     }
     myApp.endShape(myApp.CLOSE);
     myApp.noFill();
-    
-    // Randbedingungen
-    if( x > myApp.width+MAXRADIUS ) {x-=(myApp.width+(2*MAXRADIUS)) ;}
-    if( x < (-MAXRADIUS) ) {x+=(myApp.width+(2*MAXRADIUS)) ;}
-    
-    if( y > myApp.height+MAXRADIUS ) {y-=(myApp.height+(2*MAXRADIUS)) ;}
-    if( y < (-MAXRADIUS) ) {y+=(myApp.height+(2*MAXRADIUS)) ;}
   }
   
-  private float getHighestDistance(float[] x, float[] y)
+  private void updateCoordinates()
   {
-    float highX = x[0];
-    for(int n=1 ; n<x.length-1 ; n++)
-    {
-      if(x[n] < x[n+1]) {highX = x[n+1];}
-    }
-    
-    float highY = y[0];
-    for(int n=1 ; n<y.length-1 ; n++)
-    {
-      if(y[n] < y[n+1]) {highY = y[n+1];}
-    }
-    
-    if (highX < highY) {return highY;}
-    else {return highX;}
-    }
+    x += speedX;
+    y += speedY;
+  }
 }
