@@ -2,76 +2,80 @@ import processing.core.*;
 
 class Asteroid
 {
-  protected int SIZE;
-  protected float xCor = 0;
-  protected float yCor = 0;
-  protected float speedX;
-  protected float speedY;
-  protected float x1;
-  protected float y1;
-  protected float x2;
-  protected float y2;
-  protected float x3;
-  protected float y3;
-  protected float x4;
-  protected float y4;
-  protected float x5;
-  protected float y5;
-  protected float x6;
-  protected float y6;
+  private final float MINRADIUS;
+  private final float MAXRADIUS;
+  private final int MAXVERTICES;
+  private float x = 0;
+  private float y = 0;
+  private float speedX;
+  private float speedY;
+  private float[] xPoint;
+  private float[] yPoint;
   
   private static PApplet myApp;
   
-  public Asteroid(PApplet theApp, float inX, float inY, int size) {
+  public Asteroid(PApplet theApp, float theX, float theY, float rageddness, float radius, int maxVertices) {
+    MAXVERTICES = maxVertices ;
+    MAXRADIUS = radius;
+    xPoint = new float[maxVertices];
+    yPoint = new float[maxVertices];
     myApp = theApp;
-    xCor = inX ;
-    yCor = inY ;
-    speedX = myApp.random(-2,2); speedY = myApp.random(-2,2);
-    SIZE = size;
+    x = theX ;
+    y = theY ;
+    speedX = myApp.random(-2,2);
+    speedY = myApp.random(-2,2);
+    MINRADIUS = radius/rageddness;
     
-    x1 = myApp.random( (float)(xCor+(0.0*SIZE)) , (float)(xCor+(0.4*SIZE)) ); 
-    y1 = myApp.random( (float)(yCor+(0.0*SIZE)) , (float)(yCor+(0.4*SIZE)) );
+    float angle = 0;
+    float section = 360/maxVertices;
     
-    x2 = myApp.random( (float)(xCor+(0.4*SIZE)) , (float)(xCor+(0.8*SIZE)) );
-    y2 = myApp.random( (float)(yCor+(0.0*SIZE)) , (float)(yCor+(0.4*SIZE)) );
-    
-    x3 = myApp.random( (float)(xCor+(0.8*SIZE)) , (float)(xCor+(1.0*SIZE)) );
-    y3 = myApp.random( (float)(yCor+(0.4*SIZE)) , (float)(yCor+(0.8*SIZE)) );
-    
-    x4 = myApp.random( (float)(xCor+(0.4*SIZE)) , (float)(xCor+(0.6*SIZE)) );
-    y4 = myApp.random( (float)(yCor+(0.8*SIZE)) , (float)(yCor+(1.0*SIZE)) );
-    
-    x5 = myApp.random( (float)(xCor+(0.2*SIZE)) , (float)(xCor+(0.4*SIZE)) );
-    y5 = myApp.random( (float)(yCor+(0.6*SIZE)) , (float)(yCor+(0.8*SIZE)) );
-    
-    x6 = myApp.random( (float)(xCor+(0.0*SIZE)) , (float)(xCor+(0.2*SIZE)) );
-    y6 = myApp.random( (float)(yCor+(0.4*SIZE)) , (float)(yCor+(0.8*SIZE)) );
+    for (int n=0 ; n<MAXVERTICES ; n++)
+    {
+      xPoint[n] = ( (int)(myApp.random(MINRADIUS,MAXRADIUS)) ) * (myApp.cos(myApp.radians(myApp.random(angle,angle+section))));
+      yPoint[n] = ( (int)(myApp.random(MINRADIUS,MAXRADIUS)) ) * (myApp.sin(myApp.radians(myApp.random(angle,angle+section))));
+      angle += section ;
+    }
   }
   
   public void displayAndMove() {
-    x1 += speedX; x2 += speedX; x3 += speedX; x4 += speedX; x5 += speedX; x6 += speedX;
-    y1 += speedY; y2 += speedY; y3 += speedY; y4 += speedY; y5 += speedY; y6 += speedY;
+    x += speedX;
+    y += speedY;
     
+    myApp.fill(150,150,150,100);
+    myApp.circle(x,y,2*MAXRADIUS);
+    
+    myApp.fill(154,150,146);
     myApp.beginShape();
-    myApp.vertex(x1,y1);
-    myApp.vertex(x2,y2);
-    myApp.vertex(x3,y3);
-    myApp.vertex(x4,y4);
-    myApp.vertex(x5,y5);
-    myApp.vertex(x6,y6);
+    for(int n=0 ; n<MAXVERTICES ; n++)
+    {
+      myApp.vertex(x+xPoint[n],y+yPoint[n]);
+    }
     myApp.endShape(myApp.CLOSE);
+    myApp.noFill();
     
     // Randbedingungen
-    if((x1>myApp.width)&&(x2>myApp.width)&&(x3>myApp.width)&&(x4>myApp.width)&&(x5>myApp.width)&&(x6>myApp.width))
-    { x1-=(myApp.width+SIZE); x2-=(myApp.width+SIZE); x3-=(myApp.width+SIZE); x4-=(myApp.width+SIZE); x5-=(myApp.width+SIZE); x6-=(myApp.width+SIZE); }
+    if( x > myApp.width+MAXRADIUS ) {x-=(myApp.width+(2*MAXRADIUS)) ;}
+    if( x < (-MAXRADIUS) ) {x+=(myApp.width+(2*MAXRADIUS)) ;}
     
-    if((x1<0)&&(x2<0)&&(x3<0)&&(x4<0)&&(x5<0)&&(x6<0))
-    { x1+=(myApp.width+SIZE); x2+=(myApp.width+SIZE); x3+=(myApp.width+SIZE); x4+=(myApp.width+SIZE); x5+=(myApp.width+SIZE); x6+=(myApp.width+SIZE); }
-    
-    if((y1>myApp.height)&&(y2>myApp.height)&&(y3>myApp.height)&&(y4>myApp.height)&&(y5>myApp.height)&&(y6>myApp.height))
-    { y1-=(myApp.height+SIZE); y2-=(myApp.height+SIZE); y3-=(myApp.height+SIZE); y4-=(myApp.height+SIZE); y5-=(myApp.height+SIZE); y6-=(myApp.height+SIZE); }
-    
-    if((y1<0)&&(y2<0)&&(y3<0)&&(y4<0)&&(y5<0)&&(y6<0))
-    { y1+=(myApp.height+SIZE); y2+=(myApp.height+SIZE); y3+=(myApp.height+SIZE); y4+=(myApp.height+SIZE); y5+=(myApp.height+SIZE); y6+=(myApp.height+SIZE); }
+    if( y > myApp.height+MAXRADIUS ) {y-=(myApp.height+(2*MAXRADIUS)) ;}
+    if( y < (-MAXRADIUS) ) {y+=(myApp.height+(2*MAXRADIUS)) ;}
   }
+  
+  private float getHighestDistance(float[] x, float[] y)
+  {
+    float highX = x[0];
+    for(int n=1 ; n<x.length-1 ; n++)
+    {
+      if(x[n] < x[n+1]) {highX = x[n+1];}
+    }
+    
+    float highY = y[0];
+    for(int n=1 ; n<y.length-1 ; n++)
+    {
+      if(y[n] < y[n+1]) {highY = y[n+1];}
+    }
+    
+    if (highX < highY) {return highY;}
+    else {return highX;}
+    }
 }

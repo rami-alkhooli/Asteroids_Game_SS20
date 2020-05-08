@@ -67,30 +67,30 @@ class Game
     
     for(int aB = 0 ; aB < amntBigAst ; aB++)
     {
-      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(200,250));
+      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(100,200),9);
       listAsteroids.add(astBig);
     }
     for(int aS = 0 ; aS < amntSmlAst ; aS++)
     {
-      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(50,100));
+      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(50,100),5);
       listAsteroids.add(astSml);
     }
   }
   
   void levelItUp(int amntBigAst, int amntSmlAst)
   {
-    listAsteroids = new ArrayList <Asteroid> ();
+    //listAsteroids = new ArrayList <Asteroid> ();
     
-    for(int aB = 0 ; aB < amntBigAst ; aB++)
-    {
-      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(200,250));
-      listAsteroids.add(astBig);
-    }
-    for(int aS = 0 ; aS < amntSmlAst ; aS++)
-    {
-      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(50,100));
-      listAsteroids.add(astSml);
-    }
+    //for(int aB = 0 ; aB < amntBigAst ; aB++)
+    //{
+    //  Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(200,250));
+    //  listAsteroids.add(astBig);
+    //}
+    //for(int aS = 0 ; aS < amntSmlAst ; aS++)
+    //{
+    //  Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(50,100));
+    //  listAsteroids.add(astSml);
+    //}
   }
   
   void checkKeyPressed()
@@ -133,13 +133,11 @@ class Game
   
   private void drawAsteroids()
   {
-    myApp.fill(154,150,146);
     for(int i = 0 ; i<listAsteroids.size() ; i++)
     {
       Asteroid asteroid = listAsteroids.get(i);
       asteroid.displayAndMove();
     }
-    myApp.noFill();
   }
   
   private void statistics()
