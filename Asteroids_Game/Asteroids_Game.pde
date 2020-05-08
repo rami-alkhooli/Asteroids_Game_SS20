@@ -6,7 +6,7 @@ void setup()
 {
   fullScreen();
   myGame = Game.startGame(this);
-  myGame.setupGame(3,5);
+  myGame.setupGame(2,4);
 }
 
 void draw()
@@ -18,6 +18,8 @@ void draw()
 void keyPressed()
 {
   myGame.checkKeyPressed();
+  if(key=='1') {myGame.levelItUp(4,6);}
+  if(key=='2') {myGame.levelItUp(6,8);}
 }
 
 void keyReleased()

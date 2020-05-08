@@ -5,6 +5,7 @@ import java.util.*;
 class Game
 {
   private SpaceShip sh;
+  private SpaceStation st;
   private Laser laser;
   private SoundFile file;
   private SoundFile laserShoot;
@@ -18,8 +19,7 @@ class Game
   public int items;
   public String time_played;
   
-  private ArrayList <AsteroidSmall> listAsteroidSmall;
-  private ArrayList <AsteroidBig> listAsteroidBig;
+  private ArrayList <Asteroid> listAsteroids;
 
   private Game(PApplet theApp)
   {
@@ -29,8 +29,7 @@ class Game
     shoots = 0;
     items = 0;
     time_played = "0";
-    listAsteroidBig = new ArrayList <AsteroidBig> ();
-    listAsteroidSmall = new ArrayList <AsteroidSmall> ();
+    listAsteroids = new ArrayList <Asteroid> ();
     end = false;
   }
   
@@ -42,8 +41,7 @@ class Game
     shoots = shts;
     items = itms;
     time_played = tmeplyd;
-    listAsteroidBig = new ArrayList <AsteroidBig> ();
-    listAsteroidSmall = new ArrayList <AsteroidSmall> ();
+    listAsteroids = new ArrayList <Asteroid> ();
     end = false;
   }
   
@@ -53,6 +51,7 @@ class Game
     {
       if(laser.shoot() == false) {laser = null;}
     }
+    st.show();
     sh.show();
     myGame.drawAsteroids();
     myGame.statistics();
@@ -62,18 +61,35 @@ class Game
   void setupGame(int amntBigAst, int amntSmlAst)
   {
     sh = SpaceShip.create(myApp,myApp.width/2,myApp.height/2);
+    st = SpaceStation.create(myApp);
     file = new SoundFile(myApp, "thrust.mp3");
     laserShoot = new SoundFile(myApp,"laser.mp3");
     
-    for(int aB = 0 ; aB <= amntBigAst ; aB++)
+    for(int aB = 0 ; aB < amntBigAst ; aB++)
     {
-      AsteroidBig astBig = new AsteroidBig (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200));
-      listAsteroidBig.add(astBig);
+      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(200,250));
+      listAsteroids.add(astBig);
     }
-    for(int aS = 0 ; aS <= amntSmlAst ; aS++)
+    for(int aS = 0 ; aS < amntSmlAst ; aS++)
     {
-      AsteroidSmall astSmall = new AsteroidSmall (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200));
-      listAsteroidSmall.add(astSmall);
+      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(50,100));
+      listAsteroids.add(astSml);
+    }
+  }
+  
+  void levelItUp(int amntBigAst, int amntSmlAst)
+  {
+    listAsteroids = new ArrayList <Asteroid> ();
+    
+    for(int aB = 0 ; aB < amntBigAst ; aB++)
+    {
+      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(200,250));
+      listAsteroids.add(astBig);
+    }
+    for(int aS = 0 ; aS < amntSmlAst ; aS++)
+    {
+      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width-200) , myApp.random(20,myApp.height-200),(int)myApp.random(50,100));
+      listAsteroids.add(astSml);
     }
   }
   
@@ -118,15 +134,10 @@ class Game
   private void drawAsteroids()
   {
     myApp.fill(154,150,146);
-    for(int i = 1 ; i<listAsteroidSmall.size() ; i++)
+    for(int i = 0 ; i<listAsteroids.size() ; i++)
     {
-      AsteroidSmall oS = listAsteroidSmall.get(i);
-      oS.displayAndMove();
-    }
-    for(int i = 1 ; i<listAsteroidBig.size() ; i++)
-    {
-      AsteroidBig oB = listAsteroidBig.get(i);
-      oB.displayAndMove();
+      Asteroid asteroid = listAsteroids.get(i);
+      asteroid.displayAndMove();
     }
     myApp.noFill();
   }
