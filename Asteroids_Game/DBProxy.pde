@@ -296,9 +296,8 @@ public class DBProxy
         dbconnection.query("select highscore,shoots,hits,items,time_played from Game where idGame="+gameId+";");
         while(dbconnection.next())
         {
-          theGame.highscore = dbconnection.getInt("highscore");
-          theGame.shoots = dbconnection.getInt("shoots");
-          theGame.hits = dbconnection.getInt("hits");
+          theGame.shots = dbconnection.getInt("shoots");
+          theGame.score = dbconnection.getInt("hits");
           theGame.items = dbconnection.getInt("items");
           theGame.time_played = dbconnection.getString("tifme_played");
         }

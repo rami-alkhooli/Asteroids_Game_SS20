@@ -12,10 +12,9 @@ class Game
   private static Game myGame;
   private static PApplet myApp;
   
-  private boolean end;
   public int highscore;
-  public int hits;
-  public int shoots;
+  public int score;
+  public int shots;
   public int items;
   public String time_played;
   
@@ -26,29 +25,25 @@ class Game
   private Game(PApplet theApp)
   {
     myApp = theApp;
-    highscore = 0;
-    hits = 0;
-    shoots = 0;
+    score = 0;
+    shots = 0;
     items = 0;
     time_played = "0";
     listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
-    end = false;
   }
   
-  private Game(PApplet theApp,int hs,int hts,int shts,int itms,String tmeplyd)
+  private Game(PApplet theApp,int scr,int shts,int itms,String tmeplyd)
   {
     myApp = theApp;
-    highscore = hs;
-    hits = hts;
-    shoots = shts;
+    score = scr;
+    shots = shts;
     items = itms;
     time_played = tmeplyd;
     listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
-    end = false;
   }
   
   public void runGame()
@@ -82,8 +77,7 @@ class Game
     catch (NullPointerException e) {}
     st.show();
     sh.show();
-    myGame.drawAsteroids();
-    myGame.statistics();
+    drawAsteroids();
   }
   
   public void setupGame(int amntBigAst, int amntSmlAst)
@@ -95,28 +89,12 @@ class Game
     
     for(int aB = 0 ; aB < amntBigAst ; aB++)
     {
-      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(100,200),9);
+      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(150,200),9);
       listAsteroids.add(astBig);
     }
     for(int aS = 0 ; aS < amntSmlAst ; aS++)
     {
       Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(50,100),5);
-      listAsteroids.add(astSml);
-    }
-  }
-  
-  public void levelItUp(int amntBigAst, int amntSmlAst)
-  {
-    listAsteroids = new ArrayList <Asteroid> ();
-    
-    for(int aB = 0 ; aB < amntBigAst ; aB++)
-    {
-      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(150,250),12);
-      listAsteroids.add(astBig);
-    }
-    for(int aS = 0 ; aS < amntSmlAst ; aS++)
-    {
-      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(100,150),8);
       listAsteroids.add(astSml);
     }
   }
@@ -128,10 +106,8 @@ class Game
     if(myApp.keyCode == myApp.RIGHT) sh.setRotState(new RotStateRight());
     if(myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateLeft());
     
-    if(myApp.key=='1') {levelItUp(4,6);}
-    if(myApp.key=='2') {levelItUp(6,8);}
     if(myApp.key == ' ') {
-      if(laser == null ) {laser = new Laser(myApp, sh.getX(),sh.getY(),sh.getPhi()); laserShoot.play();}
+      if(laser == null ) {laser = new Laser(myApp, sh.getX(),sh.getY(),sh.getPhi()); shots++; laserShoot.play();}
     }
   }
   
@@ -150,9 +126,9 @@ class Game
     return myGame;
   }
   
-  public static Game startGame(PApplet theApp,int hs,int hts,int shts,int itms,String tmeplyd)
+  public static Game startGame(PApplet theApp,int hts,int shts,int itms,String tmeplyd)
   {
-    if (myGame==null) {myGame = new Game(theApp, hs, hts, shts, itms, tmeplyd);}
+    if (myGame==null) {myGame = new Game(theApp, hts, shts, itms, tmeplyd);}
     
     return myGame;
   }
@@ -166,7 +142,7 @@ class Game
     }
   }
   
-  private void statistics()
+  public void statistics()
   {
     myApp.fill(255,255,255);
     myApp.textSize(30);
@@ -174,11 +150,12 @@ class Game
     myApp.text("x: " + myApp.nf((int)sh.getX(),4),10,10);
     myApp.text("y: " + myApp.nf((int)sh.getY(),4),140,10);
     myApp.text("v: " + myApp.nf((int)sh.getSpeed(),2),270,10);
-    myApp.text("phi: " + myApp.nf((int)sh.getPhi(),3),360,10);
-    myApp.text("Shield: " + sh.getShield()+"%",515,10);
-    myApp.text("Lives: " + sh.getLives(),715,10);
-    myApp.text("Items: " + st.getItems(),835,10);
-    myApp.text("Asteroids: " + listAsteroids.size(),980,10);
+    myApp.text("Phi: " + myApp.nf((int)sh.getPhi(),3),360,10);
+    myApp.text("Shots: " + myApp.nf(shots,2),510,10);
+    myApp.text("Shield: " + sh.getShield()+"%",10,50);
+    myApp.text("Lives: " + sh.getLives(),210,50);
+    myApp.text("Items: " + st.getItems(),330,50);
+    myApp.text("Score: " + this.score,485,50);
   }
   
   private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list)
@@ -224,6 +201,7 @@ class Game
         {
           listExplosions.add(new Explosion(myApp,lasershot.getX(),lasershot.getY()));
           if(list.get(n).getRadius() > 150) {listItems.add(new Item(myApp,list.get(n).getX(),list.get(n).getY()));}
+          score += list.get(n).getRadius();
           list.remove(n);
           return true;
         }
@@ -243,5 +221,11 @@ class Game
     }
   }
   
-   //... FEHLT!!!
+  public int getScore() {return score;}
+  public int getShots() {return shots;}
+  public int getItems() {return st.getItems();}
+  public int getShield() {return sh.getShield();}
+  public String getTimePlayed() {return time_played;}
+  public int getNrAsteroids() {return listAsteroids.size();}
+  public int getNrExplosions() {return listExplosions.size();}
 }

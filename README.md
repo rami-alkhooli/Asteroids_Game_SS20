@@ -14,7 +14,7 @@
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
 
-### Engine
+### Engine <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/1200px-Check_green_icon.svg.png" width="14"/>
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
