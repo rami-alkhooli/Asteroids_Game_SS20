@@ -11,8 +11,9 @@ void draw()
 {
   background(0,0,0);
   try {
-    for(int n=0 ; n<list.size() ; n++) {list.get(n).show();}
-    
+    for(int n=0 ; n<list.size() ; n++) {
+      if(list.get(n).show()==true) {list.remove(n);}
+    }
   }
   catch(NullPointerException e) {}
 }

@@ -14,7 +14,7 @@ public class Explosion
     ttl = 60;
   }
   
-  public void show(){
+  public boolean show(){
     if(ttl>0) {
       myApp.fill(250,0,0);
       myApp.circle(x,y,(120-2*(ttl--)));
@@ -25,6 +25,10 @@ public class Explosion
         myApp.circle(x,y,(110-4*(ttl--)));
         myApp.noFill();
       }
+      return false;
+    }
+    else {
+      return true;
     }
   }
 }
