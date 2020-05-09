@@ -1,5 +1,3 @@
-package engine;
-
 import processing.core.*;
 
 public class RotStateRight implements RotationState

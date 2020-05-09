@@ -1,5 +1,3 @@
-package engine;
-
 import processing.core.*;
 
 public class AccStateMoving implements AccelerationState
