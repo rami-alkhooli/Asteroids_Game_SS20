@@ -20,6 +20,7 @@ class Game
   public String time_played;
   
   private ArrayList <Asteroid> listAsteroids;
+  private ArrayList <Explosion> listExplosions;
 
   private Game(PApplet theApp)
   {
@@ -30,6 +31,7 @@ class Game
     items = 0;
     time_played = "0";
     listAsteroids = new ArrayList <Asteroid> ();
+    listExplosions = new ArrayList <Explosion> ();
     end = false;
   }
   
@@ -42,6 +44,7 @@ class Game
     items = itms;
     time_played = tmeplyd;
     listAsteroids = new ArrayList <Asteroid> ();
+    listExplosions = new ArrayList <Explosion> ();
     end = false;
   }
   
@@ -51,15 +54,26 @@ class Game
     detectCollisionsWithSpacestation(sh,st);
     try
     {
-      detectCollisionsWithLaser(laser,listAsteroids);
+      if(detectCollisionsWithLaser(laser,listAsteroids)==true) {laser = null;}
+    }
+    catch(NullPointerException e) {}
+    try
+    {
       if(laser.shoot() == false) {laser = null;}
     }
     catch(NullPointerException e) {}
+    
+    try
+    {
+      for(int n=0 ; n<listExplosions.size() ; n++) {
+        if(listExplosions.get(n).show()==true) {listExplosions.remove(n);}
+      }
+    }
+    catch (NullPointerException e) {}
     st.show();
     sh.show();
     myGame.drawAsteroids();
     myGame.statistics();
-    if(end) {myApp.delay(1000); myApp.exit();}
   }
   
   public void setupGame(int amntBigAst, int amntSmlAst)
@@ -104,10 +118,8 @@ class Game
     if(myApp.keyCode == myApp.RIGHT) sh.setRotState(new RotStateRight());
     if(myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateLeft());
     
-    if(myApp.key == 'q') sh.setShieldState(new Full());
-    if(myApp.key == 'f') end = true;
-    if(myApp.key == 'w') sh.setShieldState(new Damaged());
-    if(myApp.key == 'e') sh.setShieldState(new Destroyed());
+    if(myApp.key=='1') {levelItUp(4,6);}
+    if(myApp.key=='2') {levelItUp(6,8);}
     if(myApp.key == ' ') {
       if(laser == null ) {laser = new Laser(myApp, sh.getX(),sh.getY(),sh.getPhi()); laserShoot.play();}
     }
@@ -163,7 +175,18 @@ class Game
     for (int n=0 ; n<list.size() ; n++)
     {
       if ( myApp.dist( ship.getX() , ship.getY() , list.get(n).getX() , list.get(n).getY() ) < (ship.getRadius() + list.get(n).getRadius()) )
-      {myApp.background(255,0,0);}
+      {
+        switch(sh.getShield())
+        {
+          case 100: sh.setShieldState(new Damaged());
+          break;
+          case 50: sh.setShieldState(new Destroyed());
+          break;
+          case 0: myApp.delay(1000); myApp.exit();
+          break;
+        }
+        list.remove(n);
+      }
     }
   }
   
@@ -173,13 +196,18 @@ class Game
     {myApp.background(0,170,0);}
   }
   
-  private void detectCollisionsWithLaser(Laser lasershot, ArrayList<Asteroid> list)
+  private boolean detectCollisionsWithLaser(Laser lasershot, ArrayList<Asteroid> list)
   {
     for (int n=0 ; n<list.size() ; n++)
     {
         if ( myApp.dist( lasershot.getX() , lasershot.getY() , list.get(n).getX() , list.get(n).getY() ) < (lasershot.getRadius() + list.get(n).getRadius()) )
-        {myApp.background(0,0,170);}
+        {
+          listExplosions.add(new Explosion(myApp,lasershot.getX(),lasershot.getY()));
+          list.remove(n);
+          return true;
+        }
     }
+    return false;
   }
   
    //... FEHLT!!!

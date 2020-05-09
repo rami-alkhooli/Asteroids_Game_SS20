@@ -1,7 +1,7 @@
 ﻿# Asteroids Game
 
 ## Version
-0.7
+0.8
 
 ## Stand
 09.05.2020
@@ -23,8 +23,8 @@
 - [x] Kollisionen erkennen (Laser mit Asteroiden)
 - [x] Kollisionen erkennen (Raumschiff mit Asteroiden)
 - [x] Kollisionen erkennen (Raumschiff mit Raumstation)
+- [x] Explosion nach Kollision mit Asteroiden generieren
 - [ ] Kollisionen erkennen (Raumschiff mit Items)
-- [ ] Explosion nach Kollision mit Asteroiden generieren
 - [ ] Items nach Explosion von Asteroiden generieren
 - [x] Töne beim Fliegen und Abfeuern abspielen
 - [x] Überwachung der Position von Raumschiff und Asteroiden und eine Schleife am Spielfeldrand einsetzen
