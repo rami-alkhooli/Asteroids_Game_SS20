@@ -5,6 +5,10 @@ Game myGame;
 void setup()
 {
   fullScreen();
+  frameRate(30);
+  smooth(3);
+  loop();
+  
   myGame = Game.startGame(this);
   myGame.setupGame(2,4);
 }
