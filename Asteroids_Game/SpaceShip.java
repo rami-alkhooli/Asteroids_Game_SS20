@@ -37,7 +37,7 @@ public class SpaceShip
     SIDE = DOWNSIDE/myApp.sin(myApp.radians(45));
     v = 0;
     collectedItems = 0;
-    lives = 3;
+    lives = 1;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new ShieldStateFull();
@@ -107,6 +107,31 @@ public class SpaceShip
     yPoint[2] = y - SIDE*myApp.sin(myApp.radians(phi+135));
   }
   
+  public void collectItem (short theItem) {
+    collectedItems += theItem;
+  }
+  
+  public short deliverItems() {
+    if(collectedItems > 0)
+    {
+      short temp = collectedItems;
+      collectedItems = 0;
+      return temp;
+    }
+    else return 0;
+  }
+  
+  public void loseLive()
+  {
+    lives--;
+  }
+  
+  public void rearm()
+  {
+    shield = new ShieldStateFull();
+    shieldStrength = 100;
+  }
+  
   public float getX() {return x;}
   public float getY() {return y;}
   public float getRadius() {return UPSIDE;}
@@ -114,7 +139,5 @@ public class SpaceShip
   public float getPhi() {return phi;}
   public float getSpeed() {return v;}
   public short getLives() {return lives;}
-  public void collectItem (short theItem) {collectedItems += theItem;}
-  public short getItems() {return collectedItems;}
   public short getShield() {return shieldStrength;}
 }

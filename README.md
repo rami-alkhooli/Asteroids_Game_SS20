@@ -1,7 +1,7 @@
 ﻿# Asteroids Game
 
 ## Version
-0.9
+0.10
 
 ## Stand
 09.05.2020
@@ -23,7 +23,7 @@
 - [x] Kollisionen erkennen (Laser mit Asteroiden)
 - [x] Kollisionen erkennen (Raumschiff mit Asteroiden)
 - [x] Kollisionen erkennen (Raumschiff mit Raumstation)
-- [ ] Abladen der gesammelten Items nach Kollision mit Raumstation
+- [x] Abladen der gesammelten Items nach Kollision mit Raumstation
 - [x] Explosion nach Kollision mit Asteroiden generieren
 - [x] Kollisionen erkennen (Raumschiff mit Items)
 - [x] Items nach Explosion von Asteroiden generieren
@@ -35,7 +35,7 @@
 - [x] erstellen
 - [x] Datensätze machen
 - [x] lokal ansprechen
-- [x] von der Ferne ansprechen
+- [x] von der Ferne ansprechen (über IPv6)
 - [ ] Daten austauschen
 - [ ] Eine Klasse, die alle Objekete zur Laufzeit aufzeichnet und den Status der Objekte hat, ob sie vorhanden oder zerstört sind > Stichwort: Strategy Pattern > am besten in der Klasse Game, weil wir dort alle Objekte haben
 

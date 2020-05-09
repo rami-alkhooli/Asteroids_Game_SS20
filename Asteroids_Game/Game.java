@@ -7,8 +7,8 @@ class Game
   private SpaceShip sh;
   private SpaceStation st;
   private Laser laser;
-  private SoundFile file;
   private SoundFile laserShoot;
+  private SoundFile thrustSound;
   private static Game myGame;
   private static PApplet myApp;
   
@@ -90,8 +90,8 @@ class Game
   {
     sh = SpaceShip.create(myApp,myApp.width/2,myApp.height/2);
     st = SpaceStation.create(myApp);
-    file = new SoundFile(myApp, "thrust.mp3");
     laserShoot = new SoundFile(myApp,"laser.mp3");
+    thrustSound = new SoundFile(myApp,"thrust.mp3");
     
     for(int aB = 0 ; aB < amntBigAst ; aB++)
     {
@@ -123,8 +123,8 @@ class Game
   
   public void checkKeyPressed()
   {
-    if(myApp.keyCode == myApp.UP) {sh.setAccState(new AccStateMoving()); file.loop();}
-    if(myApp.keyCode == myApp.DOWN) sh.setAccState(new AccStateReturning());
+    if(myApp.keyCode == myApp.UP) {sh.setAccState(new AccStateMoving()); thrustSound.loop();}
+    if(myApp.keyCode == myApp.DOWN) {sh.setAccState(new AccStateReturning());}
     if(myApp.keyCode == myApp.RIGHT) sh.setRotState(new RotStateRight());
     if(myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateLeft());
     
@@ -137,7 +137,7 @@ class Game
   
   public void checkKeyReleased()
   {
-    if(myApp.keyCode == myApp.UP) {sh.setAccState(new AccStateStoppedF()); file.stop();}
+    if(myApp.keyCode == myApp.UP) {sh.setAccState(new AccStateStoppedF()); thrustSound.stop();}
     if(myApp.keyCode == myApp.DOWN) sh.setAccState(new AccStateStoppedR());
     if(myApp.keyCode == myApp.RIGHT) sh.setRotState(new RotStateStoppedR());
     if(myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateStoppedL());
@@ -171,14 +171,14 @@ class Game
     myApp.fill(255,255,255);
     myApp.textSize(30);
     myApp.textAlign(myApp.LEFT,myApp.TOP);
-    myApp.text("x: " + (int)sh.getX(),10,10);
-    myApp.text("y: " + (int)sh.getY(),140,10);
-    myApp.text("v: " + (int)sh.getSpeed(),270,10);
-    myApp.text("phi: " + (int)sh.getPhi(),360,10);
+    myApp.text("x: " + myApp.nf((int)sh.getX(),4),10,10);
+    myApp.text("y: " + myApp.nf((int)sh.getY(),4),140,10);
+    myApp.text("v: " + myApp.nf((int)sh.getSpeed(),2),270,10);
+    myApp.text("phi: " + myApp.nf((int)sh.getPhi(),3),360,10);
     myApp.text("Shield: " + sh.getShield()+"%",515,10);
     myApp.text("Lives: " + sh.getLives(),715,10);
-    myApp.text("Items: " + sh.getItems(),835,10);
-    myApp.text("Asteroids: " + listAsteroids.size(),990,10);
+    myApp.text("Items: " + st.getItems(),835,10);
+    myApp.text("Asteroids: " + listAsteroids.size(),980,10);
   }
   
   private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list)
@@ -193,7 +193,13 @@ class Game
           break;
           case 50: sh.setShieldState(new ShieldStateDestroyed());
           break;
-          case 0: myApp.delay(1000); myApp.exit();
+          case 0: 
+                  if(sh.getLives()>0) {
+                    sh.loseLive();
+                  }
+                  else {
+                    myApp.delay(1000); myApp.exit();
+                  }
           break;
         }
         list.remove(n);
@@ -204,7 +210,10 @@ class Game
   private void detectCollisionsWithSpacestation(SpaceShip ship, SpaceStation station)
   {
     if ( myApp.dist( ship.getX() , ship.getY() , station.getX() , station.getY() ) < (ship.getRadius() + station.getRadius()) )
-    {myApp.background(0,170,0);}
+    {
+      ship.rearm();
+      station.loadItems(ship.deliverItems());
+    }
   }
   
   private boolean detectCollisionsWithLaser(Laser lasershot, ArrayList<Asteroid> list)

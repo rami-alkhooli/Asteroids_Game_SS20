@@ -5,12 +5,14 @@ public class SpaceStation
   private static final int BREITE = 200;
   private static float x;
   private static float y;
+  private short collectedItems;
   
   private static SpaceStation mySpaceStation;
   private static PApplet myApp;
   
   private SpaceStation()
   {
+    collectedItems = 0;
   }
   
   public static SpaceStation create(PApplet theApp)
@@ -34,7 +36,13 @@ public class SpaceStation
     myApp.noFill();
   }
   
+  public void loadItems(short theItems)
+  {
+    collectedItems += theItems;
+  }
+  
   public float getX() {return x;}
   public float getY() {return y;}
   public float getRadius() {return (float)(BREITE/2);}
+  public short getItems() {return collectedItems;}
 }
