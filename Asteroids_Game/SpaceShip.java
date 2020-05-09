@@ -114,6 +114,7 @@ public class SpaceShip
   public float getPhi() {return phi;}
   public float getSpeed() {return v;}
   public short getLives() {return lives;}
+  public void collectItem (short theItem) {collectedItems += theItem;}
   public short getItems() {return collectedItems;}
   public short getShield() {return shieldStrength;}
 }

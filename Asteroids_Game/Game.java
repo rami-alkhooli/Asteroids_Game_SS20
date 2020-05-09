@@ -21,6 +21,7 @@ class Game
   
   private ArrayList <Asteroid> listAsteroids;
   private ArrayList <Explosion> listExplosions;
+  private ArrayList <Item> listItems;
 
   private Game(PApplet theApp)
   {
@@ -30,6 +31,7 @@ class Game
     shoots = 0;
     items = 0;
     time_played = "0";
+    listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
     end = false;
@@ -43,6 +45,7 @@ class Game
     shoots = shts;
     items = itms;
     time_played = tmeplyd;
+    listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
     end = false;
@@ -52,6 +55,7 @@ class Game
   {
     detectCollisionsWithAsteroids(sh,listAsteroids);
     detectCollisionsWithSpacestation(sh,st);
+    detectCollisionsWithItems(sh,listItems);
     try
     {
       if(detectCollisionsWithLaser(laser,listAsteroids)==true) {laser = null;}
@@ -59,10 +63,16 @@ class Game
     catch(NullPointerException e) {}
     try
     {
+      for(int n=0 ; n<listItems.size() ; n++) {
+        listItems.get(n).show();
+      }
+    }
+    catch (NullPointerException e) {}
+    try
+    {
       if(laser.shoot() == false) {laser = null;}
     }
     catch(NullPointerException e) {}
-    
     try
     {
       for(int n=0 ; n<listExplosions.size() ; n++) {
@@ -168,6 +178,7 @@ class Game
     myApp.text("Shield: " + sh.getShield()+"%",515,10);
     myApp.text("Lives: " + sh.getLives(),715,10);
     myApp.text("Items: " + sh.getItems(),835,10);
+    myApp.text("Asteroids: " + listAsteroids.size(),990,10);
   }
   
   private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list)
@@ -203,11 +214,24 @@ class Game
         if ( myApp.dist( lasershot.getX() , lasershot.getY() , list.get(n).getX() , list.get(n).getY() ) < (lasershot.getRadius() + list.get(n).getRadius()) )
         {
           listExplosions.add(new Explosion(myApp,lasershot.getX(),lasershot.getY()));
+          if(list.get(n).getRadius() > 150) {listItems.add(new Item(myApp,list.get(n).getX(),list.get(n).getY()));}
           list.remove(n);
           return true;
         }
     }
     return false;
+  }
+  
+  private void detectCollisionsWithItems(SpaceShip ship, ArrayList<Item> list)
+  {
+    for (int n=0 ; n<list.size() ; n++)
+    {
+        if ( myApp.dist( ship.getX() , ship.getY() , list.get(n).getX() , list.get(n).getY() ) < (ship.getRadius() + list.get(n).getRadius()) )
+        {
+          ship.collectItem(list.get(n).getValue());
+          list.remove(n);
+        }
+    }
   }
   
    //... FEHLT!!!
