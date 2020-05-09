@@ -1,3 +1,5 @@
+package engine;
+
 import processing.core.*;
 
 public class Explosion extends Thread

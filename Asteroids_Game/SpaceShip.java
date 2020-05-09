@@ -1,6 +1,8 @@
+package engine;
+
 import processing.core.*;
 
-class SpaceShip
+public class SpaceShip
 {
   private static final float UPSIDE = 60;
   private static final float DOWNSIDE = 40;
@@ -21,7 +23,7 @@ class SpaceShip
   private static SpaceShip mySpaceShip;
   private AccelerationState accState;
   private RotationState rotState;
-  private Shield shield;
+  private ShieldState shield;
   private static PApplet myApp;
   
   private SpaceShip(PApplet theApp, int myX, int myY) {
@@ -40,7 +42,7 @@ class SpaceShip
     lives = 3;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
-    shield = new Full();
+    shield = new ShieldStateFull();
   }
   
   public static SpaceShip create(PApplet theApp, int myX, int myY)
@@ -89,7 +91,7 @@ class SpaceShip
     rotState = newState;
   }
   
-  public void setShieldState(Shield newShield) {
+  public void setShieldState(ShieldState newShield) {
     shield = newShield;
   }
   

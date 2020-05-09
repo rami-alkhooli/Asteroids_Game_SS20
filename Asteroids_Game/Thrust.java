@@ -1,6 +1,8 @@
+package engine;
+
 import processing.core.*;
 
-class Thrust
+public class Thrust
 {
   private final float HEAD1;
   private final float SIDE1;

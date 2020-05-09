@@ -1,3 +1,4 @@
+import engine.*;
 import processing.sound.*;
 import processing.core.*;
 import java.util.*;
@@ -178,9 +179,9 @@ class Game
       {
         switch(sh.getShield())
         {
-          case 100: sh.setShieldState(new Damaged());
+          case 100: sh.setShieldState(new ShieldStateDamaged());
           break;
-          case 50: sh.setShieldState(new Destroyed());
+          case 50: sh.setShieldState(new ShieldStateDestroyed());
           break;
           case 0: myApp.delay(1000); myApp.exit();
           break;

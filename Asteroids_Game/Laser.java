@@ -1,6 +1,8 @@
+package engine;
+
 import processing.core.*;
 
-class Laser
+public class Laser
 {    
   private final float x;
   private final float y;

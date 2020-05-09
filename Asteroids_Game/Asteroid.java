@@ -1,6 +1,8 @@
+package engine;
+
 import processing.core.*;
 
-class Asteroid
+public class Asteroid
 {
   private final float MINRADIUS;
   private final float MAXRADIUS;

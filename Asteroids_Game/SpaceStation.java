@@ -1,6 +1,8 @@
+package engine;
+
 import processing.core.*;
 
-class SpaceStation
+public class SpaceStation
 {
   private static final int BREITE = 200;
   private static float x;
