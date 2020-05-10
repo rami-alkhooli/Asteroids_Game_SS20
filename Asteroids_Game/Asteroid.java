@@ -2,77 +2,92 @@ import processing.core.*;
 
 public class Asteroid
 {
+  private static PApplet myApp;
+  private static final int MAXSPEED = 2;
+  private static final int COLOR = new PApplet().color(233,237,246);
+  private static final int TRANSPARENCE = 100;
   private final float MINRADIUS;
   private final float MAXRADIUS;
   private final int MAXVERTICES;
-  private float x = 0;
-  private float y = 0;
+  private short value;
+  private float x;
+  private float y;
   private float speedX;
   private float speedY;
   private float[] xPoint;
   private float[] yPoint;
-  private static PApplet myApp;
   
   public Asteroid(PApplet theApp, float theX, float theY, float rageddness, float radius, int maxVertices) {
-    MAXVERTICES = maxVertices ;
+    
+    myApp = theApp;
+    MINRADIUS = radius/rageddness;
     MAXRADIUS = radius;
+    MAXVERTICES = maxVertices ;
+    value = (short) myApp.random(0,4);
     xPoint = new float[maxVertices];
     yPoint = new float[maxVertices];
-    myApp = theApp;
     x = theX ;
     y = theY ;
-    speedX = myApp.random(-2,2);
-    speedY = myApp.random(-2,2);
-    MINRADIUS = radius/rageddness;
+    speedX = myApp.random(-MAXSPEED,MAXSPEED);
+    speedY = myApp.random(-MAXSPEED,MAXSPEED);
     
     float angle = 0;
     float section = 360/maxVertices;
     
-    for (int n=0 ; n<MAXVERTICES ; n++)
-    {
+    for (int n=0 ; n<MAXVERTICES ; n++) {
+    
       xPoint[n] = ( (int)(myApp.random(MINRADIUS,MAXRADIUS)) ) * (myApp.cos(myApp.radians(myApp.random(angle,angle+section))));
       yPoint[n] = ( (int)(myApp.random(MINRADIUS,MAXRADIUS)) ) * (myApp.sin(myApp.radians(myApp.random(angle,angle+section))));
       angle += section ;
+      
     }
+    
   }
   
   public void show() {
+    
     updateCoordinates();
     drawBoundary();
     drawShape();
     checkBorders();
+    
   }
     
-  private void checkBorders()
-  {
+  private void checkBorders() {
+    
     if( x > myApp.width+MAXRADIUS ) {x-=(myApp.width+(2*MAXRADIUS)) ;}
     if( x < (-MAXRADIUS) ) {x+=(myApp.width+(2*MAXRADIUS)) ;}
     if( y > myApp.height+MAXRADIUS ) {y-=(myApp.height+(2*MAXRADIUS)) ;}
     if( y < (-MAXRADIUS) ) {y+=(myApp.height+(2*MAXRADIUS)) ;}
+    
   }
   
-  private void drawBoundary()
-  {
-    myApp.fill(150,150,150,100);
+  private void drawBoundary() {
+    
+    myApp.fill(COLOR,TRANSPARENCE);
     myApp.circle(x,y,2*MAXRADIUS);
+    
   }
   
-  private void drawShape()
-  {
-    myApp.fill(154,150,146);
+  private void drawShape() {
+    
+    myApp.fill(COLOR);
     myApp.beginShape();
-    for(int n=0 ; n<MAXVERTICES ; n++)
-    {
+    
+    for(int n=0 ; n<MAXVERTICES ; n++) {
       myApp.vertex(x+xPoint[n],y+yPoint[n]);
     }
+    
     myApp.endShape(myApp.CLOSE);
     myApp.noFill();
+    
   }
   
-  private void updateCoordinates()
-  {
+  private void updateCoordinates() {
+
     x += speedX;
     y += speedY;
+    
   }
   
   public float getX() {return x;}

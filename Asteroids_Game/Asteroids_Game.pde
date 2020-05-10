@@ -5,12 +5,14 @@ Game myGame;
 void setup()
 {
   fullScreen();
+  //size(1000,1000);
   frameRate(60);
   smooth(3);
   loop();
   
   myGame = Game.startGame(this);
-  myGame.setupGame(2,4);
+  myGame.setupGame();
+  myGame.setupLevel(1);
 }
 
 void draw()

@@ -24,13 +24,14 @@ public class SpaceShip
   private ShieldState shield;
   private static PApplet myApp;
   
-  private SpaceShip(PApplet theApp, int myX, int myY) {
+  private SpaceShip(PApplet theApp) {
+    
     myApp = theApp;
     m = 20;
     phi = 90;
     phiRot = 0;
-    x = myX;
-    y = myY;
+    x = theApp.width/2;
+    y = theApp.height/2;
     xPoint = new float[3];
     yPoint = new float[3];
     HEAD = UPSIDE*myApp.sin(myApp.radians(90));
@@ -41,13 +42,14 @@ public class SpaceShip
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new ShieldStateFull();
+    
   }
   
-  public static SpaceShip create(PApplet theApp, int myX, int myY)
-  {
-    if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp,myX,myY);}
-    
+  public static SpaceShip create(PApplet theApp) {
+  
+    if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp);}
     return mySpaceShip;
+    
   }
   
   public void show() {
@@ -126,10 +128,9 @@ public class SpaceShip
     lives--;
   }
   
-  public void rearm()
-  {
-    shield = new ShieldStateFull();
-    shieldStrength = 100;
+  public void recenter() {
+    x = myApp.width/2;
+    y = myApp.height/2;
   }
   
   public float getX() {return x;}
