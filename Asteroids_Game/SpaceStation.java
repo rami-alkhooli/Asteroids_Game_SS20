@@ -1,4 +1,5 @@
 import processing.core.*;
+import java.util.*;
 
 public class SpaceStation
 {
@@ -40,8 +41,21 @@ public class SpaceStation
     
   }
   
-  public void loadItems(short theItems) {
-    collectedItems += theItems;
+  public void loadItems(SpaceShip theShip, Game theGame) {
+    
+    ArrayList <Item> theItems = theShip.getItems();
+    
+    for (int n=0 ; n<theItems.size() ; n++) {
+      
+      short val = theItems.get(n).getValue();
+      if(val<=2) {theGame.score += theShip.getItemScore();}
+      else if((val>2) && (val<=4)) {theShip.increaseShield();}
+      else if (val>4) {theShip.increaseLives();}
+      
+    }
+    
+    theShip.clearItemsList();
+    
   }
   
   public float getX() {return x;}

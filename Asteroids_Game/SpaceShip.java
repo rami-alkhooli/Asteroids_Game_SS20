@@ -1,4 +1,5 @@
 import processing.core.*;
+import java.util.*;
 
 public class SpaceShip
 {
@@ -15,7 +16,7 @@ public class SpaceShip
   private float[] xPoint;
   private float[] yPoint;
   private float v;
-  private short collectedItems;
+  private ArrayList <Item> collectedItems;
   private short lives;
   private short shieldStrength;
 
@@ -40,7 +41,7 @@ public class SpaceShip
     HEAD = UPSIDE*myApp.sin(myApp.radians(90));
     SIDE = DOWNSIDE/myApp.sin(myApp.radians(45));
     v = 0;
-    collectedItems = 0;
+    collectedItems = new ArrayList <Item> ();
     lives = 1;
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
@@ -114,24 +115,36 @@ public class SpaceShip
     yPoint[2] = y - SIDE*myApp.sin(myApp.radians(phi+135));
   }
   
-  public void collectItem (short theItem) {
-    collectedItems += theItem;
+  public void collectItem (Item theItem) {
+    collectedItems.add(theItem);
   }
   
-  public short deliverItems() {
-    if(collectedItems > 0)
-    {
-      short temp = collectedItems;
-      collectedItems = 0;
-      return temp;
-    }
-    else return 0;
-  }
+  public ArrayList <Item> getItems() {return collectedItems;}
   
   public void loseLive()
   {
     lives--;
   }
+  
+  public void increaseLives() {lives++;}
+  
+  public void increaseShield() {
+    
+    switch(shieldStrength) {
+      
+      case 50:
+        shield = new ShieldStateFull();
+      break;
+      
+      case 0:
+        shield = new ShieldStateDamaged();
+      break;
+      
+    }
+    
+  }
+  
+  public void clearItemsList() {collectedItems = new ArrayList <Item> ();}
   
   public void recenter() {
     x = myApp.width/2;
@@ -141,6 +154,8 @@ public class SpaceShip
     phiRot = 0;
   }
   
+  public int getItemScore() {return 200;}
+  public int getNumberItems() {return collectedItems.size();}
   public float getX() {return x;}
   public float getY() {return y;}
   public float getRadius() {return UPSIDE;}

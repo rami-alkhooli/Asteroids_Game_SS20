@@ -2,7 +2,7 @@ import processing.core.*;
 
 public class Item
 {
-  private static final int COLOR = new PApplet().color(150,250,250);
+  private int COLOR;
   private static final int TRANSPARENCE = 100;
   
   private int RADIUS;
@@ -17,7 +17,12 @@ public class Item
     RADIUS = myApp.width/60;
     x = theX;
     y = theY;
-    value = (short)(myApp.random(1,6));
+    value = (short)(myApp.random(0,6));
+    
+    if(value<=2) {COLOR = myApp.color(150,150,0);}
+      else if((value>2) && (value<=4)) {COLOR = myApp.color(0,150,150);}
+      else if (value>4) {COLOR = myApp.color(0,150,0);}
+    
   }
   
   public void show()

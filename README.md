@@ -1,7 +1,7 @@
 ﻿# Asteroids Game
 
 ## Version
-0.12
+0.13
 
 ## Stand
 10.05.2020
@@ -14,7 +14,7 @@
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
 
-### Engine ![Github Shield](https://img.shields.io/static/v1?label=Version&message=1.2&color=informational)
+### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=1.3&color=informational)
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
@@ -27,6 +27,7 @@
 - [x] Explosion nach Kollision mit Asteroiden generieren
 - [x] Kollisionen erkennen (Raumschiff mit Items)
 - [x] Items nach Explosion von Asteroiden generieren
+- [x] Unterschiedliche Farben den Items und wahllos beim Erzeugen zuweisen (Grün=Lives, Blau=Schild, Gelb=Score)
 - [x] Töne beim Fliegen und Abfeuern abspielen
 - [x] Überwachung der Position von Raumschiff und Asteroiden und eine Schleife am Spielfeldrand einsetzen
 - [x] Erstellung der SpaceStation
