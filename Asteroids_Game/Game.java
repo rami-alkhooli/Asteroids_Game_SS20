@@ -218,7 +218,7 @@ class Game
     
         if ( myApp.dist( lasershot.getX() , lasershot.getY() , list.get(n).getX() , list.get(n).getY() ) < (lasershot.getRadius() + list.get(n).getRadius()) ) {
         
-          listExplosions.add(new Explosion(myApp,lasershot.getX(),lasershot.getY()));
+          listExplosions.add(new Explosion(myApp,list.get(n).getX(),list.get(n).getY()));
           if(list.get(n).getRadius() > (myApp.width/20)) {listItems.add(new Item(myApp,list.get(n).getX(),list.get(n).getY()));}
           score += list.get(n).getRadius();
           list.remove(n);

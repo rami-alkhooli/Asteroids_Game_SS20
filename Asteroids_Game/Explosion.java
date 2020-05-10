@@ -5,9 +5,9 @@ public class Explosion extends Thread
 {
   private static PApplet myApp;
   private static final String explosionFile = "explosion.mp3";
-  private static final int MAXRADIUS = 120;
-  private static final int REDGROWTHRATE = 4;
-  private static final int WHITEGROWTHRATE = 8;
+  private final int MAXRADIUS;
+  private final int REDGROWTHRATE;
+  private final int WHITEGROWTHRATE;
   private static final int OUTCOLOR = new PApplet().color(255,0,0);
   private static final int INCOLOR = new PApplet().color(250,250,250);
   private SoundFile explosionSound;
@@ -18,6 +18,9 @@ public class Explosion extends Thread
   public Explosion(PApplet theApp, float theX, float theY) {
     
     myApp = theApp;
+    MAXRADIUS = myApp.width/22;
+    REDGROWTHRATE = myApp.width/700;
+    WHITEGROWTHRATE = myApp.width/350;
     x = theX;
     y = theY;
     ttl = 30;

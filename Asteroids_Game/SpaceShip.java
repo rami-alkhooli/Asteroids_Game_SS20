@@ -2,6 +2,7 @@ import processing.core.*;
 
 public class SpaceShip
 {
+  private static final int COLOR = new PApplet().color(255,255,255);
   private final float UPSIDE;
   private final float DOWNSIDE;
   private final float HEAD;
@@ -25,6 +26,7 @@ public class SpaceShip
   private static PApplet myApp;
   
   private SpaceShip(PApplet theApp) {
+    
     myApp = theApp;
     m = 20;
     phi = 90;
@@ -43,16 +45,18 @@ public class SpaceShip
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new ShieldStateFull();
+    
   }
   
-  public static SpaceShip create(PApplet theApp)
-  {
+  public static SpaceShip create(PApplet theApp) {
+  
     if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp);}
-    
     return mySpaceShip;
+    
   }
   
   public void show() {
+    
     // updating the angle
     phiRot = rotState.rotate(phiRot);
     phi = (phi + phiRot)%360;
@@ -69,11 +73,12 @@ public class SpaceShip
     shieldStrength = shield.protect(myApp,x,y,UPSIDE);
     
     // drawing space ship
-    myApp.fill(255,255,255);
+    myApp.fill(COLOR);
     myApp.triangle(xPoint[0],yPoint[0],xPoint[1],yPoint[1],xPoint[2],yPoint[2]);
     
     // drawing thrust
     accState.generateThrust(myApp,x,y,UPSIDE,DOWNSIDE,phi);
+    
   }
   
   private void checkBorders() {
@@ -126,6 +131,11 @@ public class SpaceShip
   public void loseLive()
   {
     lives--;
+  }
+  
+  public void recenter() {
+    x = myApp.width/2;
+    y = myApp.height/2;
   }
   
   public float getX() {return x;}

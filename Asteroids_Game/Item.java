@@ -2,6 +2,9 @@ import processing.core.*;
 
 public class Item
 {
+  private static final int COLOR = new PApplet().color(150,250,250);
+  private static final int TRANSPARENCE = 100;
+  
   private int RADIUS;
   private float x;
   private float y;
@@ -10,19 +13,19 @@ public class Item
   
   public Item(PApplet theApp, float theX, float theY)
   {
-    RADIUS = 40;
+    myApp = theApp;
+    RADIUS = myApp.width/60;
     x = theX;
     y = theY;
-    myApp = theApp;
     value = (short)(myApp.random(1,6));
   }
   
   public void show()
   {
-    myApp.fill(150,250,250,100);
+    myApp.fill(COLOR,TRANSPARENCE);
     myApp.circle(x,y,2*RADIUS);
     
-    myApp.fill(150,250,250);
+    myApp.fill(COLOR);
     myApp.quad(x-(RADIUS/2),y,x,y-RADIUS,x+(RADIUS/2),y,x,y+RADIUS);
     myApp.noFill();
   }
