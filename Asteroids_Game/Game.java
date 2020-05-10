@@ -16,6 +16,7 @@ class Game
   private Laser laser;
   private SoundFile laserShoot;
   private SoundFile thrustSound;
+  private SoundFile backgroundSound;
   private static Game myGame;
   private static PApplet myApp;
 
@@ -111,6 +112,8 @@ class Game
 
     laserShoot = new SoundFile(myApp, "laser.mp3");
     thrustSound = new SoundFile(myApp, "thrust.mp3");
+    backgroundSound = new SoundFile(myApp, "background.mp3");
+    backgroundSound.loop();
   }
 
   public void checkKeyPressed() {
