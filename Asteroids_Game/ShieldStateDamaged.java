@@ -2,7 +2,7 @@ import processing.core.*;
 
 public class ShieldStateDamaged implements ShieldState
 {
-  private static final int COLOR = new PApplet().color(60,120,120);
+  private static final int COLOR = new PApplet().color(170,255,170);
   private static final int TRANSPARENCE = 200;
   private static final int STRENGTH = 50;
   

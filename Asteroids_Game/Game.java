@@ -10,6 +10,7 @@ class Game
   private static final int MINRAGGEDNESS = 2;
   private static final int GAMEOVERDELAY = 1000;
   
+  private Level level;
   private SpaceShip sh;
   private SpaceStation st;
   private Laser laser;
@@ -18,6 +19,7 @@ class Game
   private static Game myGame;
   private static PApplet myApp;
   
+  private int allowedItems;
   public int highscore;
   public int score;
   public int shots;
@@ -38,6 +40,9 @@ class Game
     listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
+    sh = SpaceShip.create(myApp);
+    st = SpaceStation.create(myApp);
+    setLevel(new LevelFirst());
     
   }
   
@@ -51,11 +56,14 @@ class Game
     listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
+    sh = SpaceShip.create(myApp);
+    st = SpaceStation.create(myApp);
+    setLevel(new LevelFirst());
     
   }
   
   public void runGame() {
-  
+    
     detectCollisionsWithAsteroids(sh,listAsteroids);
     detectCollisionsWithSpacestation(sh,st);
     detectCollisionsWithItems(sh,listItems);
@@ -91,21 +99,13 @@ class Game
     st.show();
     sh.show();
     drawAsteroids();
+
   }
   
-  public void setupGame(int amntBigAst) {
-  
-    sh = SpaceShip.create(myApp);
-    st = SpaceStation.create(myApp);
+  public void setupGame() {
+
     laserShoot = new SoundFile(myApp,"laser.mp3");
     thrustSound = new SoundFile(myApp,"thrust.mp3");
-    
-    for(int aB = 0 ; aB < amntBigAst ; aB++) {
-    
-      Asteroid asteroid = new Asteroid (myApp,myApp.random(MINRAGGEDNESS,MAXRAGGEDNESS),(int)(myApp.random(MINVERTICES,MAXVERTICES)));
-      listAsteroids.add(asteroid);
-      
-    }
     
   }
   
@@ -115,6 +115,11 @@ class Game
     if(myApp.keyCode == myApp.DOWN) {sh.setAccState(new AccStateReturning());}
     if(myApp.keyCode == myApp.RIGHT) sh.setRotState(new RotStateRight());
     if(myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateLeft());
+    if(myApp.key == '1') {setLevel(new LevelFirst());}
+    if(myApp.key == '2') {setLevel(new LevelSecond());}
+    if(myApp.key == '3') {setLevel(new LevelThird());}
+    if(myApp.key == '4') {setLevel(new LevelFourth());}
+    if(myApp.key == '5') {setLevel(new LevelFifth());}
     
     if(myApp.key == ' ') {
       if(laser == null ) {laser = new Laser(myApp, sh.getX(),sh.getY(),sh.getPhi()); shots++; laserShoot.play();}
@@ -142,6 +147,28 @@ class Game
   
     if (myGame==null) {myGame = new Game(theApp, hts, shts, itms, tmeplyd);}
     return myGame;
+    
+  }
+  
+  public void setLevel(Level theLevel) {
+    
+    level = theLevel;
+    allowedItems = level.determineItems();
+    sh.recenter();
+    generateAsteroids();
+    
+  }
+  
+  private void generateAsteroids() {
+    
+    listAsteroids = new ArrayList<Asteroid>();
+    
+    for(int aB = 0 ; aB < level.determineAmount() ; aB++) {
+    
+      Asteroid asteroid = new Asteroid (myApp,level,myApp.random(MINRAGGEDNESS,MAXRAGGEDNESS),(int)(myApp.random(MINVERTICES,MAXVERTICES)));
+      listAsteroids.add(asteroid);
+      
+    }
     
   }
   
@@ -219,7 +246,7 @@ class Game
         if ( myApp.dist( lasershot.getX() , lasershot.getY() , list.get(n).getX() , list.get(n).getY() ) < (lasershot.getRadius() + list.get(n).getRadius()) ) {
         
           listExplosions.add(new Explosion(myApp,list.get(n).getX(),list.get(n).getY()));
-          if(list.get(n).getRadius() > (myApp.width/20)) {listItems.add(new Item(myApp,list.get(n).getX(),list.get(n).getY()));}
+          if((list.get(n).getRadius() > (myApp.width/20)) && (allowedItems>0)) {listItems.add(new Item(myApp,list.get(n).getX(),list.get(n).getY())); allowedItems--;}
           score += list.get(n).getRadius();
           list.remove(n);
           return true;

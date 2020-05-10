@@ -2,7 +2,7 @@ import processing.core.*;
 
 public class SpaceShip
 {
-  private static final int COLOR = new PApplet().color(255,255,255);
+  private static final int COLOR = new PApplet().color(151,151,151);
   private final float UPSIDE;
   private final float DOWNSIDE;
   private final float HEAD;
@@ -136,6 +136,9 @@ public class SpaceShip
   public void recenter() {
     x = myApp.width/2;
     y = myApp.height/2;
+    v = 0;
+    phi = 90;
+    phiRot = 0;
   }
   
   public float getX() {return x;}

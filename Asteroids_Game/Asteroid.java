@@ -3,7 +3,6 @@ import processing.core.*;
 public class Asteroid
 {
   private static PApplet myApp;
-  private static final int MAXSPEED = 2;
   private static final int COLOR = new PApplet().color(233,237,246);
   private static final int TRANSPARENCE = 100;
   private final float MINRADIUS;
@@ -17,7 +16,7 @@ public class Asteroid
   private float[] xPoint;
   private float[] yPoint;
   
-  public Asteroid(PApplet theApp, float rageddness, int vertices) {
+  public Asteroid(PApplet theApp, Level theLevel, float rageddness, int vertices) {
     
     myApp = theApp;
     
@@ -29,8 +28,8 @@ public class Asteroid
     yPoint = new float[vertices];
     x = myApp.random(20,myApp.width/4) ;
     y = myApp.random(0,myApp.height) ;
-    speedX = myApp.random(-MAXSPEED,MAXSPEED);
-    speedY = myApp.random(-MAXSPEED,MAXSPEED);
+    speedX = myApp.random(-theLevel.determineSpeed(),theLevel.determineSpeed());
+    speedY = myApp.random(-theLevel.determineSpeed(),theLevel.determineSpeed());
     
     float angle = 0;
     float section = 360/vertices;

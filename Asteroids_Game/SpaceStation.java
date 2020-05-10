@@ -2,8 +2,8 @@ import processing.core.*;
 
 public class SpaceStation
 {
-  private static final int BODY = new PApplet().color(250,250,250);
-  private static final int HEAD = new PApplet().color(170,185,185);
+  private static final int BODY = new PApplet().color(151,151,151);
+  private static final int HEAD = new PApplet().color(255,255,255);
   
   private final int BREITE;
   private final float x;

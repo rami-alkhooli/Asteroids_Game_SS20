@@ -4,14 +4,14 @@ Game myGame;
 
 void setup()
 {
-  fullScreen();
-  //size(1000,800);
+  //fullScreen();
+  size(1000,800);
   frameRate(60);
   smooth(3);
   loop();
   
   myGame = Game.startGame(this);
-  myGame.setupGame(4);
+  myGame.setupGame();
 }
 
 void draw()
