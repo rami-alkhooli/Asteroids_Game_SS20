@@ -21,7 +21,7 @@ public class Asteroid
     
     myApp = theApp;
     
-    MAXRADIUS = myApp.random((myApp.width/25),(myApp.width/13));
+    MAXRADIUS = myApp.random((myApp.width/26),(myApp.width/13));
     MINRADIUS = MAXRADIUS/rageddness;
     MAXVERTICES = vertices ;
     value = (short) myApp.random(0,4);

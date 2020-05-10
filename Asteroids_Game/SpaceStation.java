@@ -2,7 +2,7 @@ import processing.core.*;
 
 public class SpaceStation
 {
-  private static final int BREITE = 200;
+  private final int BREITE;
   private static float x;
   private static float y;
   private short collectedItems;
@@ -10,20 +10,18 @@ public class SpaceStation
   private static SpaceStation mySpaceStation;
   private static PApplet myApp;
   
-  private SpaceStation()
+  private SpaceStation(PApplet theApp)
   {
+    myApp = theApp ;
+    BREITE = myApp.width/14;
+    x = BREITE/2 ;
+    y = myApp.height - (BREITE/2) ;
     collectedItems = 0;
   }
   
   public static SpaceStation create(PApplet theApp)
   {
-    if(mySpaceStation == null)
-    {
-      myApp = theApp ;
-      x = BREITE/2 ;
-      y = myApp.height - (BREITE/2) ;
-      mySpaceStation = new SpaceStation();
-    }
+    if(mySpaceStation == null) {mySpaceStation = new SpaceStation(theApp);}
     return mySpaceStation;
   }
   
