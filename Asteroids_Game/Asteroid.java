@@ -17,22 +17,23 @@ public class Asteroid
   private float[] xPoint;
   private float[] yPoint;
   
-  public Asteroid(PApplet theApp, float theX, float theY, float rageddness, float radius, int maxVertices) {
+  public Asteroid(PApplet theApp, float rageddness, int vertices) {
     
     myApp = theApp;
-    MINRADIUS = radius/rageddness;
-    MAXRADIUS = radius;
-    MAXVERTICES = maxVertices ;
+    
+    MAXRADIUS = myApp.random((myApp.width/25),(myApp.width/13));
+    MINRADIUS = MAXRADIUS/rageddness;
+    MAXVERTICES = vertices ;
     value = (short) myApp.random(0,4);
-    xPoint = new float[maxVertices];
-    yPoint = new float[maxVertices];
-    x = theX ;
-    y = theY ;
+    xPoint = new float[vertices];
+    yPoint = new float[vertices];
+    x = myApp.random(20,myApp.width/4) ;
+    y = myApp.random(0,myApp.height) ;
     speedX = myApp.random(-MAXSPEED,MAXSPEED);
     speedY = myApp.random(-MAXSPEED,MAXSPEED);
     
     float angle = 0;
-    float section = 360/maxVertices;
+    float section = 360/vertices;
     
     for (int n=0 ; n<MAXVERTICES ; n++) {
     

@@ -80,22 +80,17 @@ class Game
     drawAsteroids();
   }
   
-  public void setupGame(int amntBigAst, int amntSmlAst)
+  public void setupGame(int amntBigAst)
   {
-    sh = SpaceShip.create(myApp,myApp.width/2,myApp.height/2);
+    sh = SpaceShip.create(myApp);
     st = SpaceStation.create(myApp);
     laserShoot = new SoundFile(myApp,"laser.mp3");
     thrustSound = new SoundFile(myApp,"thrust.mp3");
     
     for(int aB = 0 ; aB < amntBigAst ; aB++)
     {
-      Asteroid astBig = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(150,200),9);
-      listAsteroids.add(astBig);
-    }
-    for(int aS = 0 ; aS < amntSmlAst ; aS++)
-    {
-      Asteroid astSml = new Asteroid (myApp, myApp.random(20,myApp.width/4) , myApp.random(0,myApp.height),myApp.random(2,9),myApp.random(50,100),5);
-      listAsteroids.add(astSml);
+      Asteroid asteroid = new Asteroid (myApp,myApp.random(2,9),(int)(myApp.random(5,12)));
+      listAsteroids.add(asteroid);
     }
   }
   
@@ -188,7 +183,6 @@ class Game
   {
     if ( myApp.dist( ship.getX() , ship.getY() , station.getX() , station.getY() ) < (ship.getRadius() + station.getRadius()) )
     {
-      ship.rearm();
       station.loadItems(ship.deliverItems());
     }
   }

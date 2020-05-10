@@ -2,8 +2,8 @@ import processing.core.*;
 
 public class SpaceShip
 {
-  private static final float UPSIDE = 60;
-  private static final float DOWNSIDE = 40;
+  private final float UPSIDE;
+  private final float DOWNSIDE;
   private final float HEAD;
   private final float SIDE;
   private final short m;
@@ -25,15 +25,16 @@ public class SpaceShip
   private static PApplet myApp;
   
   private SpaceShip(PApplet theApp) {
-    
     myApp = theApp;
     m = 20;
     phi = 90;
     phiRot = 0;
-    x = theApp.width/2;
-    y = theApp.height/2;
+    x = myApp.width/2;
+    y = myApp.height/2;
     xPoint = new float[3];
     yPoint = new float[3];
+    UPSIDE = (myApp.width/30);
+    DOWNSIDE = (myApp.width/60);
     HEAD = UPSIDE*myApp.sin(myApp.radians(90));
     SIDE = DOWNSIDE/myApp.sin(myApp.radians(45));
     v = 0;
@@ -42,14 +43,13 @@ public class SpaceShip
     accState = new AccStateStoppedF();
     rotState = new RotStateStoppedR();
     shield = new ShieldStateFull();
-    
   }
   
-  public static SpaceShip create(PApplet theApp) {
-  
+  public static SpaceShip create(PApplet theApp)
+  {
     if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp);}
-    return mySpaceShip;
     
+    return mySpaceShip;
   }
   
   public void show() {
@@ -126,11 +126,6 @@ public class SpaceShip
   public void loseLive()
   {
     lives--;
-  }
-  
-  public void recenter() {
-    x = myApp.width/2;
-    y = myApp.height/2;
   }
   
   public float getX() {return x;}
