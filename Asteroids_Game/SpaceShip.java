@@ -62,7 +62,7 @@ public class SpaceShip
     phi = (phi + phiRot)%360;
 
     // updating the speed v
-    v = accState.accelerate(v);
+    v = accState.accelerate(v,UPSIDE);
 
     // updating coodinates
     updateCoordinatesCenter();

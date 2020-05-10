@@ -1,7 +1,7 @@
 ﻿# Asteroids Game
 
 ## Version
-0.11
+0.12
 
 ## Stand
 10.05.2020
@@ -14,7 +14,7 @@
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
 
-### Engine ![Github Shield](https://img.shields.io/static/v1?label=Version&message=1.1&color=informational)
+### Engine ![Github Shield](https://img.shields.io/static/v1?label=Version&message=1.2&color=informational)
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
@@ -32,7 +32,7 @@
 - [x] Erstellung der SpaceStation
 - [x] Level-Design mit 5 Levels implementieren
 - [x] Automatische Anpassung der Größen an die Fenstergröße
-- [ ] Automatische Anpassung der Beschleunigung und Rotation an die Fenstergröße
+- [x] Automatische Anpassung der Beschleunigung ~und Rotation~ an die Fenstergröße
 
 ### Datenbank
 - [x] erstellen
