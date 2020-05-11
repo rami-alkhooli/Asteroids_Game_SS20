@@ -11,7 +11,7 @@ public class PageStatistics extends GUIstatistics
     buttonBack = new ControlP5(theApp);
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
-    buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).show();
+    buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(7).show();
   }
   
   public void showButtons() {

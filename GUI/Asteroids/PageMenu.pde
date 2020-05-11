@@ -20,9 +20,9 @@ public class PageMenu extends GUImenu
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     
-    buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).show();
-    buttonPlay.addButton("start").setValue(0).setPosition(3*sWidth,3*sHeight).setSize(2*sWidth,sHeight/2).show();
-    buttonStat.addButton("statistics").setValue(0).setPosition(3*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).show();
+    buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(4).show();
+    buttonPlay.addButton("start").setValue(0).setPosition(3*sWidth,3*sHeight).setSize(2*sWidth,sHeight/2).setId(5).show();
+    buttonStat.addButton("statistics").setValue(0).setPosition(3*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).setId(6).show();
     buttonLout.addButton("log out").setValue(0).setPosition(3*sWidth,5*sHeight).setSize(2*sWidth,sHeight/2).show();
   }
   

@@ -26,8 +26,8 @@ public class PageLogin extends GUIlogin
     sHeight = theApp.height/8;
     
     buttonLogin.addButton("log in").setValue(0).setPosition(2.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).setId(1).show();
-    buttonRegister.addButton("register").setValue(0).setPosition(4.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).show();
-    buttonBack.addButton("end").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).show();
+    buttonRegister.addButton("register").setValue(0).setPosition(4.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).setId(2).show();
+    buttonBack.addButton("end").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(3).show();
     fieldUsername.addTextfield("").setPosition(4*sWidth,3*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
     fieldPassword.addTextfield("").setPosition(4*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
   }
