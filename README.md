@@ -1,15 +1,15 @@
 ﻿# Asteroids Game
 
 ## Version
-0.14
+0.15
 
 ## Stand
 11.05.2020
 
 ## Komponenten
 
-### GUI
-- [ ] verschiedene Seiten realisiern > Stichwort: Strategy Pattern
+### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=0.4&color=informational)
+- [x] verschiedene Seiten realisiern > Stichwort: Strategy Pattern
 - [x] Buttons, Eingabefelder etc. platzieren
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
@@ -36,12 +36,12 @@
 - [x] Automatische Anpassung der Größen an die Fenstergröße
 - [x] Automatische Anpassung der Beschleunigung ~und Rotation~ an die Fenstergröße
 
-### Datenbank
+### Datenbank ![Version von Datenbank(https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
 - [x] erstellen
 - [x] Datensätze machen
 - [x] lokal ansprechen
 - [x] von der Ferne ansprechen (über IPv6)
-- [ ] Beispiel-Programm zum Auslesen und Einschreiben in die Datenbank
+- [x] Beispiel-Programm zum Auslesen und Einschreiben in die Datenbank
 - [ ] Daten austauschen
 - [ ] Eine Klasse, die alle Objekete zur Laufzeit aufzeichnet und den Status der Objekte hat, ob sie vorhanden oder zerstört sind > Stichwort: Strategy Pattern > am besten in der Klasse Game, weil wir dort alle Objekte haben
 
