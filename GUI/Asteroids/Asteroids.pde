@@ -27,3 +27,28 @@ void keyPressed()
     }
   }
 }
+
+void controlEvent(ControlEvent theEvent) {
+ 
+ if(theEvent.isController()) { 
+ 
+ switch(theEvent.getController().getId()) {
+    case(1):
+    theGame.change2Menu(); counter ++; break;
+    
+    //case(2):
+    //Button3.hide();
+    //Button1.show();
+    //break;
+    //case(3):
+    //Button1.hide();
+    //Button2.show();
+    //AsteroidsText.show();
+    //break;
+    //case(4):
+    //String textinput = theEvent.getController().getStringValue();
+    //println(textinput);
+    //break;
+ } 
+}
+}
