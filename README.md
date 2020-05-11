@@ -36,7 +36,7 @@
 - [x] Automatische Anpassung der Größen an die Fenstergröße
 - [x] Automatische Anpassung der Beschleunigung ~und Rotation~ an die Fenstergröße
 
-### Datenbank ![Version von Datenbank(https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
+### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
 - [x] erstellen
 - [x] Datensätze machen
 - [x] lokal ansprechen
