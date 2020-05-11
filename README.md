@@ -49,7 +49,7 @@
 - Für die Verwendung von Buttons der Klasse ControlP5 muss man die Bibliothek **ControlP5** zum Processing-Framework hinzufügen und mit "import" einbinden
 - Für die Erstellung und Anbindung von Datenbanken muss man die Bibliothek **BezierSQLib** zum Processing-Framework hinzufügen und mit "import" einbinden
 - Damit der Ton funktioniert, muss man die Bilbliothek **Sound** zum Processing-Framework hinzufügen und mit import "einbinden"
-- Es war geplant, dass man mit Hilfe der **Datenkapselung** die Engine-Klassen von den anderen Komponenten (DB Proxy und GUI) versteckt `package engine;` aber die Realisierung war unter der Processing-IDE nicht möglich und führte zu Abstürzen
+- Es war geplant, dass man mit Hilfe der **Datenkapselung** die Engine-Klassen von den anderen Komponenten (DB Proxy und GUI) versteckt `package engine;` aber die Realisierung war unter der Processing-IDE nicht möglich und führte zu Abstürzen. *Eine mögliche Lösung wäre das Prinzip der Nested Classes*
 
 ## Quellen
 - [background.mp3](http://soundbible.com/2213-Alien-Spaceship-UFO.html)
