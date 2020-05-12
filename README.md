@@ -50,6 +50,7 @@
 - Für die Erstellung und Anbindung von Datenbanken muss man die Bibliothek **BezierSQLib** zum Processing-Framework hinzufügen und mit "import" einbinden
 - Damit der Ton funktioniert, muss man die Bilbliothek **Sound** zum Processing-Framework hinzufügen und mit import "einbinden"
 - Es war geplant, dass man mit Hilfe der **Datenkapselung** die Engine-Klassen von den anderen Komponenten (DB Proxy und GUI) versteckt `package engine;` aber die Realisierung war unter der Processing-IDE nicht möglich und führte zu Abstürzen. *Eine mögliche Lösung wäre das Prinzip der Nested Classes*
+- Die **Processing-Dateien** mit der Endung `.pde` erkennen die im Projekt-Verzeichnis enthaltenen **Java-Dateien** mit der Endung `.java` aber das geht nicht umgekehrt
 
 ## Quellen
 - [background.mp3](http://soundbible.com/2213-Alien-Spaceship-UFO.html)
