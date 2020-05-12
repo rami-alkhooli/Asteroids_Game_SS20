@@ -1,5 +1,8 @@
 Game theGame;
 int counter;
+String adminlogin = "admin";
+String adminPW = "admin";
+boolean checkadmin = false;
 void setup()
 {
   size(1200,800);
@@ -40,13 +43,32 @@ void controlEvent(ControlEvent theEvent) {
     case(3):
     theGame.change2Gameover();break;
     case(4):
-    theGame.change2Register();break;
+    theGame.change2Login();break;
     case(5):
     theGame.change2Play();break;
     case(6):
     theGame.change2Statistics();break;
     case(7):
-    theGame.change2Menu();break;
+    theGame.change2Login();break;
+    case(8):
+    theGame.change2Login();break;
+    case(9):
+    theGame.change2Login();break;
+    case(10):
+    String loginname = theEvent.getController().getStringValue();
+    println("login: " + loginname);
+    if (loginname.equals(adminlogin)){
+      checkadmin = true;
+    }
+    break;
+    case(11):
+    String passwort = theEvent.getController().getStringValue();
+    println("passwort: " + passwort);
+    if (passwort.equals(adminPW) && (checkadmin == true)){
+      println("admin login erfolgreich!!");
+    }
+    break; 
+    
     //case(2):
     //Button3.hide();
     //Button1.show();

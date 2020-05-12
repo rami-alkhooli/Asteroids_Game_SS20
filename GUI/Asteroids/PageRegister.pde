@@ -25,8 +25,8 @@ public class PageRegister extends GUIregister
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     
-    buttonRegister.addButton("sign up").setValue(0).setPosition(3.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).show();
-    buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).show();
+    buttonRegister.addButton("sign up").setValue(0).setPosition(3.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).setId(8).show();
+    buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(9).show();
     fieldAccount.addTextfield("").setPosition(4*sWidth,2.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
     fieldEmail.addTextfield("").setPosition(4*sWidth,3.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
     fieldPassword.addTextfield("").setPosition(4*sWidth,4.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
