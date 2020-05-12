@@ -118,6 +118,13 @@ class Engine
     sh.show();
     drawAsteroids();
   }
+  
+  public void stop() {
+    sh.destroy();
+    st.destroy();
+    laser = null;
+    myEngine = null;
+  }
 
   public void checkKeyPressed() {
 

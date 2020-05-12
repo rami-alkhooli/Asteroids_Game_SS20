@@ -23,7 +23,7 @@ public class PagePlay extends GUIplay
   }
   
   public void endGame() {
-    engine = null;
+    engine.stop();
     terminator.terminateGame();
     myApp.delay(1000);
   }

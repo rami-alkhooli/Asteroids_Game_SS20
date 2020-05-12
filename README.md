@@ -1,20 +1,20 @@
 ﻿# Asteroids Game
 
 ## Version
-0.15
+0.16
 
 ## Stand
-11.05.2020
+12.05.2020
 
 ## Komponenten
 
-### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=0.4&color=informational)
+### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=0.5&color=informational)
 - [x] verschiedene Seiten realisiern > Stichwort: Strategy Pattern
 - [x] Buttons, Eingabefelder etc. platzieren
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
 
-### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.0&color=informational)
+### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.1&color=informational)
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"

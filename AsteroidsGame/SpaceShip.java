@@ -56,6 +56,10 @@ public class SpaceShip
     
   }
   
+  public void destroy() {
+    mySpaceShip=null;
+  }
+  
   public void show() {
     
     // updating the angle

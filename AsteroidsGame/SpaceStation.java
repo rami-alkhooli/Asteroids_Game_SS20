@@ -31,6 +31,10 @@ public class SpaceStation
     
   }
   
+  public void destroy() {
+    mySpaceStation=null;
+  }
+  
   public void show() {
   
     myApp.fill(BODY);

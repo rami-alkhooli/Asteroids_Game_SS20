@@ -18,7 +18,7 @@ public class Game
     gui = new PageLogin(myApp,this);
     terminator = new Terminator();
     //engine = new Engine(theApp,this);
-    
+
   }
   
   public void run() {
