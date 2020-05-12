@@ -49,7 +49,7 @@ void controlEvent(ControlEvent theEvent) {
     case(6):
     theGame.change2Statistics();break;
     case(7):
-    theGame.change2Login();break;
+    theGame.change2Menu();break;
     case(8):
     theGame.change2Login();break;
     case(9):
