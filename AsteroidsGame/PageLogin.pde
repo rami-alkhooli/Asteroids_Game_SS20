@@ -36,8 +36,6 @@ public class PageLogin extends GUIlogin
     buttonBack.show();
     buttonLogin.show();
     buttonRegister.show();
-    fieldUsername.show();
-    fieldPassword.show();
   }
   
   public void showHints(){
@@ -50,7 +48,8 @@ public class PageLogin extends GUIlogin
   }
   
   public void showTextfields(){
-    
+    fieldUsername.show();
+    fieldPassword.show();
   }
   
   public void showTitle() {

@@ -1,13 +1,10 @@
-import controlP5.*;
-
 Game theGame;
-int counter;
+
 void setup()
 {
   size(1200,800);
   //fullScreen();
   theGame = new Game(this);
-  counter = 0;
 }
 
 void draw()
