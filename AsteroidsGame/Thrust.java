@@ -55,5 +55,4 @@ public class Thrust
     myApp.fill(255,80,80,200);
     myApp.triangle(xs[0],ys[0],xs[1],ys[1],xs[2],ys[2]);
   }
-  
 }

@@ -9,18 +9,24 @@ public class Game
   public int items;
   public String time_played;
   private GUI gui;
+  private Terminator terminator;
   private PApplet myApp;
   
-  private Game (PApplet theApp) {
+  public Game (PApplet theApp) {
 
     myApp = theApp;
     gui = new PageLogin(myApp,this);
+    terminator = new Terminator();
     //engine = new Engine(theApp,this);
     
   }
   
   public void run() {
     gui.show();
+    if (terminator.isGameTerminated()==true) {
+      gui.end();
+      change2Gameover();
+    }
   }
   
   public void end() {
@@ -46,7 +52,7 @@ public class Game
   public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
   public void change2Register () {gui.end(); gui = new PageRegister(myApp,this);}
   public void change2Menu () {gui.end(); gui = new PageMenu(myApp,this);}
-  public void change2Play () {gui.end(); gui = new PagePlay(myApp,this);}
+  public void change2Play () {gui.end(); gui = new PagePlay(myApp,this,terminator);}
   public void change2Gameover () {gui.end(); gui = new PageGameover(myApp,this);}
   public void change2Statistics () {gui.end(); gui = new PageStatistics(myApp,this);}
 }

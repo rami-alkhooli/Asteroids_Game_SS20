@@ -7,34 +7,37 @@ public class PagePlay extends GUIplay
   private Game myGame;
   private Engine engine;
   private SoundFile bg;
+  private Terminator terminator;
   
-  public PagePlay(PApplet theApp, Game theGame) {
+  public PagePlay(PApplet theApp, Game theGame, Terminator theTerminator) {
     myApp = theApp;
     myGame = theGame;
-    engine = new Engine(theApp);
-    //engine = new Engine(theApp,myGame);
+    terminator = theTerminator;
+    engine = Engine.start(theApp,theTerminator);
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
-    bg = new SoundFile(theApp,"background.mp3");
-    bg.loop();
+    //bg = new SoundFile(theApp,"background.mp3");
+    //bg.loop();
   }
   
   public void runGame() {
     engine.run();
+    engine.statistics();
   }
   
   public void endGame() {
     engine = null;
-    bg.stop();
+    terminator.terminateGame();
+    myApp.delay(1000);
+    //bg.stop();
   }
   
   public void playKeyPressed() {
-    if(key=='s') {endGame(); myGame.change2Gameover();}
-    if(key=='r') {engine = new Engine(myApp); myGame.change2Play();}
+    if(engine!=null) {engine.checkKeyPressed();}
   }
   
   public void playKeyReleased() {
-    //if(key=='a') {myApp.println("a was just released");}
+    if(engine!=null) {engine.checkKeyReleased();}
   }
   
 }
