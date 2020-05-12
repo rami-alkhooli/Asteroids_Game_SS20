@@ -4,8 +4,8 @@ Game myGame;
 
 void setup()
 {
-  fullScreen();
-  //size(1000,800);
+  //fullScreen();
+  size(1200,800);
   frameRate(60);
   smooth(3);
   loop();
