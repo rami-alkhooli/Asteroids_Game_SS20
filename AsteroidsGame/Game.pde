@@ -55,7 +55,7 @@ public class Game
     else if(currentGame=="AsteroidsGame$PageMenu") {change2Login();}
     else if(currentGame=="AsteroidsGame$PageStatistics") {change2Menu();}
     else if(currentGame=="AsteroidsGame$PageGameover") {change2Menu();}
-    else if(currentGame=="AsteroidsGame$PageGamewon") {change2Menu();}
+    else if(currentGame=="AsteroidsGame$PageGameWon") {change2Menu();}
   }
   
   public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
