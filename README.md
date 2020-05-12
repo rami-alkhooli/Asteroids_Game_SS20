@@ -1,7 +1,7 @@
-﻿# Asteroids Game
+# Asteroids Game
 
 ## Version
-0.16
+0.17
 
 ## Stand
 12.05.2020
@@ -13,8 +13,11 @@
 - [x] Buttons, Eingabefelder etc. platzieren
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
+- [ ] Übernahme von Eingaben in Textfeldern ohne jedes Mal Enter zu klicken
+- [ ] Vergrößerung der Schrift von Buttons
+- [ ] Verstecken von Zeichen beim Passwort Schreiben
 
-### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.1&color=informational)
+### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.2&color=informational)
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
@@ -35,6 +38,10 @@
 - [x] Level-Design mit 5 Levels implementieren
 - [x] Automatische Anpassung der Größen an die Fenstergröße
 - [x] Automatische Anpassung der Beschleunigung ~und Rotation~ an die Fenstergröße
+- [x] Levels automatisch steigern nach Zerstörung aller Asteroiden
+- [x] Anzeigen von "Game Over" nach dem Verlieren und "Congratulations" nach dem Gewinnen
+- [ ] Spielzeit anzeigen und zwischenspeichern
+- [ ] Übergabe des Score nach Verlieren an Game
 
 ### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
 - [x] erstellen
@@ -43,6 +50,8 @@
 - [x] von der Ferne ansprechen (über IPv6)
 - [x] Beispiel-Programm zum Auslesen und Einschreiben in die Datenbank
 - [ ] Daten austauschen
+- [ ] Schnittstellenfunktionen zum Austausch zwischen DBProxy und Engine
+- [ ] Verbindung zur Datenbank aufbauen und Daten mit Game austauschen
 - [ ] Eine Klasse, die alle Objekete zur Laufzeit aufzeichnet und den Status der Objekte hat, ob sie vorhanden oder zerstört sind > Stichwort: Strategy Pattern > am besten in der Klasse Game, weil wir dort alle Objekte haben
 
 ## Anmerkungen
