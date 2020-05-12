@@ -15,6 +15,7 @@ class Engine
   private SpaceStation st;
   private Laser laser;
   private Terminator terminator;
+  private Congratulator congratulator;
   private SoundFile laserShoot;
   private SoundFile thrustSound;
   private SoundFile backgroundSound;
@@ -32,10 +33,11 @@ class Engine
   private ArrayList <Explosion> listExplosions;
   private ArrayList <Item> listItems;
 
-  private Engine(PApplet theApp, Terminator theTerminator) {
+  private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator) {
 
     myApp = theApp;
     terminator = theTerminator;
+    congratulator = theCongratulator;
     score = 0;
     shots = 0;
     items = 0;
@@ -45,17 +47,18 @@ class Engine
     listExplosions = new ArrayList <Explosion> ();
     sh = SpaceShip.create(myApp);
     st = SpaceStation.create(myApp);
-    setLevel(new LevelFirst());
+    setLevel(new LevelFourth());
     laserShoot = new SoundFile(myApp, "laser.mp3");
     thrustSound = new SoundFile(myApp, "thrust.mp3");
     backgroundSound = new SoundFile(myApp, "background.mp3");
     backgroundSound.loop();
   }
 
-  private Engine(PApplet theApp, Terminator theTerminator, int scr, int shts, int itms, String tmeplyd) {
+  private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int shts, int itms, String tmeplyd) {
 
     myApp = theApp;
     terminator = theTerminator;
+    congratulator = theCongratulator;
     score = scr;
     shots = shts;
     items = itms;
@@ -65,7 +68,7 @@ class Engine
     listExplosions = new ArrayList <Explosion> ();
     sh = SpaceShip.create(myApp);
     st = SpaceStation.create(myApp);
-    setLevel(new LevelFirst());
+    setLevel(new LevelFourth());
     laserShoot = new SoundFile(myApp, "laser.mp3");
     thrustSound = new SoundFile(myApp, "thrust.mp3");
     backgroundSound = new SoundFile(myApp, "background.mp3");
@@ -117,6 +120,8 @@ class Engine
     st.show();
     sh.show();
     drawAsteroids();
+    
+    if(getNrAsteroids()==0) {go2NextLevel();}
   }
   
   public void stop() {
@@ -173,18 +178,18 @@ class Engine
     if (myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateStoppedL());
   }
 
-  public static Engine start(PApplet theApp, Terminator theTerminator) {
+  public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator) {
 
     if (myEngine==null) {
-      myEngine = new Engine(theApp, theTerminator);
+      myEngine = new Engine(theApp, theTerminator, theCongratulator);
     }
     return myEngine;
   }
 
-  public static Engine start(PApplet theApp, Terminator theTerminator, int hts, int shts, int itms, String tmeplyd) {
+  public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int hts, int shts, int itms, String tmeplyd) {
 
     if (myEngine==null) {
-      myEngine = new Engine(theApp, theTerminator, hts, shts, itms, tmeplyd);
+      myEngine = new Engine(theApp, theTerminator, theCongratulator, hts, shts, itms, tmeplyd);
     }
     return myEngine;
   }
@@ -197,13 +202,13 @@ class Engine
     generateAsteroids();
   }
   
-  public boolean go2NextLevel() {
+  public void go2NextLevel() {
     String currentLevel = level.getClass().getName();
-    if(currentLevel=="LevelFirst") {setLevel(new LevelSecond()); return false;}
-    else if(currentLevel=="LevelSecond") {setLevel(new LevelThird()); return false;}
-    else if(currentLevel=="LevelThird") {setLevel(new LevelFourth()); return false;}
-    else if(currentLevel=="LevelFourth") {setLevel(new LevelFifth()); return false;}
-    else {return true;}
+    if(currentLevel=="LevelFirst") {setLevel(new LevelSecond());}
+    else if(currentLevel=="LevelSecond") {setLevel(new LevelThird());}
+    else if(currentLevel=="LevelThird") {setLevel(new LevelFourth());}
+    else if(currentLevel=="LevelFourth") {setLevel(new LevelFifth());}
+    else if(currentLevel=="LevelFifth") {congratulator.winGame();}
   }
 
   private void generateAsteroids() {

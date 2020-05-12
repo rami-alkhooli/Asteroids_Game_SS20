@@ -23,13 +23,43 @@ public abstract class GUIgameover implements GUI
   }
   
   public void checkKeyPressed() {
-    gameoverKeyPressed();
+
   }
   
   public void checkKeyReleased() {
   }
   
-  abstract void gameoverKeyPressed();
+  abstract void removeLayout();
+  abstract void showButtons();
+  abstract void showGameover();
+  abstract void showScore();
+  abstract void showTitle();
+  
+}
+
+public abstract class GUIgamewon implements GUI
+{
+  protected int sWidth;
+  protected int sHeight;
+  
+  public void show() {
+    showGameover();
+    showScore();
+    showTitle();
+    showButtons();
+  }
+  
+  public void end() {
+    removeLayout();
+  }
+  
+  public void checkKeyPressed() {
+
+  }
+  
+  public void checkKeyReleased() {
+  }
+  
   abstract void removeLayout();
   abstract void showButtons();
   abstract void showGameover();

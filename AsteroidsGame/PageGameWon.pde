@@ -1,12 +1,12 @@
 import processing.core.*;
 import controlP5.*;
 
-public class PageGameover extends GUIgameover
+public class PageGameWon extends GUIgamewon
 {
   private ControlP5 buttonBack;
   private PApplet myApp;
   
-  public PageGameover(PApplet theApp, Game theGame) {
+  public PageGameWon(PApplet theApp, Game theGame) {
     myApp = theApp;
     buttonBack = new ControlP5(theApp);
     sWidth = theApp.width/8;
@@ -22,7 +22,7 @@ public class PageGameover extends GUIgameover
     textAlign(CENTER,CENTER);
     textSize(40);
     fill(255,0,0);
-    text("You have lost", width/2, height/2);
+    text("Congratulations !", width/2, height/2);
     noFill();
   }
   
@@ -40,7 +40,7 @@ public class PageGameover extends GUIgameover
     fill(250,250,250);
     text("Asteroids Game",4*sWidth,sHeight);
     textSize(20);
-    text("Game Over",4*sWidth,1.75*sHeight);
+    text("You won",4*sWidth,1.75*sHeight);
     noFill();
   }
   

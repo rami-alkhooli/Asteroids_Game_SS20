@@ -7,12 +7,14 @@ public class PagePlay extends GUIplay
   private Game myGame;
   private Engine engine;
   private Terminator terminator;
+  private Congratulator congratulator;
   
-  public PagePlay(PApplet theApp, Game theGame, Terminator theTerminator) {
+  public PagePlay(PApplet theApp, Game theGame, Terminator theTerminator,Congratulator theCongratulator) {
     myApp = theApp;
     myGame = theGame;
     terminator = theTerminator;
-    engine = Engine.start(theApp,theTerminator);
+    congratulator = theCongratulator;
+    engine = Engine.start(theApp,theTerminator,congratulator);
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
   }
@@ -20,16 +22,12 @@ public class PagePlay extends GUIplay
   public void runGame() {
     engine.run();
     engine.statistics();
-    if(engine.getNrAsteroids()==0) {
-      if(engine.go2NextLevel()==true) {
-        endGame();
-      }
-    }
   }
   
   public void endGame() {
     engine.stop();
-    terminator.terminateGame();
+    //congratulator.winGame();
+    //terminator.terminateGame();
     myApp.delay(1000);
   }
   
