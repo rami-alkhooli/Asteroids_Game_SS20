@@ -20,6 +20,11 @@ public class PagePlay extends GUIplay
   public void runGame() {
     engine.run();
     engine.statistics();
+    if(engine.getNrAsteroids()==0) {
+      if(engine.go2NextLevel()==true) {
+        endGame();
+      }
+    }
   }
   
   public void endGame() {

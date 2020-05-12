@@ -196,6 +196,15 @@ class Engine
     sh.recenter();
     generateAsteroids();
   }
+  
+  public boolean go2NextLevel() {
+    String currentLevel = level.getClass().getName();
+    if(currentLevel=="LevelFirst") {setLevel(new LevelSecond()); return false;}
+    else if(currentLevel=="LevelSecond") {setLevel(new LevelThird()); return false;}
+    else if(currentLevel=="LevelThird") {setLevel(new LevelFourth()); return false;}
+    else if(currentLevel=="LevelFourth") {setLevel(new LevelFifth()); return false;}
+    else {return true;}
+  }
 
   private void generateAsteroids() {
 
@@ -230,7 +239,8 @@ class Engine
     myApp.text("Shield: " + sh.getShield()+"%", 10, 50);
     myApp.text("Lives: " + sh.getLives(), 210, 50);
     myApp.text("Items: " + sh.getNumberItems(), 330, 50);
-    myApp.text("Score: " + this.score, 485, 50);
+    myApp.text("Score: " + this.score, 470, 50);
+    myApp.text("Asteroids: " + this.getNrAsteroids(), 650, 50);
   }
 
   private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list) {
