@@ -24,8 +24,8 @@ public class Game
   public void run() {
     gui.show();
     if (terminator.isGameTerminated()==true) {
-      gui.end();
       change2Gameover();
+      terminator.restartGame();
     }
   }
   

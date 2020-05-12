@@ -246,6 +246,9 @@ class Engine
           if (sh.getLives()>0) {
             sh.loseLive();
           } else {
+            laserShoot.stop();
+            backgroundSound.stop();
+            thrustSound.stop();
             terminator.terminateGame();
           }
           break;
