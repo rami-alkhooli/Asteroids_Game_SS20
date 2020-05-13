@@ -26,8 +26,6 @@ public class PagePlay extends GUIplay
   
   public void endGame() {
     engine.stop();
-    //congratulator.winGame();
-    //terminator.terminateGame();
     myApp.delay(1000);
   }
   

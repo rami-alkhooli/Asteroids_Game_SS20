@@ -47,7 +47,7 @@ class Engine
     listExplosions = new ArrayList <Explosion> ();
     sh = SpaceShip.create(myApp);
     st = SpaceStation.create(myApp);
-    setLevel(new LevelFourth());
+    setLevel(new LevelFirst());
     laserShoot = new SoundFile(myApp, "laser.mp3");
     thrustSound = new SoundFile(myApp, "thrust.mp3");
     backgroundSound = new SoundFile(myApp, "background.mp3");
@@ -68,7 +68,7 @@ class Engine
     listExplosions = new ArrayList <Explosion> ();
     sh = SpaceShip.create(myApp);
     st = SpaceStation.create(myApp);
-    setLevel(new LevelFourth());
+    setLevel(new LevelFirst());
     laserShoot = new SoundFile(myApp, "laser.mp3");
     thrustSound = new SoundFile(myApp, "thrust.mp3");
     backgroundSound = new SoundFile(myApp, "background.mp3");
@@ -127,6 +127,7 @@ class Engine
   public void stop() {
     sh.destroy();
     st.destroy();
+    backgroundSound.stop();
     laser = null;
     myEngine = null;
   }
@@ -142,21 +143,6 @@ class Engine
     }
     if (myApp.keyCode == myApp.RIGHT) sh.setRotState(new RotStateRight());
     if (myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateLeft());
-    if (myApp.key == '1') {
-      setLevel(new LevelFirst());
-    }
-    if (myApp.key == '2') {
-      setLevel(new LevelSecond());
-    }
-    if (myApp.key == '3') {
-      setLevel(new LevelThird());
-    }
-    if (myApp.key == '4') {
-      setLevel(new LevelFourth());
-    }
-    if (myApp.key == '5') {
-      setLevel(new LevelFifth());
-    }
 
     if (myApp.key == ' ') {
       if (laser == null ) {

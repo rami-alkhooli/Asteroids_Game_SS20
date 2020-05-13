@@ -1,17 +1,21 @@
+import processing.sound.*;
 import processing.core.*;
 import controlP5.*;
 
 public class PageGameover extends GUIgameover
 {
+  private SoundFile lostSound;
   private ControlP5 buttonBack;
   private PApplet myApp;
   
   public PageGameover(PApplet theApp, Game theGame) {
     myApp = theApp;
     buttonBack = new ControlP5(theApp);
+    lostSound = new SoundFile(theApp,"lost.mp3");
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
+    lostSound.play();
   }
   
   public void showButtons() {

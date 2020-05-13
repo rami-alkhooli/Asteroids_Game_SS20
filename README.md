@@ -1,4 +1,4 @@
-# Asteroids Game
+﻿# Asteroids Game
 
 ## Version
 0.17
@@ -40,6 +40,7 @@
 - [x] Automatische Anpassung der Beschleunigung ~und Rotation~ an die Fenstergröße
 - [x] Levels automatisch steigern nach Zerstörung aller Asteroiden
 - [x] Anzeigen von "Game Over" nach dem Verlieren und "Congratulations" nach dem Gewinnen
+- [x] Töne beim Gewinnen oder Verlieren abspielen
 - [ ] Spielzeit anzeigen und zwischenspeichern
 - [ ] Übergabe des Score nach Verlieren an Game
 
@@ -65,6 +66,8 @@
 - [background.mp3](http://soundbible.com/2213-Alien-Spaceship-UFO.html)
 - [explosion.mp3](http://soundbible.com/1986-Bomb-Exploding.html)
 - [laser.mp3](http://soundbible.com/201-Missile-Fire-War.html)
+- [lost.mp3](http://soundbible.com/2054-Evil-Laugh-Male-9.html) 
 - [thrust.mp3](http://soundbible.com/1498-Rocket.html)
+- [won.mp3](http://soundbible.com/1003-Ta-Da.html)
 - [Audio Editor](https://twistedwave.com/online)
 - [Audio Trimmer](https://audiotrimmer.com/)

@@ -3,15 +3,18 @@ import controlP5.*;
 
 public class PageGameWon extends GUIgamewon
 {
+  private SoundFile wonSound;
   private ControlP5 buttonBack;
   private PApplet myApp;
   
   public PageGameWon(PApplet theApp, Game theGame) {
     myApp = theApp;
     buttonBack = new ControlP5(theApp);
+    wonSound = new SoundFile(theApp,"won.mp3");
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
+    wonSound.play();
   }
   
   public void showButtons() {
