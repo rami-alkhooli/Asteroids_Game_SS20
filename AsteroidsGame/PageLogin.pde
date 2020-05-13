@@ -29,8 +29,10 @@ public class PageLogin extends GUIlogin
     buttonRegister.addButton("register").setValue(0).setPosition(4.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).setId(2).show();
     buttonBack.addButton("end").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(0).show();
     fieldUsername.addTextfield("").setPosition(4*sWidth,3*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
-    fieldPassword.addTextfield("").setPosition(4*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
+    fieldPassword.addTextfield("").setPosition(4*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setPasswordMode(true).show();
   }
+  
+
   
   public void showButtons() {
     buttonBack.show();
