@@ -132,6 +132,8 @@ class Engine
     sh.destroy();
     st.destroy();
     backgroundSound.stop();
+    thrustSound.stop();
+    laserShoot.stop();
     myTimer.stop();
     laser = null;
     myEngine = null;
