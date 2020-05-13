@@ -32,6 +32,8 @@ public class PageLogin extends GUIlogin
     fieldPassword.addTextfield("").setPosition(4*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setPasswordMode(true).show();
   }
   
+
+  
   public void showButtons() {
     buttonBack.show();
     buttonLogin.show();
