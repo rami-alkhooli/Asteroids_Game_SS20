@@ -138,10 +138,12 @@ public class SpaceShip
       
       case 50:
         shield = new ShieldStateFull();
+        shieldStrength = 100;
       break;
       
       case 0:
         shield = new ShieldStateDamaged();
+        shieldStrength = 50;
       break;
       
     }

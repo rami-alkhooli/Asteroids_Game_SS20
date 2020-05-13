@@ -125,7 +125,7 @@ class Engine
     drawAsteroids();
     myTimer.run();
     
-    if(getNrAsteroids()==0) {go2NextLevel();}
+    if(getNrAsteroids()==0) {thrustSound.stop(); go2NextLevel();}
   }
   
   public void stop() {

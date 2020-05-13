@@ -64,7 +64,7 @@
 
 ## Quellen
 - [background.mp3](http://soundbible.com/2213-Alien-Spaceship-UFO.html)
-- [explosion.mp3](http://soundbible.com/1986-Bomb-Exploding.html)
+- [explosion.mp3](http://soundbible.com/456-Explosion-2.html)
 - [laser.mp3](http://soundbible.com/201-Missile-Fire-War.html)
 - [lost.mp3](http://soundbible.com/2054-Evil-Laugh-Male-9.html) 
 - [thrust.mp3](http://soundbible.com/1498-Rocket.html)

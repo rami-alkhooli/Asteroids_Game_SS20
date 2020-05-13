@@ -29,7 +29,7 @@ public class Laser
   public boolean shoot() {
       if(ttl>0) {
         ttl--;
-        i+=(myApp.width/140);
+        i+=(myApp.width/100);
         movingX = x - i*myApp.cos(myApp.radians(phi));
         movingY = y - i*myApp.sin(myApp.radians(phi));
         myApp.fill(COLOR,INITTRANSPARENCE+(2*ttl));

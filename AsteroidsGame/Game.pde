@@ -3,11 +3,11 @@ import java.lang.*;
 
 public class Game
 {
-  public int highscore;
-  public int score;
-  public int shots;
-  public int items;
-  public String time_played;
+  private int highscore;
+  private int score;
+  private int shots;
+  private int items;
+  private String time_played;
   private GUI gui;
   private Terminator terminator;
   private Congratulator congratulator;
@@ -19,6 +19,11 @@ public class Game
     gui = new PageLogin(myApp,this);
     terminator = new Terminator();
     congratulator = new Congratulator();
+    highscore=0;
+    score=0;
+    shots=0;
+    items=0;
+    time_played="00:00";
 
   }
   
@@ -57,6 +62,17 @@ public class Game
     else if(currentGame=="AsteroidsGame$PageGameover") {change2Menu();}
     else if(currentGame=="AsteroidsGame$PageGameWon") {change2Menu();}
   }
+  
+  public int getHighscore() {return highscore;}
+  public void setHighscore(int hs) {highscore = hs;}
+  public int getScore() {return score;}
+  public void setScore(int sc) {score = sc;}
+  public int getShots() {return shots;}
+  public void setShots(int sh) {shots = sh;}
+  public int getItems() {return items;}
+  public void setItems(int it) {items = it;}
+  public String getPlayTime() {return time_played;}
+  public void setPlayTime(String pt) {time_played = pt;}
   
   public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
   public void change2Register () {gui.end(); gui = new PageRegister(myApp,this);}
