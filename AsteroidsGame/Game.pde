@@ -69,7 +69,7 @@ public class Game
   }
   
   public int getScore() {return score;}
-  public void addScore(int sc) {score += sc;}
+  public void addScore(int sc) {score = sc;}
   
   public int getShots() {return shots;}
   public void addShots(int sh) {shots += sh;}

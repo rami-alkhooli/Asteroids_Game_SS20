@@ -25,6 +25,7 @@ public class PagePlay extends GUIplay
   }
   
   public void endGame() {
+    myGame.addHighscore(engine.getScore());
     myGame.addScore(engine.getScore());
     myGame.addShots(engine.getShots());
     myGame.addItems(engine.getItems());
