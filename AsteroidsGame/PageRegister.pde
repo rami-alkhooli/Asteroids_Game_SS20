@@ -29,7 +29,7 @@ public class PageRegister extends GUIregister
     buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
     fieldAccount.addTextfield("").setPosition(4*sWidth,2.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
     fieldEmail.addTextfield("").setPosition(4*sWidth,3.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
-    fieldPassword.addTextfield("").setPosition(4*sWidth,4.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
+    fieldPassword.addTextfield("").setPosition(4*sWidth,4.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setPasswordMode(true).show();
   }
   
   public void showButtons() {
@@ -37,7 +37,7 @@ public class PageRegister extends GUIregister
   }
   
   public void showHints() {
-    myApp.textAlign(myApp.CENTER,myApp.BOTTOM);
+    myApp.textAlign(myApp.LEFT,myApp.BOTTOM);
     myApp.textSize(40);
     myApp.fill(250,250,250);
     myApp.text("Account:",3*sWidth,3*sHeight);

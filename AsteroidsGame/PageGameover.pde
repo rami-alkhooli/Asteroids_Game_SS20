@@ -4,14 +4,18 @@ import controlP5.*;
 
 public class PageGameover extends GUIgameover
 {
+  private int ttl;
   private SoundFile lostSound;
   private ControlP5 buttonBack;
   private PApplet myApp;
+  private Game myGame;
   
   public PageGameover(PApplet theApp, Game theGame) {
     myApp = theApp;
+    myGame = theGame;
     buttonBack = new ControlP5(theApp);
     lostSound = new SoundFile(theApp,"lost.mp3");
+    ttl = 180;
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
@@ -46,6 +50,11 @@ public class PageGameover extends GUIgameover
     textSize(20);
     text("Game Over",4*sWidth,1.75*sHeight);
     noFill();
+  }
+  
+  public void makeTimer() {
+    if(ttl>0) {ttl--;}
+    else {myGame.change2Menu();}
   }
   
   public void removeLayout() {

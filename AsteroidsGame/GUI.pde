@@ -16,6 +16,7 @@ public abstract class GUIgameover implements GUI
     showScore();
     showTitle();
     showButtons();
+    makeTimer();
   }
   
   public void end() {
@@ -29,6 +30,7 @@ public abstract class GUIgameover implements GUI
   public void checkKeyReleased() {
   }
   
+  abstract void makeTimer();
   abstract void removeLayout();
   abstract void showButtons();
   abstract void showGameover();
@@ -47,6 +49,7 @@ public abstract class GUIgamewon implements GUI
     showScore();
     showTitle();
     showButtons();
+    makeTimer();
   }
   
   public void end() {
@@ -60,6 +63,7 @@ public abstract class GUIgamewon implements GUI
   public void checkKeyReleased() {
   }
   
+  abstract void makeTimer();
   abstract void removeLayout();
   abstract void showButtons();
   abstract void showGameover();

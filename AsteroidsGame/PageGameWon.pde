@@ -3,14 +3,18 @@ import controlP5.*;
 
 public class PageGameWon extends GUIgamewon
 {
+  private int ttl;
   private SoundFile wonSound;
   private ControlP5 buttonBack;
   private PApplet myApp;
+  private Game myGame;
   
   public PageGameWon(PApplet theApp, Game theGame) {
     myApp = theApp;
+    myGame = theGame;
     buttonBack = new ControlP5(theApp);
     wonSound = new SoundFile(theApp,"won.mp3");
+    ttl = 180;
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
@@ -30,7 +34,7 @@ public class PageGameWon extends GUIgamewon
   }
   
   public void showScore() {
-    textAlign( CENTER, CENTER);
+    textAlign(CENTER, CENTER);
     textSize(20);
     fill(255,255,255);
     text("Score: 0", width/2,3*(height/4));
@@ -45,6 +49,11 @@ public class PageGameWon extends GUIgamewon
     textSize(20);
     text("You won",4*sWidth,1.75*sHeight);
     noFill();
+  }
+  
+  public void makeTimer() {
+    if(ttl>0) {ttl--;}
+    else {myGame.change2Menu();}
   }
   
   public void removeLayout() {
