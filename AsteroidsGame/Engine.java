@@ -19,6 +19,7 @@ class Engine
   private SoundFile laserShoot;
   private SoundFile thrustSound;
   private SoundFile backgroundSound;
+  private static Timer myTimer;
   private static Engine myEngine;
   private static PApplet myApp;
 
@@ -38,6 +39,7 @@ class Engine
     myApp = theApp;
     terminator = theTerminator;
     congratulator = theCongratulator;
+    myTimer = new Timer(theApp);
     score = 0;
     shots = 0;
     items = 0;
@@ -59,6 +61,7 @@ class Engine
     myApp = theApp;
     terminator = theTerminator;
     congratulator = theCongratulator;
+    myTimer = new Timer(theApp);
     score = scr;
     shots = shts;
     items = itms;
@@ -120,6 +123,7 @@ class Engine
     st.show();
     sh.show();
     drawAsteroids();
+    myTimer.run();
     
     if(getNrAsteroids()==0) {go2NextLevel();}
   }
@@ -128,6 +132,7 @@ class Engine
     sh.destroy();
     st.destroy();
     backgroundSound.stop();
+    myTimer.stop();
     laser = null;
     myEngine = null;
   }
@@ -227,6 +232,7 @@ class Engine
     myApp.text("v: " + myApp.nf((int)sh.getSpeed(), 2), 270, 10);
     myApp.text("Phi: " + myApp.nf((int)sh.getPhi(), 3), 360, 10);
     myApp.text("Shots: " + myApp.nf(shots, 2), 510, 10);
+    myApp.text("Time: " + myTimer.getTime(),660,10);
     myApp.text("Shield: " + sh.getShield()+"%", 10, 50);
     myApp.text("Lives: " + sh.getLives(), 210, 50);
     myApp.text("Items: " + sh.getNumberItems(), 330, 50);

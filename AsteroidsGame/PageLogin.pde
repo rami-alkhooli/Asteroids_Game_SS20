@@ -41,8 +41,8 @@ public class PageLogin extends GUIlogin
   }
   
   public void showHints(){
-    myApp.textAlign(myApp.LEFT,myApp.BOTTOM);
-    myApp.textSize(40);
+    myApp.textAlign(myApp.RIGHT,myApp.BOTTOM);
+    myApp.textSize(myApp.width/40);
     myApp.fill(250,250,250);
     myApp.text("Username:",3*sWidth,3.5*sHeight);
     myApp.text("Password:",3*sWidth,4.5*sHeight);
@@ -56,7 +56,7 @@ public class PageLogin extends GUIlogin
   
   public void showTitle() {
     textAlign(CENTER,CENTER);
-    textSize(60);
+    textSize(myApp.width/20);
     fill(250,250,250);
     text("Asteroids Game",4*sWidth,sHeight);
     textSize(20);

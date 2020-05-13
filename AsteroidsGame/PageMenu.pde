@@ -35,7 +35,7 @@ public class PageMenu extends GUImenu
   
   public void showTitle() {
     textAlign(CENTER,CENTER);
-    textSize(60);
+    textSize(myApp.width/20);
     fill(250,250,250);
     text("Asteroids Game",4*sWidth,sHeight);
     textSize(20);

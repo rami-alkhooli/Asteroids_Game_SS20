@@ -1,10 +1,10 @@
 ﻿# Asteroids Game
 
 ## Version
-0.17
+0.18
 
 ## Stand
-12.05.2020
+13.05.2020
 
 ## Komponenten
 
@@ -17,7 +17,7 @@
 - [ ] Vergrößerung der Schrift von Buttons
 - [ ] Verstecken von Zeichen beim Passwort Schreiben
 
-### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.2&color=informational)
+### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.3&color=informational)
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
@@ -41,7 +41,7 @@
 - [x] Levels automatisch steigern nach Zerstörung aller Asteroiden
 - [x] Anzeigen von "Game Over" nach dem Verlieren und "Congratulations" nach dem Gewinnen
 - [x] Töne beim Gewinnen oder Verlieren abspielen
-- [ ] Spielzeit anzeigen und zwischenspeichern
+- [x] Spielzeit anzeigen und zwischenspeichern
 - [ ] Übergabe des Score nach Verlieren an Game
 
 ### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)

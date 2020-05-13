@@ -27,7 +27,7 @@ public class PageGameWon extends GUIgamewon
   
   public void showGameover() {
     textAlign(CENTER,CENTER);
-    textSize(40);
+    textSize(myApp.width/40);
     fill(255,0,0);
     text("Congratulations !", width/2, height/2);
     noFill();
@@ -35,7 +35,7 @@ public class PageGameWon extends GUIgamewon
   
   public void showScore() {
     textAlign(CENTER, CENTER);
-    textSize(20);
+    textSize(myApp.width/60);
     fill(255,255,255);
     text("Score: 0", width/2,3*(height/4));
     noFill();
@@ -43,7 +43,7 @@ public class PageGameWon extends GUIgamewon
   
   public void showTitle() {
     textAlign(CENTER,CENTER);
-    textSize(60);
+    textSize(myApp.width/20);
     fill(250,250,250);
     text("Asteroids Game",4*sWidth,sHeight);
     textSize(20);

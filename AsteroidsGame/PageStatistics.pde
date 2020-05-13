@@ -20,7 +20,7 @@ public class PageStatistics extends GUIstatistics
   
   public void showStatistics() {
     textAlign(CENTER,CENTER);
-    textSize(30);
+    textSize(width/40);
     fill(250,250,250);
     text("Score: 0\nItems: 0\n Shots: 0",width/2,height/2);
     noFill();
@@ -28,7 +28,7 @@ public class PageStatistics extends GUIstatistics
   
   public void showTitle() {
     textAlign(CENTER,CENTER);
-    textSize(60);
+    textSize(width/20);
     fill(250,250,250);
     text("Asteroids Game",4*sWidth,sHeight);
     textSize(20);
