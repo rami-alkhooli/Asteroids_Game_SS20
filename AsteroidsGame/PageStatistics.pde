@@ -5,9 +5,11 @@ public class PageStatistics extends GUIstatistics
 {
   private ControlP5 buttonBack;
   private PApplet myApp;
+  private Game myGame;
   
   public PageStatistics(PApplet theApp, Game theGame) {
     myApp = theApp;
+    myGame = theGame;
     buttonBack = new ControlP5(theApp);
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
@@ -22,7 +24,7 @@ public class PageStatistics extends GUIstatistics
     textAlign(CENTER,CENTER);
     textSize(width/40);
     fill(250,250,250);
-    text("Score: 0\nItems: 0\n Shots: 0",width/2,height/2);
+    text("Highscore: " + myGame.getHighscore() + "\nScore: " + myGame.getScore() + "\nItems: " + myGame.getItems() + "\n Shots: " + myGame.getShots() + "\nPlay Time: " + myGame.getPlayTime(),width/2,height/2);
     noFill();
   }
   

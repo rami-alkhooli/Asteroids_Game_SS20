@@ -52,7 +52,7 @@ public class SpaceStation
     for (int n=0 ; n<theItems.size() ; n++) {
       
       short val = theItems.get(n).getValue();
-      if(val<=2) {theEngine.score += theShip.getItemScore();}
+      if(val<=2) {theEngine.setScore(theShip.getItemScore()+theEngine.getScore());}
       else if((val>2) && (val<=4)) {theShip.increaseShield();}
       else if (val>4) {theShip.increaseLives();}
       

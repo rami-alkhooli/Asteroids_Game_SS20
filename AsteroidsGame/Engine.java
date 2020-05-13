@@ -24,11 +24,10 @@ class Engine
   private static PApplet myApp;
 
   private int allowedItems;
-  public int highscore;
-  public int score;
-  public int shots;
-  public int items;
-  public String time_played;
+  private int score;
+  private int shots;
+  private int items;
+  private String time_played; // mus anders initialisiert werden, weil das über ein anderes Objekt läuft
 
   private ArrayList <Asteroid> listAsteroids;
   private ArrayList <Explosion> listExplosions;
@@ -43,7 +42,7 @@ class Engine
     score = 0;
     shots = 0;
     items = 0;
-    time_played = "0";
+    time_played = "00:00";
     listItems = new ArrayList <Item> ();
     listAsteroids = new ArrayList <Asteroid> ();
     listExplosions = new ArrayList <Explosion> ();
@@ -131,10 +130,12 @@ class Engine
   public void stop() {
     sh.destroy();
     st.destroy();
+    
     backgroundSound.stop();
     thrustSound.stop();
     laserShoot.stop();
     myTimer.stop();
+    
     laser = null;
     myEngine = null;
   }
@@ -307,32 +308,23 @@ class Engine
     for (int n=0; n<list.size(); n++) {
 
       if ( myApp.dist( ship.getX(), ship.getY(), list.get(n).getX(), list.get(n).getY() ) < (ship.getRadius() + list.get(n).getRadius()) ) {
-
+        items++;
         ship.collectItem(list.get(n));
         list.remove(n);
       }
     }
   }
-
-  public int getScore() {
-    return score;
-  }
-  public int getShots() {
-    return shots;
-  }
-  public int getItems() {
-    return st.getItems();
-  }
-  public int getShield() {
-    return sh.getShield();
-  }
-  public String getTimePlayed() {
-    return time_played;
-  }
-  public int getNrAsteroids() {
-    return listAsteroids.size();
-  }
-  public int getNrExplosions() {
-    return listExplosions.size();
-  }
+  
+  public int getScore() {return score;}
+  public void setScore(int sc) {score = sc;}
+  public int getShots() {return shots;}
+  public void setShots(int sh) {shots = sh;}
+  public int getItems() {return items;}
+  public void setItems(int it) {items = it;}
+  public String getPlayTime() {return myTimer.getTime();}
+  public void setPlayTime(String pt) {time_played = pt;}
+  public int getShield() {return sh.getShield();}
+  public int getNrAsteroids() {return listAsteroids.size();}
+  public int getNrExplosions() {return listExplosions.size();}
+  
 }

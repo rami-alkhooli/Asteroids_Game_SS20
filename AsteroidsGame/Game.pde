@@ -64,15 +64,29 @@ public class Game
   }
   
   public int getHighscore() {return highscore;}
-  public void setHighscore(int hs) {highscore = hs;}
+  public void addHighscore(int hs) {
+    if(hs>highscore) {highscore=hs;}
+  }
+  
   public int getScore() {return score;}
-  public void setScore(int sc) {score = sc;}
+  public void addScore(int sc) {score += sc;}
+  
   public int getShots() {return shots;}
-  public void setShots(int sh) {shots = sh;}
+  public void addShots(int sh) {shots += sh;}
+  
   public int getItems() {return items;}
-  public void setItems(int it) {items = it;}
+  public void addItems(int it) {items += it;}
+  
   public String getPlayTime() {return time_played;}
-  public void setPlayTime(String pt) {time_played = pt;}
+  public void addPlayTime(String pt) {
+    // Structure is mm:ss
+    String stringMinutes = str(pt.charAt(0)) + str(pt.charAt(1));
+    String stringSeconds = str(pt.charAt(3)) + str(pt.charAt(4));
+    int numberMinutes = Integer.parseInt(stringMinutes);
+    int numberSeconds = Integer.parseInt(stringSeconds);
+    time_played = stringMinutes + ":" + stringSeconds;
+    //myApp.println("Added Time: " + stringMinutes + " Minutes and " + stringSeconds + " Seconds");
+  }
   
   public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
   public void change2Register () {gui.end(); gui = new PageRegister(myApp,this);}
