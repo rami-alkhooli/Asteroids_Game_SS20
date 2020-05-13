@@ -79,13 +79,16 @@ public class Game
   
   public String getPlayTime() {return time_played;}
   public void addPlayTime(String pt) {
-    // Structure is mm:ss
-    String stringMinutes = str(pt.charAt(0)) + str(pt.charAt(1));
-    String stringSeconds = str(pt.charAt(3)) + str(pt.charAt(4));
-    int numberMinutes = Integer.parseInt(stringMinutes);
-    int numberSeconds = Integer.parseInt(stringSeconds);
-    time_played = stringMinutes + ":" + stringSeconds;
-    //myApp.println("Added Time: " + stringMinutes + " Minutes and " + stringSeconds + " Seconds");
+    // Structure is mm:ss and you have to stick to it
+    int numberAddMinutes = Integer.parseInt(str(pt.charAt(0)) + str(pt.charAt(1)));
+    int numberAddSeconds = Integer.parseInt(str(pt.charAt(3)) + str(pt.charAt(4)));
+    int numberCrtMinutes = Integer.parseInt(str(time_played.charAt(0)) + str(time_played.charAt(1)));
+    int numberCrtSeconds = Integer.parseInt(str(time_played.charAt(3)) + str(time_played.charAt(4)));
+    
+    numberCrtMinutes += numberAddMinutes;
+    numberCrtSeconds += numberAddSeconds;
+    
+    time_played = myApp.nf(numberCrtMinutes,2) + ":" + myApp.nf(numberCrtSeconds,2);
   }
   
   public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}

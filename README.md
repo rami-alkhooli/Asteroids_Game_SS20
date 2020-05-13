@@ -1,7 +1,7 @@
 ﻿# Asteroids Game
 
 ## Version
-0.18
+0.19
 
 ## Stand
 13.05.2020
@@ -15,9 +15,9 @@
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
 - [ ] Übernahme von Eingaben in Textfeldern ohne jedes Mal Enter zu klicken
 - [ ] Vergrößerung der Schrift von Buttons
-- [ ] Verstecken von Zeichen beim Passwort Schreiben
+- [x] Verstecken von Zeichen beim Passwort Schreiben
 
-### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=2.3&color=informational)
+### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=3.0&color=informational)
 - [x] SpaceShip bewegen und rotieren fehlerfrei und mit Hilfe von State Pattern
 - [x] Shield realisiern auch mit State Pattern
 - [x] Thrust anzeigen im Zustand "AcceleratingForwards"
@@ -42,7 +42,7 @@
 - [x] Anzeigen von "Game Over" nach dem Verlieren und "Congratulations" nach dem Gewinnen
 - [x] Töne beim Gewinnen oder Verlieren abspielen
 - [x] Spielzeit anzeigen und zwischenspeichern
-- [ ] Übergabe des Score nach Verlieren an Game
+- [x] Übergabe des Score nach Verlieren an Game
 
 ### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
 - [x] erstellen
