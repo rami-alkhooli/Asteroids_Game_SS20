@@ -1,6 +1,6 @@
 public class Data
 {
-  
+  private Game receivedData;
   private String user     = "DBHandler";
   private String pass     = "1234";
   private String database = "asteroidsV1";
@@ -9,18 +9,41 @@ public class Data
   private int playerid=-1;
   
   private int localHighscore;
-  private int localscore;
+  private int localscore;//Bei mit gibts keinen Unterschied zwischen dem highscore und localscore
   private int localShots;
   private int localItems;
-  private String localTimePlayed;
+  private String localTimePlayed;//Die gespielte Zeit wird von dem DBProxy selber berechnet.
   
   private int storedHighscore;
   private int storedScore;
   private int storedShots;
   private int storedItems;
   private String storedTimePlayed;
+  private MySQL dbhand;
+  private DBProxy dbprox;
   
-  public Data () {
+  public Data (MySQL dbcon,String ip,String dev) {
+    dbhand = dbcon;
+    dbprox = new DBProxy(dbcon,ip,dev);
+    dbprox.login("testPlayer2","1234");
+    
+    localHighscore = 0;
+    localscore = 0;
+    localShots = 0;
+    localItems = 0;
+    localTimePlayed = "0";
+    
+    storedHighscore = 0;
+    storedScore = 0;
+    storedShots = 0;
+    storedItems = 0;
+    storedTimePlayed = "0";
+    
+  }
+  public Data (MySQL dbcon) {
+    dbhand = dbcon;
+    dbprox = new DBProxy(dbcon);
+    dbprox.login("testPlayer","1234");
     
     localHighscore = 0;
     localscore = 0;
@@ -87,7 +110,9 @@ public class Data
     // send localShots
     // send localItems
     // send localTimePlayed
-    
+    dbprox.gameStartUpdateStats();
+    delay(5000);
+    dbprox.gameEndUpdateStats(42,localShots,localItems,localHighscore);
     text("sent !",450,550);
     
     localHighscore = 0;
@@ -99,12 +124,17 @@ public class Data
   }
   
   public void receiveData() {
+    dbprox.playerid = 1;
+    receivedData = dbprox.getStats();
+    storedHighscore = dbprox.getHighscore();
+    /*******++letzte Score?!**********/
+    storedScore = receivedData.highscore;    
+    /*********************************************************************/
+    storedShots = receivedData.shoots;
+    storedItems = receivedData.items;
+    storedTimePlayed = receivedData.time_played;
+    dbprox.getTotalPlayedTime();
     
-    //storedHighscore = ..
-    //storedScore = ..
-    //storedShots = ..
-    //storedItems = ..
-    //storedTimePlayed = ..
     
     text("received !",400,550);
  

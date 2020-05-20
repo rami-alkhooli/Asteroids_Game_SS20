@@ -1,9 +1,27 @@
-Data data;
+import de.bezier.data.sql.*;
 
+Data data;
+/* NEU*/
+MySQL dbconnection;
+/******/
 void setup()
 {
+   dbconnection = new MySQL( this, "localhost", "asteroidsV1", "DBHandler", "1234" );
+   if(dbconnection.connect())
+   {
+      if (args != null && args.length==2) {
+        data = new Data(dbconnection,args[0],args[1]);///neu
+      } else {
+        println("args == null");
+        data = new Data(dbconnection);///neu
+      }
+  }
+   
+  /* NEU*/
+ 
+  /******/
   size(1200,600);
-  data = new Data();
+  
   data.setupData();
 }
 

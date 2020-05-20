@@ -30,7 +30,7 @@ void setup()
 	
     // connect to database of server "localhost"
     //
-    dbconnection = new MySQL( this, "localhost", database, user, pass );
+    dbconnection = new MySQL( this, "ipv6_dns_url", "test", "testRami", "1234" );
     
     if ( dbconnection.connect() )
     {
