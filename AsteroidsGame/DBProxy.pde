@@ -296,7 +296,7 @@ public class DBProxy
     {
       gameId = dbconnection.getInt("idGame");
     }
-   
+   println("gameId: "+gameId);
     try
     {
         dbconnection.query("select highscore,shoots,hits,items,time_played from Game where idGame="+gameId+";");

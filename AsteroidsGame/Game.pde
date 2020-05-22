@@ -128,5 +128,5 @@ public class Game
   public void change2Play () {gui.end();dbprox.gameStartUpdateStats(); gui = new PagePlay(myApp,this,terminator,congratulator);}
   public void change2Gameover () {gui.end(); gui = new PageGameover(myApp,this);}
   public void change2Gamewon () {gui.end(); gui = new PageGameWon(myApp,this);}
-  public void change2Statistics () {gui.end();  gui = new PageStatistics(myApp,this);}
+  public void change2Statistics () {gui.end();dbprox.getStats(this);this.addHighscore(dbprox.getHighscore());  gui = new PageStatistics(myApp,this);}
 }
