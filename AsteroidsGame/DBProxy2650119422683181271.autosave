@@ -7,7 +7,7 @@ public class DBProxy
   private String user     = "DBHandler";
   private String pass     = "1234";
   private String database = "asteroidsV1";
-  private String ip_adress = "192.168.43.14";
+  private String ip_adress = "localhost";
   private String device = "unknowndevice";
   public int playerid=-1;
 
@@ -60,7 +60,6 @@ public class DBProxy
       long time = date.getTime();
       Timestamp ts = new Timestamp(time);
       String loginTime = ts.toString();
-      println("login at :" + loginTime);
       device= device.replaceAll(" ","");
       dbconnection.query("insert into PlayerHasDevice (id,ip,loginTime) values ('"+playerid+"','"+ip_adress+"','"+loginTime+"');");
       
@@ -104,9 +103,7 @@ public class DBProxy
     long time = date.getTime();
     Timestamp ts = new Timestamp(time);
     String logoutTime = ts.toString();
-    println("logout at :" + logoutTime);
     dbconnection.query("update PlayerHasDevice set logoutTime='"+logoutTime+"' where id="+playerid+";");
-    println("logut erfolgreich");
   }
   
   /**
@@ -232,17 +229,18 @@ public class DBProxy
   {
     int GameID=0;
     String logintime=null;
-   
+    
+    dbconnection.query("select loginTime from PlayerHasDevice where id="+playerid+";");
     Date date = new Date();
     long time = date.getTime(); 
     Timestamp ts = new Timestamp(time);
     String gamestart = ts.toString();
-    println("gamestart at :" + gamestart);
-    dbconnection.query("select loginTime from PlayerHasDevice where id="+playerid+";");
     while(dbconnection.next())
     {
       logintime = dbconnection.getString("loginTime");
     }
+    println(logintime);
+    println("gamestart"+gamestart);
     dbconnection.query("insert into Game (login_timestamp,game_start) values('"+logintime+"','"+gamestart+"');");
     dbconnection.query("select idGame from Game where login_timestamp='"+logintime+"' && game_start='"+ts+"';");
     while(dbconnection.next())
@@ -264,7 +262,7 @@ public class DBProxy
     long time = date.getTime(); 
     Timestamp ts = new Timestamp(time);
     String gameend = ts.toString();
-    println("gameEnd at :" + gameend);
+    println("gameend "+gameend);
     String gamestart=null;
     dbconnection.query("select idGame from GameHasDevice where id='"+playerid+"';");
     while(dbconnection.next())
@@ -296,7 +294,7 @@ public class DBProxy
     {
       gameId = dbconnection.getInt("idGame");
     }
-   println("gameId: "+gameId);
+   
     try
     {
         dbconnection.query("select highscore,shoots,hits,items,time_played from Game where idGame="+gameId+";");
