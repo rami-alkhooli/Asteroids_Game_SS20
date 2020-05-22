@@ -30,6 +30,7 @@ public class PagePlay extends GUIplay
     myGame.addShots(engine.getShots());
     myGame.addItems(engine.getItems());
     myGame.addPlayTime(engine.getPlayTime());
+    myGame.updateEndStats();
     //myApp.println("Score: " + engine.getScore());
     //myApp.println("Shots: " + engine.getShots());
     //myApp.println("Items: " + engine.getItems());

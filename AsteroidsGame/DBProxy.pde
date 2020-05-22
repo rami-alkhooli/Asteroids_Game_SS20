@@ -7,7 +7,7 @@ public class DBProxy
   private String user     = "DBHandler";
   private String pass     = "1234";
   private String database = "asteroidsV1";
-  private String ip_adress = "localhost";
+  private String ip_adress = "192.168.43.14";
   private String device = "unknowndevice";
   public int playerid=-1;
 
@@ -104,6 +104,7 @@ public class DBProxy
     Timestamp ts = new Timestamp(time);
     String logoutTime = ts.toString();
     dbconnection.query("update PlayerHasDevice set logoutTime='"+logoutTime+"' where id="+playerid+";");
+    println("logut erfolgreich");
   }
   
   /**

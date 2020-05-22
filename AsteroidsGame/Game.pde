@@ -3,6 +3,8 @@ import java.lang.*;
 
 public class Game
 {
+  private String username;
+  private String password;
   private int highscore;
   private int score;
   private int shots;
@@ -12,6 +14,8 @@ public class Game
   private Terminator terminator;
   private Congratulator congratulator;
   private PApplet myApp;
+  private DBProxy dbprox;
+  private MySQL dbconnection;
   
   public Game (PApplet theApp) {
 
@@ -24,6 +28,21 @@ public class Game
     shots=0;
     items=0;
     time_played="00:00";
+    username = "testPlayer2";
+    password = "1234";
+    
+    dbconnection = new MySQL(theApp, "192.168.43.14", "asteroidsV1", "DBHandler", "1234" );
+   if(dbconnection.connect())
+   {
+      if (args != null && args.length==2) {
+       // data = new Data(dbconnection,args[0],args[1]);///neu
+       dbprox = new DBProxy(dbconnection,args[0],args[1]);
+      } else {
+        println("args == null");
+        //data = new Data(dbconnection);///neu
+        dbprox = new DBProxy(dbconnection);
+      }
+  }
 
   }
   
@@ -91,11 +110,23 @@ public class Game
     time_played = myApp.nf(numberCrtMinutes,2) + ":" + myApp.nf(numberCrtSeconds,2);
   }
   
-  public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
+  public void updateEndStats() {
+    dbprox.gameEndUpdateStats(score,shots,items,highscore);
+  }
+  
+  public boolean logIn() {
+    if(dbprox.login(username,password)==1)
+      {
+        //println("Login erfolgt!");
+        return true;
+      }
+      else return false;
+  }
+  public void change2Login () {gui.end(); dbprox.logout(); gui = new PageLogin(myApp,this);}
   public void change2Register () {gui.end(); gui = new PageRegister(myApp,this);}
-  public void change2Menu () {gui.end(); gui = new PageMenu(myApp,this);}
+  public void change2Menu () { gui.end(); gui = new PageMenu(myApp,this);}
   public void change2Play () {gui.end(); gui = new PagePlay(myApp,this,terminator,congratulator);}
   public void change2Gameover () {gui.end(); gui = new PageGameover(myApp,this);}
   public void change2Gamewon () {gui.end(); gui = new PageGameWon(myApp,this);}
-  public void change2Statistics () {gui.end(); gui = new PageStatistics(myApp,this);}
+  public void change2Statistics () {gui.end(); dbprox.gameStartUpdateStats(); gui = new PageStatistics(myApp,this);}
 }
