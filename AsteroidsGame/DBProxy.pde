@@ -303,9 +303,9 @@ public class DBProxy
         while(dbconnection.next())
         {
           gamestats.addHighscore(dbconnection.getInt("highscore"));
-          gamestats.addShots(-gamestats.getShots()+dbconnection.getInt("shoots"));
-          gamestats.addScore(-gamestats.getScore()+dbconnection.getInt("hits"));
-          gamestats.addItems(-gamestats.getItems()+dbconnection.getInt("items"));
+          //gamestats.addShots(dbconnection.getInt("shoots"));
+          //gamestats.setHits(dbconnection.getInt("hits"));
+          //gamestats.addItems(dbconnection.getInt("items"));
           gamestats.addPlayTime(dbconnection.getString("time_played"));
         }
         return true;

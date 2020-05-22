@@ -8,9 +8,11 @@ public class Game
   private String password;
   private int highscore;
   private int score;
+  private int hits;
   private int shots;
   private int items;
   private String time_played;
+  private String total_time_played;
   private GUI gui;
   private Terminator terminator;
   private Congratulator congratulator;
@@ -26,9 +28,11 @@ public class Game
     congratulator = new Congratulator();
     highscore=0;
     score=0;
+    hits = 0;
     shots=0;
     items=0;
     time_played="00:00";
+    total_time_played = "0.0.0 | 0:0:0";
     email = "";
     username = "";
     password = "";
@@ -67,6 +71,10 @@ public class Game
     myApp.exit();
   }
   
+  public void showHint(String str) {
+    myApp.thread("runHint");
+  }
+  
   public void checkKeyPressed() {
     gui.checkKeyPressed();
   }
@@ -84,6 +92,9 @@ public class Game
     else if(currentGame=="AsteroidsGame$PageGameWon") {change2Menu();}
   }
   
+  public int getHits() {return hits;}
+  public void setHits(int hts) {hits = hts;}
+  
   public int getHighscore() {return highscore;}
   public void addHighscore(int hs) {
     if(hs>highscore) {highscore=hs;}
@@ -93,10 +104,10 @@ public class Game
   public void addScore(int sc) {score = sc;}
   
   public int getShots() {return shots;}
-  public void addShots(int sh) {shots += sh;}
+  public void addShots(int sh) {shots = sh;}
   
   public int getItems() {return items;}
-  public void addItems(int it) {items += it;}
+  public void addItems(int it) {items = it;}
   
   public String getPlayTime() {return time_played;}
   public void addPlayTime(String pt) {
@@ -112,8 +123,11 @@ public class Game
     time_played = myApp.nf(numberCrtMinutes,2) + ":" + myApp.nf(numberCrtSeconds,2);
   }
   
+  public String getTotalPlayTime() {return total_time_played;}
+  public void setTotalPlayTime(String str) {total_time_played = str;}
+  
   public void updateEndStats() {
-    dbprox.gameEndUpdateStats(score,shots,items,highscore);
+    dbprox.gameEndUpdateStats(hits,shots,items,score);
   }
   
   public boolean logIn() {
@@ -154,5 +168,12 @@ public class Game
   public void change2Play () {gui.end();dbprox.gameStartUpdateStats(); gui = new PagePlay(myApp,this,terminator,congratulator);}
   public void change2Gameover () {gui.end(); gui = new PageGameover(myApp,this);}
   public void change2Gamewon () {gui.end(); gui = new PageGameWon(myApp,this);}
-  public void change2Statistics () {gui.end();if(dbprox.getStats(this)){this.addHighscore(dbprox.getHighscore());}  gui = new PageStatistics(myApp,this);}
+  public void change2Statistics () {
+    gui.end();
+    if(dbprox.getStats(this)) {
+      this.addHighscore(dbprox.getHighscore());
+      //this.setTotalPlayTime("Hi");
+      //dbprox.getTotalPlayedTime()
+    } 
+    gui = new PageStatistics(myApp,this);}
 }

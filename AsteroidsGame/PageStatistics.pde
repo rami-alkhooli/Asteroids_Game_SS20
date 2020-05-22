@@ -24,7 +24,7 @@ public class PageStatistics extends GUIstatistics
     textAlign(CENTER,CENTER);
     textSize(width/40);
     fill(250,250,250);
-    text("Highscore: " + myGame.getHighscore() + "\nScore: " + myGame.getScore() + "\nItems: " + myGame.getItems() + "\n Shots: " + myGame.getShots() + "\nPlay Time: " + myGame.getPlayTime(),width/2,height/2);
+    text("Highscore: " + myGame.getHighscore() + "\nScore: " + myGame.getScore() + "\nItems: " + myGame.getItems() + "\n Shots: " + myGame.getShots() + "\nHits: " + myGame.getHits() + "\nPlay Time: " + myGame.getPlayTime() + "\nTotal Play Time: " + myGame.getTotalPlayTime() ,width/2,height/2);
     noFill();
   }
   

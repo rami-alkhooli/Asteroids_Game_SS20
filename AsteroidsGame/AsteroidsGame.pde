@@ -2,9 +2,9 @@ Game theGame;
 
 void setup()
 {
-  size(1200,800);
+  //size(1200,800);
   frameRate(60);
-  //fullScreen();
+  fullScreen();
   theGame = new Game(this);
 }
 

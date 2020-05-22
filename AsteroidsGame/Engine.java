@@ -25,6 +25,7 @@ class Engine
 
   private int allowedItems;
   private int score;
+  private int hits;
   private int shots;
   private int items;
   private String time_played; // mus anders initialisiert werden, weil das über ein anderes Objekt läuft
@@ -40,6 +41,7 @@ class Engine
     congratulator = theCongratulator;
     myTimer = new Timer(theApp);
     score = 0;
+    hits = 0;
     shots = 0;
     items = 0;
     time_played = "00:00";
@@ -55,13 +57,14 @@ class Engine
     backgroundSound.loop();
   }
 
-  private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int shts, int itms, String tmeplyd) {
+  private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int hts, int shts, int itms, String tmeplyd) {
 
     myApp = theApp;
     terminator = theTerminator;
     congratulator = theCongratulator;
     myTimer = new Timer(theApp);
     score = scr;
+    hits = hts;
     shots = shts;
     items = itms;
     time_played = tmeplyd;
@@ -180,10 +183,10 @@ class Engine
     return myEngine;
   }
 
-  public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int hts, int shts, int itms, String tmeplyd) {
+  public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int hts, int shts, int itms, String tmeplyd) {
 
     if (myEngine==null) {
-      myEngine = new Engine(theApp, theTerminator, theCongratulator, hts, shts, itms, tmeplyd);
+      myEngine = new Engine(theApp, theTerminator, theCongratulator, scr, hts, shts, itms, tmeplyd);
     }
     return myEngine;
   }
@@ -294,6 +297,7 @@ class Engine
           listItems.add(new Item(myApp, list.get(n).getX(), list.get(n).getY())); 
           allowedItems--;
         }
+        hits += 1;
         score += list.get(n).getRadius();
         list.remove(n);
         return true;
@@ -315,6 +319,7 @@ class Engine
     }
   }
   
+  public int getHits() {return hits;}
   public int getScore() {return score;}
   public void setScore(int sc) {score = sc;}
   public int getShots() {return shots;}
