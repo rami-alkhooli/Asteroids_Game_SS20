@@ -3,6 +3,7 @@ import java.lang.*;
 
 public class Game
 {
+  private String email;
   private String username;
   private String password;
   private int highscore;
@@ -28,8 +29,9 @@ public class Game
     shots=0;
     items=0;
     time_played="00:00";
-    username = "testPlayer2";
-    password = "1234";
+    email = "";
+    username = "";
+    password = "";
     
     dbconnection = new MySQL(theApp, "192.168.43.14", "asteroidsV1", "DBHandler", "1234" );
    if(dbconnection.connect())
@@ -122,7 +124,31 @@ public class Game
       }
       else return false;
   }
-  public void change2Login () {gui.end(); dbprox.logout(); gui = new PageLogin(myApp,this);}
+  
+  public boolean logOut() {
+      dbprox.logout();
+      email = "";
+      username = "";
+      password = "";
+      return true;
+  }
+  
+  public boolean signUp() {
+    if(dbprox.register(email,username,password)==0) {
+      dbprox.login(username,password);
+      return true;
+    }
+    else return false;
+  }
+  
+  public void setEmail (String str) {email = str; myApp.println(str);}
+  public void setUsername (String str) {username = str; myApp.println(str);}
+  public void setPassword (String str) {password = str; myApp.println(str);}
+  public String getEmail() {return email;}
+  public String getUsername() {return username;}
+  public String getPassword() {return password;}
+  
+  public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
   public void change2Register () {gui.end(); gui = new PageRegister(myApp,this);}
   public void change2Menu () { gui.end(); gui = new PageMenu(myApp,this);}
   public void change2Play () {gui.end(); gui = new PagePlay(myApp,this,terminator,congratulator);}

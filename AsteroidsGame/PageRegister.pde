@@ -25,11 +25,11 @@ public class PageRegister extends GUIregister
     sWidth = theApp.width/8;
     sHeight = theApp.height/8;
     
-    buttonRegister.addButton("sign up").setValue(0).setPosition(3.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).setId(3).show();
+    buttonRegister.addButton("sign up").setValue(0).setPosition(3.5*sWidth,6*sHeight).setSize(sWidth,sHeight/2).setId(6).show();
     buttonBack.addButton("go back").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
-    fieldAccount.addTextfield("").setPosition(4*sWidth,2.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
-    fieldEmail.addTextfield("").setPosition(4*sWidth,3.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).show();
-    fieldPassword.addTextfield("").setPosition(4*sWidth,4.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setPasswordMode(true).show();
+    fieldAccount.addTextfield("").setPosition(4*sWidth,2.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setId(12).show();
+    fieldEmail.addTextfield("").setPosition(4*sWidth,3.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setId(13).show();
+    fieldPassword.addTextfield("").setPosition(4*sWidth,4.5*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setPasswordMode(true).setId(14).show();
   }
   
   public void showButtons() {
@@ -66,5 +66,10 @@ public class PageRegister extends GUIregister
     fieldAccount.hide();
     fieldEmail.hide();
     fieldPassword.hide();
+    fieldAccount = null;
+    fieldEmail = null;
+    fieldPassword = null;
+    buttonRegister = null;
+    buttonBack = null;
   }
 }

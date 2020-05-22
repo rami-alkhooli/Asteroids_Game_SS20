@@ -34,7 +34,7 @@ void controlEvent(ControlEvent theEvent) {
       theGame.end(); break;
       
       case(1):
-      theGame.change2Login(); break;
+      theGame.logOut(); theGame.change2Login(); break;
       
       case(2):
       theGame.change2Register();break;
@@ -51,17 +51,26 @@ void controlEvent(ControlEvent theEvent) {
 
       break;
       case(6):
-      theGame.change2Gameover();
-
-      break;
+      if(theGame.signUp()) {theGame.change2Menu();} break;
+      
       case(999):
       theGame.previousPage(); break;
+      
       case(10):
-      String username = theEvent.getController().getStringValue();       
-      break;
+      theGame.setUsername(theEvent.getController().getStringValue()); break;    
+      
       case(11):
-      String password = theEvent.getController().getStringValue();
-      break; 
+      theGame.setPassword(theEvent.getController().getStringValue()); break; 
+      
+      case(12):
+      theGame.setUsername(theEvent.getController().getStringValue()); break; 
+      
+      case(13):
+      theGame.setEmail(theEvent.getController().getStringValue()); break; 
+      
+      case(14):
+      theGame.setPassword(theEvent.getController().getStringValue()); break; 
+      
    }
  }
 }
