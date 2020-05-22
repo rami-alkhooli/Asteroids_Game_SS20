@@ -287,7 +287,7 @@ public class DBProxy
   
   all parameters of Game are 0 when the Player hasnt played a Game at all.
   **/
-  public void getStats(Game gamestats)
+  public boolean getStats(Game gamestats)
   {
     
     int gameId=0;
@@ -303,15 +303,18 @@ public class DBProxy
         while(dbconnection.next())
         {
           gamestats.addHighscore(dbconnection.getInt("highscore"));
-          gamestats.addShots(dbconnection.getInt("shoots"));
-          gamestats.addScore(dbconnection.getInt("hits"));
-          gamestats.addItems(dbconnection.getInt("items"));
+          gamestats.addShots(-gamestats.getShots()+dbconnection.getInt("shoots"));
+          gamestats.addScore(-gamestats.getScore()+dbconnection.getInt("hits"));
+          gamestats.addItems(-gamestats.getItems()+dbconnection.getInt("items"));
           gamestats.addPlayTime(dbconnection.getString("time_played"));
         }
+        return true;
     }
     catch(Exception e)
     {
-      throw e;
+     //throw e;      
+      return false;
+
     }
 
   }
@@ -349,9 +352,10 @@ public class DBProxy
   }
   
   
- /* public TimePlayedAsteroids getTotalPlayedTime()
+   public String getTotalPlayedTime()
   {
-    TimePlayedAsteroids tp = new TimePlayedAsteroids();
+    String time;
+    int year,month,day,hours,min,sec;
     Timestamp tmp;
     Timestamp calctime = new Timestamp(0);
     
@@ -380,15 +384,15 @@ public class DBProxy
     calctime.setHours(calctime.getHours()-1);
     
     println( "| time: "+calctime+" | test: "+calctime.getYear());
-    tp.seconds = calctime.getSeconds();
-    tp.minutes = calctime.getMinutes();
-    tp.hours = calctime.getHours();
-    tp.days = calctime.getDate()-1;
-    tp.months = calctime.getMonth()-1;
-    tp.years = calctime.getYear()-70;
-    return tp;
-    
-  }*/
+    year =calctime.getYear()-70;
+    month = calctime.getMonth()-1;
+    day = calctime.getDate()-1;
+    hours = calctime.getHours();
+    min = calctime.getMinutes();
+    sec =  calctime.getSeconds();
+    time = ""+year+"."+month+"."+day+" | "+hours+":"+min+":"+sec+"";
+    return time;
+  }
 }
 
   
