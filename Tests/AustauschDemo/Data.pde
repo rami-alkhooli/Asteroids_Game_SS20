@@ -125,6 +125,7 @@ public class Data
   
   public void receiveData() {
     dbprox.playerid = 1;
+    TimePlayedAsteroids tp;
     receivedData = dbprox.getStats();
     storedHighscore = dbprox.getHighscore();
     /*******++letzte Score?!**********/
@@ -133,8 +134,8 @@ public class Data
     storedShots = receivedData.shoots;
     storedItems = receivedData.items;
     storedTimePlayed = receivedData.time_played;
-    dbprox.getTotalPlayedTime();
-    
+    tp=dbprox.getTotalPlayedTime();
+    storedTimePlayed = ""+tp.hours+ ":"+tp.minutes+":"+tp.seconds;
     
     text("received !",400,550);
  
