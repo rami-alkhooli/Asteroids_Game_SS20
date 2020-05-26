@@ -37,7 +37,7 @@ public class PageGameWon extends GUIgamewon
     textAlign(CENTER, CENTER);
     textSize(myApp.width/60);
     fill(255,255,255);
-    text("Score: 0", width/2,3*(height/4));
+    text("Score: " + myGame.getScore(), width/2,3*(height/4));
     noFill();
   }
   

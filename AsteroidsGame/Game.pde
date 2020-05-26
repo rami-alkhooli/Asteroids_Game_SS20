@@ -31,7 +31,7 @@ public class Game
     hits = 0;
     shots=0;
     items=0;
-    time_played="00:00";
+    time_played="00:00:00";
     total_time_played = "0.0.0 | 0:0:0";
     email = "";
     username = "";
@@ -112,15 +112,16 @@ public class Game
   public String getPlayTime() {return time_played;}
   public void addPlayTime(String pt) {
     // Structure is mm:ss and you have to stick to it
-    int numberAddMinutes = Integer.parseInt(str(pt.charAt(0)) + str(pt.charAt(1)));
-    int numberAddSeconds = Integer.parseInt(str(pt.charAt(3)) + str(pt.charAt(4)));
-    int numberCrtMinutes = Integer.parseInt(str(time_played.charAt(0)) + str(time_played.charAt(1)));
-    int numberCrtSeconds = Integer.parseInt(str(time_played.charAt(3)) + str(time_played.charAt(4)));
+    time_played = pt;
+    //int numberAddMinutes = Integer.parseInt(str(pt.charAt(0)) + str(pt.charAt(1)));
+    //int numberAddSeconds = Integer.parseInt(str(pt.charAt(3)) + str(pt.charAt(4)));
+    //int numberCrtMinutes = Integer.parseInt(str(time_played.charAt(0)) + str(time_played.charAt(1)));
+    //int numberCrtSeconds = Integer.parseInt(str(time_played.charAt(3)) + str(time_played.charAt(4)));
     
-    numberCrtMinutes += numberAddMinutes;
-    numberCrtSeconds += numberAddSeconds;
+    //numberCrtMinutes += numberAddMinutes;
+    //numberCrtSeconds += numberAddSeconds;
     
-    time_played = myApp.nf(numberCrtMinutes,2) + ":" + myApp.nf(numberCrtSeconds,2);
+    //time_played = myApp.nf(numberCrtMinutes,2) + ":" + myApp.nf(numberCrtSeconds,2);
   }
   
   public String getTotalPlayTime() {return total_time_played;}
@@ -134,6 +135,11 @@ public class Game
     if(dbprox.login(username,password)==1)
       {
         //println("Login erfolgt!");
+        score=0;
+        hits = 0;
+        shots=0;
+        items=0;
+        time_played="00:00:00";
         return true;
       }
       else return false;
@@ -144,6 +150,12 @@ public class Game
       email = "";
       username = "";
       password = "";
+      score=0;
+      hits = 0;
+      shots=0;
+      items=0;
+      time_played="00:00:00";
+      
       return true;
   }
   

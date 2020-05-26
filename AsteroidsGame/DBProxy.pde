@@ -307,7 +307,7 @@ public class DBProxy
           //gamestats.addShots(dbconnection.getInt("shoots"));
           //gamestats.setHits(dbconnection.getInt("hits"));
           //gamestats.addItems(dbconnection.getInt("items"));
-          gamestats.addPlayTime(dbconnection.getString("time_played"));
+          gamestats.setTotalPlayTime(dbconnection.getString("time_played"));
         }
         return true;
     }

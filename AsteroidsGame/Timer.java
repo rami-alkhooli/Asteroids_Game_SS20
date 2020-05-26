@@ -24,7 +24,16 @@ public class Timer
   
   public String getTime() {
     int wholeTime = (stopTime - startTime)/1000;
-    String result = myApp.nf((int)((wholeTime/60)%60),2) + ":" + myApp.nf(wholeTime%60,2);
+    int hr = (int)(wholeTime/3600);
+    
+    wholeTime = wholeTime - (3600*hr);
+    int min = (int)(wholeTime/60);
+    
+    wholeTime = wholeTime - (60*min);
+    int sec = wholeTime%60;
+    
+    String result = myApp.nf(hr,2) + ":" + myApp.nf(min,2) + ":" + myApp.nf(sec,2);
+    
     return result;
   }
   
