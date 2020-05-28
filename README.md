@@ -1,20 +1,20 @@
-﻿# Asteroids Game
+# Asteroids Game
 
 ## Version
-0.19
+0.22
 
 ## Stand
-13.05.2020
+28.05.2020
 
 ## Komponenten
 
-### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=0.5&color=informational)
+### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
 - [x] verschiedene Seiten realisiern > Stichwort: Strategy Pattern
 - [x] Buttons, Eingabefelder etc. platzieren
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
 - [x] Überlegen, wie man das Spiel sauber startet und die Komplexität des Engine verstecket > Stichwort: Facade Pattern
-- [ ] Übernahme von Eingaben in Textfeldern ohne jedes Mal Enter zu klicken
-- [ ] Vergrößerung der Schrift von Buttons
+- [x] Übernahme von Eingaben in Textfeldern ohne jedes Mal Enter zu klicken
+- [x] Vergrößerung der Schrift von Buttons (ging nicht)
 - [x] Verstecken von Zeichen beim Passwort Schreiben
 
 ### Engine ![Version von Engine](https://img.shields.io/static/v1?label=Version&message=3.0&color=informational)
@@ -44,16 +44,16 @@
 - [x] Spielzeit anzeigen und zwischenspeichern
 - [x] Übergabe des Score nach Verlieren an Game
 
-### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
+### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.9&color=informational)
 - [x] erstellen
 - [x] Datensätze machen
 - [x] lokal ansprechen
 - [x] von der Ferne ansprechen (über IPv6)
 - [x] Beispiel-Programm zum Auslesen und Einschreiben in die Datenbank
-- [ ] Daten austauschen
-- [ ] Schnittstellenfunktionen zum Austausch zwischen DBProxy und Engine
-- [ ] Verbindung zur Datenbank aufbauen und Daten mit Game austauschen
-- [ ] Eine Klasse, die alle Objekete zur Laufzeit aufzeichnet und den Status der Objekte hat, ob sie vorhanden oder zerstört sind > Stichwort: Strategy Pattern > am besten in der Klasse Game, weil wir dort alle Objekte haben
+- [x] Daten austauschen
+- [x] Schnittstellenfunktionen zum Austausch zwischen DBProxy und Engine
+- [x] Verbindung zur Datenbank aufbauen und Daten mit Game austauschen
+- [x] Eine Klasse, die alle Objekete zur Laufzeit aufzeichnet und den Status der Objekte hat, ob sie vorhanden oder zerstört sind > Stichwort: Strategy Pattern > am besten in der Klasse Game, weil wir dort alle Objekte haben
 
 ## Anmerkungen
 - Für die Verwendung von Buttons der Klasse ControlP5 muss man die Bibliothek **ControlP5** zum Processing-Framework hinzufügen und mit "import" einbinden
