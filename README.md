@@ -1,14 +1,14 @@
 # Asteroids Game
 
 ## Version
-0.22
+1.0
 
 ## Stand
-28.05.2020
+03.06.2020
 
 ## Komponenten
 
-### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=0.6&color=informational)
+### GUI ![Version von GUI](https://img.shields.io/static/v1?label=Version&message=1.0&color=informational)
 - [x] verschiedene Seiten realisiern > Stichwort: Strategy Pattern
 - [x] Buttons, Eingabefelder etc. platzieren
 - [x] Dummy: eine funktion im Zustand "spielen" aufrufen, die etwas zeichnet
@@ -44,7 +44,7 @@
 - [x] Spielzeit anzeigen und zwischenspeichern
 - [x] Übergabe des Score nach Verlieren an Game
 
-### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=0.9&color=informational)
+### Datenbank ![Version von Datenbank](https://img.shields.io/static/v1?label=Version&message=2.0&color=informational)
 - [x] erstellen
 - [x] Datensätze machen
 - [x] lokal ansprechen
