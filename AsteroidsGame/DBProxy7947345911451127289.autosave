@@ -1,7 +1,6 @@
 import de.bezier.data.sql.*;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.sql.Time;
 
 public class DBProxy
 {
@@ -304,10 +303,10 @@ public class DBProxy
         while(dbconnection.next())
         {
           gamestats.addHighscore(dbconnection.getInt("highscore"));
-          //gamestats.addShots(dbconnection.getInt("shoots"));
+          gamestats.addShots(-gamestats.getShots()+dbconnection.getInt("shoots"));
           //gamestats.setHits(dbconnection.getInt("hits"));
-          //gamestats.addItems(dbconnection.getInt("items"));
-          gamestats.setTotalPlayTime(dbconnection.getString("time_played"));
+          gamestats.addItems(-gamestats.getItems()+dbconnection.getInt("items"));
+          gamestats.addPlayTime(dbconnection.getString("time_played"));
         }
         return true;
     }
@@ -355,7 +354,7 @@ public class DBProxy
   
    public String getTotalPlayedTime()
   {
-    String time = "0.0.0 | 0:0:0";
+    String time;
     int year,month,day,hours,min,sec;
     Timestamp tmp;
     Timestamp calctime = new Timestamp(0);
@@ -372,13 +371,10 @@ public class DBProxy
     println(i);
     for(int z=0;gameId[z]>=0;z++)
     {
-      //println(gameId[z]);
       dbconnection.query("select time_played from Game where idGame="+gameId[z]+";");
       while(dbconnection.next())
       {
-        println("test");
         tmp = dbconnection.getTimestamp("time_played");
-        //println("gettime test: "+tmp.toString());
         calctime.setTime(((calctime.getHours()-1)*3600+calctime.getMinutes()*60+calctime.getSeconds()+tmp.getSeconds()+tmp.getMinutes()*60+tmp.getHours()*3600)*1000);
         //calctime.setTime((calctime.getMinutes()*60+calctime.getHours()*3600+calctime.getSeconds()+tmp.getSeconds()+tmp.getMinutes()*60+tmp.getHours()*3600)*1000);
         println(tmp.getHours()+":"+tmp.getMinutes()+":"+tmp.getSeconds());
@@ -387,14 +383,15 @@ public class DBProxy
     //calctime.setTime(highscore*1000);
     calctime.setHours(calctime.getHours()-1);
     
-    println( "| time: "+calctime+" | test: "+calctime.getDate());
+    println( "| time: "+calctime+" | test: "+calctime.getYear());
     year =calctime.getYear()-70;
-    month = calctime.getMonth();
+    month = calctime.getMonth()-1;
     day = calctime.getDate()-1;
     hours = calctime.getHours();
     min = calctime.getMinutes();
     sec =  calctime.getSeconds();
     time = ""+year+"."+month+"."+day+" | "+hours+":"+min+":"+sec+"";
+    println(time);
     return time;
   }
 }
