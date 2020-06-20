@@ -8,6 +8,12 @@ public class PageMenu extends GUImenu
   private ControlP5 buttonLout;
   private ControlP5 buttonStat;
   
+  /**
+  * The constructor.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theGame is an object to access the components of the game adn exchange data.
+  **/
   public PageMenu(PApplet theApp, Game theGame) {
     myApp = theApp;
     
@@ -23,12 +29,18 @@ public class PageMenu extends GUImenu
     buttonLout.addButton("log out").setValue(0).setPosition(3*sWidth,5*sHeight).setSize(2*sWidth,sHeight/2).setId(1).show();
   }
   
+  /**
+  * This method shows the buttons of the game won page
+  **/
   public void showButtons() {
     buttonPlay.show();
     buttonStat.show();
     buttonLout.show();
   }
   
+  /**
+  * This method shows the name of the game at the top after successfully logging in.
+  **/
   public void showTitle() {
     textAlign(CENTER,CENTER);
     textSize(myApp.width/20);
@@ -39,6 +51,9 @@ public class PageMenu extends GUImenu
     noFill();
   }
   
+  /**
+  * This method removes the layout of the menu page after logging in successfully into the data base.
+  **/
   public void removeLayout() {
     buttonPlay.hide();
     buttonStat.hide();

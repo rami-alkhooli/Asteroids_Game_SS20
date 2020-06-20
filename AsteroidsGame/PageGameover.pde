@@ -10,6 +10,12 @@ public class PageGameover extends GUIgameover
   private PApplet myApp;
   private Game myGame;
   
+  /**
+  * The constructor.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theGame is an object to access the components of the game adn exchange data.
+  **/
   public PageGameover(PApplet theApp, Game theGame) {
     myApp = theApp;
     myGame = theGame;
@@ -22,10 +28,16 @@ public class PageGameover extends GUIgameover
     lostSound.play();
   }
   
+  /**
+  * This method shows the buttons of the game over page
+  **/
   public void showButtons() {
     buttonBack.show();
   }
   
+  /**
+  * This method shows the text "You have lost" after losing the game.
+  **/
   public void showGameover() {
     textAlign(CENTER,CENTER);
     textSize(myApp.width/40);
@@ -34,6 +46,9 @@ public class PageGameover extends GUIgameover
     noFill();
   }
   
+  /**
+  * This method shows the score made after losing the game.
+  **/
   public void showScore() {
     textAlign( CENTER, CENTER);
     textSize(myApp.width/60);
@@ -42,6 +57,9 @@ public class PageGameover extends GUIgameover
     noFill();
   }
   
+  /**
+  * This method shows the name of the game at the top after losing the game.
+  **/
   public void showTitle() {
     textAlign(CENTER,CENTER);
     textSize(myApp.width/20);
@@ -52,11 +70,17 @@ public class PageGameover extends GUIgameover
     noFill();
   }
   
+  /**
+  * This method starts a timer after losing the game and switches the gui to the menu page when the timer runs out.
+  **/
   public void makeTimer() {
     if(ttl>0) {ttl--;}
     else {myGame.change2Menu();}
   }
   
+  /**
+  * This method removes the layout of the game over page after losing the game.
+  **/
   public void removeLayout() {
     buttonBack.hide();
   }

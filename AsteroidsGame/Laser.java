@@ -16,6 +16,14 @@ public class Laser
   private static PApplet myApp;
   private static Laser myLaser;
   
+  /**
+  * The constructor.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param myX holds the current coordinate of the space ship on the x axis in the moment of firing the laser shot.
+  * @param myY holds the current coordinate of the space ship on the y axis in the moment of firing the laser shot.
+  * @param myPhi holds the current rotation angle of the space ship in the moment of firing the laser shot.
+  **/
   public Laser(PApplet theApp, float myX, float myY, float myPhi) {
     myApp = theApp;
     x = myX;
@@ -26,6 +34,11 @@ public class Laser
     born = myApp.second();
   }
   
+  /**
+  * This method is called in every frame but it draws only a laser shot when the space ship fires.
+  *
+  * @returns bool value: true if firing a laser shot / false if no laser shot was shot
+  **/
   public boolean shoot() {
       if(ttl>0) {
         ttl--;
@@ -40,7 +53,24 @@ public class Laser
     else return false;
   }
   
+  /**
+  * This is a getter method.
+  *
+  * @returns the coordinate of the current coordinate of the laser shot on the x axis.
+  **/
   public float getX() {return movingX;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the coordinate of the current coordinate of the laser shot on the y axis.
+  **/
   public float getY() {return movingY;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the coordinate of the constant radius of the laser shot. 
+  **/
   public float getRadius() {return 10;}
 }

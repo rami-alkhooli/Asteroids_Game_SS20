@@ -12,6 +12,12 @@ public class PageLogin extends GUIlogin
   
   private PFont font;
   
+  /**
+  * The constructor.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theGame is an object to access the components of the game adn exchange data.
+  **/
   public PageLogin(PApplet theApp, Game theGame) {
     myApp = theApp;
     
@@ -32,14 +38,18 @@ public class PageLogin extends GUIlogin
     fieldPassword.addTextfield("").setPosition(4*sWidth,4*sHeight).setSize(2*sWidth,sHeight/2).setFocus(false).setFont(font).setColor(color(255,255,255)).setPasswordMode(true).setId(11).show();
   }
   
-
-  
+  /**
+  * This method shows the buttons of the login page.
+  **/
   public void showButtons() {
     buttonBack.show();
     buttonLogin.show();
     buttonRegister.show();
   }
   
+  /**
+  * This method shows Texts username and password of the input fields to login.
+  **/
   public void showHints(){
     myApp.textAlign(myApp.RIGHT,myApp.BOTTOM);
     myApp.textSize(myApp.width/40);
@@ -49,11 +59,17 @@ public class PageLogin extends GUIlogin
     myApp.noFill();
   }
   
+  /**
+  * This method shows input fields of username and password.
+  **/
   public void showTextfields(){
     fieldUsername.show();
     fieldPassword.show();
   }
   
+  /**
+  * This method shows the name of the game at the top while logging in.
+  **/
   public void showTitle() {
     textAlign(CENTER,CENTER);
     textSize(myApp.width/20);
@@ -64,6 +80,9 @@ public class PageLogin extends GUIlogin
     noFill();
   }
   
+  /**
+  * This method removes the layout of the login page after logging in to the data base.
+  **/
   public void removeLayout() {
     buttonBack.hide();
     buttonLogin.hide();

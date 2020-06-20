@@ -11,6 +11,13 @@ public class Item
   private short value;
   private static PApplet myApp;
   
+  /**
+  * The constructor
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theX holds the coordinate of the collison's position on the x axis 
+  * @param theY holds the coordinate of the collison's position on the y axis 
+  **/
   public Item(PApplet theApp, float theX, float theY)
   {
     myApp = theApp;
@@ -25,6 +32,9 @@ public class Item
     
   }
   
+  /**
+  * This method is called everytime during the game but it draws an explosion only when 2 objects collide
+  **/
   public void show()
   {
     myApp.fill(COLOR,TRANSPARENCE);
@@ -35,8 +45,31 @@ public class Item
     myApp.noFill();
   }
   
+  /**
+  * This is a getter method.
+  *
+  * @returns the coordinate of the explosion's position on the x axis 
+  **/
   public float getX() {return x;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the coordinate of the explosion's position on the y axis 
+  **/
   public float getY() {return y;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns constant: the radius of the explosion 
+  **/
   public int getRadius() {return RADIUS;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the type of enforcement the item holds: Shield strength / Live / Score
+  **/
   public short getValue() {return value;}
 }

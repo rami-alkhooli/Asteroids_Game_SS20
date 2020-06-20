@@ -7,6 +7,12 @@ public class PageStatistics extends GUIstatistics
   private PApplet myApp;
   private Game myGame;
   
+  /**
+  * The constructor.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theGame is an object to access the components of the game adn exchange data.
+  **/
   public PageStatistics(PApplet theApp, Game theGame) {
     myApp = theApp;
     myGame = theGame;
@@ -16,10 +22,16 @@ public class PageStatistics extends GUIstatistics
     buttonBack.addButton("menu").setValue(0).setPosition(7*sWidth,0.5*sHeight).setSize(sWidth/2,sHeight/4).setId(999).show();
   }
   
+  /**
+  * This method shows the buttons of the statistics page.
+  **/
   public void showButtons() {
     buttonBack.show();
   }
   
+  /**
+  * This method shows statistics of the player.
+  **/
   public void showStatistics() {
     textAlign(CENTER,CENTER);
     textSize(width/40);
@@ -28,6 +40,9 @@ public class PageStatistics extends GUIstatistics
     noFill();
   }
   
+  /**
+  * This method shows the name of the game at the top while showing statistics.
+  **/
   public void showTitle() {
     textAlign(CENTER,CENTER);
     textSize(width/20);
@@ -38,6 +53,9 @@ public class PageStatistics extends GUIstatistics
     noFill();
   }
   
+  /**
+  * This method removes the layout of the statistics page when leaving it.
+  **/
   public void removeLayout() {
     buttonBack.hide();
   }
