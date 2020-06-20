@@ -16,6 +16,14 @@ public class Asteroid
   private float[] xPoint;
   private float[] yPoint;
   
+  /**
+  * The constructor
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theLevel is an object of the class Level, that holds the current level of the game
+  * @param ragedness holds the rageddness of the generated asteroid in a float number (the distance between midpoint and surface)
+  * @param vertices holds the number of edges of the generated asteroid
+  **/
   public Asteroid(PApplet theApp, Level theLevel, float rageddness, int vertices) {
     
     myApp = theApp;
@@ -44,6 +52,9 @@ public class Asteroid
     
   }
   
+  /**
+  * This method updates the properties of the asteroid and draws it
+  **/
   public void show() {
     
     updateCoordinates();
@@ -52,7 +63,10 @@ public class Asteroid
     checkBorders();
     
   }
-    
+  
+  /**
+  * This method checks if the asteroid has passed the corners and reverses it from the other corner
+  **/
   private void checkBorders() {
     
     if( x > myApp.width+MAXRADIUS ) {x-=(myApp.width+(2*MAXRADIUS)) ;}
@@ -62,6 +76,9 @@ public class Asteroid
     
   }
   
+  /**
+  * This method draws a circle around the asteroid so that a collision can be easily detected
+  **/
   private void drawBoundary() {
     
     myApp.fill(COLOR,TRANSPARENCE);
@@ -69,6 +86,9 @@ public class Asteroid
     
   }
   
+  /**
+  * This method draws the asteroid of the current level
+  **/
   private void drawShape() {
     
     myApp.fill(COLOR);
@@ -83,14 +103,34 @@ public class Asteroid
     
   }
   
+  /**
+  * This method updates the coordinates of the asteroid on the x and y axis
+  **/
   private void updateCoordinates() {
-
+    
     x += speedX;
     y += speedY;
     
   }
   
+  /**
+  * This is a getter method 
+  * 
+  * @returns the coordinate on the x axis
+  **/
   public float getX() {return x;}
+  
+  /**
+  * This is a getter method 
+  * 
+  * @returns the coordinate on the y axis
+  **/
   public float getY() {return y;}
+  
+  /**
+  * This is a getter method 
+  * 
+  * @returns the longest radius of the asteroid (the radius of the bounding circle)
+  **/
   public float getRadius() {return MAXRADIUS;}
 }

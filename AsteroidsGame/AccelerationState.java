@@ -3,7 +3,7 @@ import processing.core.*;
 public interface AccelerationState
 {
   /**
-  * This function changes the acceleration and increases or decreases the speed of the space ship
+  * This method changes the acceleration and increases or decreases the speed of the space ship
   * 
   * @param speed holds the value of the space ship
   * @param size holds the size of the space ship and indicates the mass of the it so that the acceleration is relative to the mass
@@ -12,9 +12,9 @@ public interface AccelerationState
   public float accelerate(float speed ,float size);
 
   /**
-  * This function is used to generate thrust while accelerating
+  * This method is used to generate thrust while accelerating
   *
-  * @param theApp is a pointer on the processing object 
+  * @param theApp is an object to access and use processing functions in the current application
   * @param x holds the position of the midpoint of the space ship on the x axis
   * @param y holds the position of the midpoint of the space ship on the y axis
   * @param up holds the length of the space ship from the midpoint to the top

@@ -3,7 +3,7 @@ import processing.core.*;
 public class AccStateStoppedF implements AccelerationState
 {
   /**
-  * This function decreases the speed of the space ship while decelerating forwards
+  * This method decreases the speed of the space ship while decelerating forwards
   * 
   * @param speed holds the value of the space ship
   * @param size holds the size of the space ship and indicates the mass of the it so that the deceleration is relative to the mass
@@ -22,9 +22,9 @@ public class AccStateStoppedF implements AccelerationState
   }
   
   /**
-  * This function is overwritten and does nothing because when the space ship stops accelerating a thrust won't be generated
+  * This method is overwritten and does nothing because when the space ship stops accelerating a thrust won't be generated
   *
-  * @param theApp is a pointer on the processing object 
+  * @param theApp is an object to access and use processing functions in the current application
   * @param x holds the position of the midpoint of the space ship on the x axis
   * @param y holds the position of the midpoint of the space ship on the y axis
   * @param up holds the length of the space ship from the midpoint to the top

@@ -15,6 +15,13 @@ public class Explosion extends Thread
   private float x;
   private float y;
   
+  /**
+  * The default constructor
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theX 
+  * @param theY 
+  **/
   public Explosion(PApplet theApp, float theX, float theY) {
     
     myApp = theApp;
@@ -29,6 +36,11 @@ public class Explosion extends Thread
     
   }
   
+  /**
+  * This method draws an explosion where two objects collide for a half second
+  *
+  * @returns bool value if finished: false if still drawing / true if finished drawing
+  **/
   public boolean show() {
     
     if(ttl>0) {

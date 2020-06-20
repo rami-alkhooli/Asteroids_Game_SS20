@@ -34,6 +34,13 @@ class Engine
   private ArrayList <Explosion> listExplosions;
   private ArrayList <Item> listItems;
 
+  /**
+  * The default constructor
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theTerminator is an object to detect when the game is lost
+  * @param theCongratulator is an object to detect when the game is won
+  **/
   private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator) {
 
     myApp = theApp;
@@ -57,6 +64,18 @@ class Engine
     backgroundSound.loop();
   }
 
+  /**
+  * A special constructor, if a game stats (Highscore, Hits, etc.) already exists
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theTerminator is an object to detect when the game is lost
+  * @param theCongratulator is an object to detect when the game is won
+  * @param scr holds the highscore of the registered player
+  * @param hts holds the total hits of the registered player
+  * @param shts holds the total shoots of the registered player
+  * @param itms holds the total collected items of the registered player
+  * @param tmeplyd holds the total played time of the registered player
+  **/
   private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int hts, int shts, int itms, String tmeplyd) {
 
     myApp = theApp;
@@ -80,6 +99,9 @@ class Engine
     backgroundSound.loop();
   }
 
+  /**
+  * This method detects collisions and draws every thing 
+  **/
   public void run() {
 
     detectCollisionsWithAsteroids(sh, listAsteroids);
@@ -130,6 +152,10 @@ class Engine
     if(getNrAsteroids()==0) {thrustSound.stop(); go2NextLevel();}
   }
   
+  /**
+  * This method is called when the game is lost or won.
+  * It stops the sounds and destroy the objects
+  **/
   public void stop() {
     sh.destroy();
     st.destroy();
@@ -143,6 +169,9 @@ class Engine
     myEngine = null;
   }
 
+  /**
+  * This method will be called in the main file in this application and will check when keys are pressed and handles this events
+  **/
   public void checkKeyPressed() {
 
     if (myApp.keyCode == myApp.UP) {
@@ -164,6 +193,9 @@ class Engine
     }
   }
 
+  /**
+  * This method will be called in the main file in this application and will check when keys are released and handles this events
+  **/
   public void checkKeyReleased() {
 
     if (myApp.keyCode == myApp.UP) {
@@ -175,6 +207,13 @@ class Engine
     if (myApp.keyCode == myApp.LEFT) sh.setRotState(new RotStateStoppedL());
   }
 
+  /**
+  * This method implements the single ton pattern and creates one instance using the default constructor, thus it needs the same parameters
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theTerminator is an object to detect when the game is lost
+  * @param theCongratulator is an object to detect when the game is won
+  **/
   public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator) {
 
     if (myEngine==null) {
@@ -183,6 +222,18 @@ class Engine
     return myEngine;
   }
 
+  /**
+  * This method implements the single ton pattern and creates one instance using the special constructor, thus it needs the same parameters
+  *
+  * @param theApp is an object to access and use processing functions in the current application
+  * @param theTerminator is an object to detect when the game is lost
+  * @param theCongratulator is an object to detect when the game is won
+  * @param scr holds the highscore of the registered player
+  * @param hts holds the total hits of the registered player
+  * @param shts holds the total shoots of the registered player
+  * @param itms holds the total collected items of the registered player
+  * @param tmeplyd holds the total played time of the registered player
+  **/
   public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int hts, int shts, int itms, String tmeplyd) {
 
     if (myEngine==null) {
@@ -191,6 +242,11 @@ class Engine
     return myEngine;
   }
 
+  /**
+  * This method gets a n object of the class Level and changes the current level of the game
+  *
+  * @param theLevel holds the new level, which the game will change to
+  **/
   public void setLevel(Level theLevel) {
 
     level = theLevel;
@@ -199,6 +255,9 @@ class Engine
     generateAsteroids();
   }
   
+  /**
+  * THis method is called after winning current level and it takes the game to next level
+  **/
   public void go2NextLevel() {
     String currentLevel = level.getClass().getName();
     if(currentLevel=="LevelFirst") {setLevel(new LevelSecond());}
@@ -208,6 +267,9 @@ class Engine
     else if(currentLevel=="LevelFifth") {congratulator.winGame();}
   }
 
+  /**
+  * This method generates asteroids at the beginning
+  **/
   private void generateAsteroids() {
 
     listAsteroids = new ArrayList<Asteroid>();
@@ -219,6 +281,9 @@ class Engine
     }
   }
 
+  /**
+  * This method draws all asteroids
+  **/
   private void drawAsteroids() {
 
     for (int i = 0; i<listAsteroids.size(); i++) {
@@ -228,6 +293,9 @@ class Engine
     }
   }
 
+  /**
+  * This method shows statistics in runtime
+  **/
   public void statistics() {
 
     myApp.fill(255, 255, 255);
@@ -246,6 +314,12 @@ class Engine
     myApp.text("Asteroids: " + this.getNrAsteroids(), 650, 50);
   }
 
+  /**
+  * This method detects collisions between space ship and asteroids
+  *
+  * @param ship holds the space ship of the player
+  * @param list holds a list of the current floating asteroids
+  **/
   private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list) {
 
     for (int n=0; n<list.size(); n++) {
@@ -279,13 +353,26 @@ class Engine
     }
   }
 
+  /**
+  * This method detects collisions between the space ship and space station. It is used to detect, whether the space ship delivered the collected items at the space station
+  *
+  * @param ship holds the space ship of the player
+  * @param station holds the space station of the player
+  **/
   private void detectCollisionsWithSpacestation(SpaceShip ship, SpaceStation station) {
 
     if ( myApp.dist( ship.getX(), ship.getY(), station.getX(), station.getY() ) < (ship.getRadius() + station.getRadius()) ) {
       station.loadItems(ship, this);
     }
   }
-
+  
+  /**
+  * This method detects collisions between asteroids and laser shots
+  *
+  * @param lasershot holds the object of the fired laser shot
+  * @param list holds a list of the current floating asteroids
+  * @returns true if a collision was detected / false if a collision was not detected
+  **/
   private boolean detectCollisionsWithLaser(Laser lasershot, ArrayList<Asteroid> list) {
 
     for (int n=0; n<list.size(); n++) {
@@ -307,6 +394,12 @@ class Engine
     return false;
   }
 
+  /**
+  * This method detects collisions between the space ship and items. It is used to indicate whether the space ship collected items
+  *
+  * @param ship holds the space ship of the player
+  * @param list holds a list of items generated in the playground
+  **/
   private void detectCollisionsWithItems(SpaceShip ship, ArrayList<Item> list) {
 
     for (int n=0; n<list.size(); n++) {
@@ -319,17 +412,88 @@ class Engine
     }
   }
   
+  /**
+  * This is a getter method.
+  *
+  * @returns the number of times an asteroid was hit by a laser shot
+  **/
   public int getHits() {return hits;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the score of the space ship gained in the game
+  **/
   public int getScore() {return score;}
+  
+  /**
+  * This is a setter method.
+  *
+  * @param sc holds the new score to be set
+  **/
   public void setScore(int sc) {score = sc;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the total shots fired by the space ship
+  **/
   public int getShots() {return shots;}
+  
+  /**
+  * This is a setter method.
+  *
+  * @param sh holds the new number of shots to be set
+  **/
   public void setShots(int sh) {shots = sh;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the collected items
+  **/
   public int getItems() {return items;}
+  
+  /**
+  * This is a setter method.
+  *
+  * @param it holds the new number of collected items to be set
+  **/
   public void setItems(int it) {items = it;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the total played time
+  **/
   public String getPlayTime() {return myTimer.getTime();}
+  
+  /**
+  * This is a setter method.
+  *
+  * @param pt holds the total new played time to be set
+  **/
   public void setPlayTime(String pt) {time_played = pt;}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the strength of the shield (100 full / 50 damaged / 0 destroyed)
+  **/
   public int getShield() {return sh.getShield();}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the number of the asteroids generated in play ground
+  **/
   public int getNrAsteroids() {return listAsteroids.size();}
+  
+  /**
+  * This is a getter method.
+  *
+  * @returns the number of explosions generated after collisions
+  **/
   public int getNrExplosions() {return listExplosions.size();}
   
 }

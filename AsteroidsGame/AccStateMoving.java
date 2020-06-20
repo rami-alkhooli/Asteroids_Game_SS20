@@ -3,7 +3,7 @@ import processing.core.*;
 public class AccStateMoving implements AccelerationState
 {
   /**
-  * This function increases the speed of the space ship while accelerating forwards
+  * This method increases the speed of the space ship while accelerating forwards
   * 
   * @param speed holds the value of the space ship
   * @param size holds the size of the space ship and indicates the mass of the it so that the acceleration is relative to the mass
@@ -21,9 +21,9 @@ public class AccStateMoving implements AccelerationState
   }
   
   /**
-  * This function is overwritten and is used to generate thrust while accelerating forwards
+  * This method is overwritten and is used to generate thrust while accelerating forwards
   *
-  * @param theApp is a pointer on the processing object 
+  * @param theApp is an object to access and use processing functions in the current application
   * @param x holds the position of the midpoint of the space ship on the x axis
   * @param y holds the position of the midpoint of the space ship on the y axis
   * @param up holds the length of the space ship from the midpoint to the top
