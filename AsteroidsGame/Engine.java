@@ -28,18 +28,18 @@ class Engine
   private int hits;
   private int shots;
   private int items;
-  private String time_played; // mus anders initialisiert werden, weil das über ein anderes Objekt läuft
+  private String time_played;
 
   private ArrayList <Asteroid> listAsteroids;
   private ArrayList <Explosion> listExplosions;
   private ArrayList <Item> listItems;
 
   /**
-  * The default constructor
+  * The default constructor (private).
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param theTerminator is an object to detect when the game is lost
-  * @param theCongratulator is an object to detect when the game is won
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theTerminator is an object to detect when the game is lost.
+  * @param theCongratulator is an object to detect when the game is won.
   **/
   private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator) {
 
@@ -65,16 +65,16 @@ class Engine
   }
 
   /**
-  * A special constructor, if a game stats (Highscore, Hits, etc.) already exists
+  * A special constructor (private), if a game stats (Highscore, Hits, etc.) already exists.
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param theTerminator is an object to detect when the game is lost
-  * @param theCongratulator is an object to detect when the game is won
-  * @param scr holds the highscore of the registered player
-  * @param hts holds the total hits of the registered player
-  * @param shts holds the total shoots of the registered player
-  * @param itms holds the total collected items of the registered player
-  * @param tmeplyd holds the total played time of the registered player
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theTerminator is an object to detect when the game is lost.
+  * @param theCongratulator is an object to detect when the game is won.
+  * @param scr holds the highscore of the registered player.
+  * @param hts holds the total hits of the registered player.
+  * @param shts holds the total shoots of the registered player.
+  * @param itms holds the total collected items of the registered player.
+  * @param tmeplyd holds the total played time of the registered player.
   **/
   private Engine(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int hts, int shts, int itms, String tmeplyd) {
 
@@ -100,7 +100,7 @@ class Engine
   }
 
   /**
-  * This method detects collisions and draws every thing 
+  * This method detects collisions and draws every thing.
   **/
   public void run() {
 
@@ -154,7 +154,7 @@ class Engine
   
   /**
   * This method is called when the game is lost or won.
-  * It stops the sounds and destroy the objects
+  * It stops the sounds and destroy the objects.
   **/
   public void stop() {
     sh.destroy();
@@ -170,7 +170,7 @@ class Engine
   }
 
   /**
-  * This method will be called in the main file in this application and will check when keys are pressed and handles this events
+  * This method will be called in the main file in this application and will check when keys are pressed and handles this events.
   **/
   public void checkKeyPressed() {
 
@@ -194,7 +194,7 @@ class Engine
   }
 
   /**
-  * This method will be called in the main file in this application and will check when keys are released and handles this events
+  * This method will be called in the main file in this application and will check when keys are released and handles this events.
   **/
   public void checkKeyReleased() {
 
@@ -208,11 +208,11 @@ class Engine
   }
 
   /**
-  * This method implements the single ton pattern and creates one instance using the default constructor, thus it needs the same parameters
+  * This method implements the single ton pattern and creates one instance using the default constructor, thus it needs the same parameters.
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param theTerminator is an object to detect when the game is lost
-  * @param theCongratulator is an object to detect when the game is won
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theTerminator is an object to detect when the game is lost.
+  * @param theCongratulator is an object to detect when the game is won.
   **/
   public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator) {
 
@@ -223,16 +223,16 @@ class Engine
   }
 
   /**
-  * This method implements the single ton pattern and creates one instance using the special constructor, thus it needs the same parameters
+  * This method implements the single ton pattern and creates one instance using the special constructor, thus it needs the same parameters.
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param theTerminator is an object to detect when the game is lost
-  * @param theCongratulator is an object to detect when the game is won
-  * @param scr holds the highscore of the registered player
-  * @param hts holds the total hits of the registered player
-  * @param shts holds the total shoots of the registered player
-  * @param itms holds the total collected items of the registered player
-  * @param tmeplyd holds the total played time of the registered player
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theTerminator is an object to detect when the game is lost.
+  * @param theCongratulator is an object to detect when the game is won.
+  * @param scr holds the highscore of the registered player.
+  * @param hts holds the total hits of the registered player.
+  * @param shts holds the total shoots of the registered player.
+  * @param itms holds the total collected items of the registered player.
+  * @param tmeplyd holds the total played time of the registered player.
   **/
   public static Engine start(PApplet theApp, Terminator theTerminator, Congratulator theCongratulator, int scr, int hts, int shts, int itms, String tmeplyd) {
 
@@ -243,9 +243,9 @@ class Engine
   }
 
   /**
-  * This method gets a n object of the class Level and changes the current level of the game
+  * This method gets a n object of the class Level and changes the current level of the game.
   *
-  * @param theLevel holds the new level, which the game will change to
+  * @param theLevel holds the new level, which the game will change to.
   **/
   public void setLevel(Level theLevel) {
 
@@ -256,7 +256,7 @@ class Engine
   }
   
   /**
-  * THis method is called after winning current level and it takes the game to next level
+  * THis method is called after winning current level and it takes the game to next level.
   **/
   public void go2NextLevel() {
     String currentLevel = level.getClass().getName();
@@ -268,7 +268,7 @@ class Engine
   }
 
   /**
-  * This method generates asteroids at the beginning
+  * This method generates asteroids at the beginning.
   **/
   private void generateAsteroids() {
 
@@ -282,7 +282,7 @@ class Engine
   }
 
   /**
-  * This method draws all asteroids
+  * This method draws all asteroids.
   **/
   private void drawAsteroids() {
 
@@ -294,7 +294,7 @@ class Engine
   }
 
   /**
-  * This method shows statistics in runtime
+  * This method shows statistics in runtime.
   **/
   public void statistics() {
 
@@ -315,10 +315,10 @@ class Engine
   }
 
   /**
-  * This method detects collisions between space ship and asteroids
+  * This method detects collisions between space ship and asteroids.
   *
-  * @param ship holds the space ship of the player
-  * @param list holds a list of the current floating asteroids
+  * @param ship holds the space ship of the player.
+  * @param list holds a list of the current floating asteroids.
   **/
   private void detectCollisionsWithAsteroids(SpaceShip ship, ArrayList<Asteroid> list) {
 
@@ -354,10 +354,10 @@ class Engine
   }
 
   /**
-  * This method detects collisions between the space ship and space station. It is used to detect, whether the space ship delivered the collected items at the space station
+  * This method detects collisions between the space ship and space station. It is used to detect, whether the space ship delivered the collected items at the space station.
   *
-  * @param ship holds the space ship of the player
-  * @param station holds the space station of the player
+  * @param ship holds the space ship of the player.
+  * @param station holds the space station of the player.
   **/
   private void detectCollisionsWithSpacestation(SpaceShip ship, SpaceStation station) {
 
@@ -367,11 +367,11 @@ class Engine
   }
   
   /**
-  * This method detects collisions between asteroids and laser shots
+  * This method detects collisions between asteroids and laser shots.
   *
-  * @param lasershot holds the object of the fired laser shot
-  * @param list holds a list of the current floating asteroids
-  * @returns true if a collision was detected / false if a collision was not detected
+  * @param lasershot holds the object of the fired laser shot.
+  * @param list holds a list of the current floating asteroids.
+  * @returns true if a collision was detected / false if a collision was not detected.
   **/
   private boolean detectCollisionsWithLaser(Laser lasershot, ArrayList<Asteroid> list) {
 
@@ -395,10 +395,10 @@ class Engine
   }
 
   /**
-  * This method detects collisions between the space ship and items. It is used to indicate whether the space ship collected items
+  * This method detects collisions between the space ship and items. It is used to indicate whether the space ship collected items.
   *
-  * @param ship holds the space ship of the player
-  * @param list holds a list of items generated in the playground
+  * @param ship holds the space ship of the player.
+  * @param list holds a list of items generated in the playground.
   **/
   private void detectCollisionsWithItems(SpaceShip ship, ArrayList<Item> list) {
 
@@ -415,42 +415,42 @@ class Engine
   /**
   * This is a getter method.
   *
-  * @returns the number of times an asteroid was hit by a laser shot
+  * @returns the number of times an asteroid was hit by a laser shot.
   **/
   public int getHits() {return hits;}
   
   /**
   * This is a getter method.
   *
-  * @returns the score of the space ship gained in the game
+  * @returns the score of the space ship gained in the game.
   **/
   public int getScore() {return score;}
   
   /**
   * This is a setter method.
   *
-  * @param sc holds the new score to be set
+  * @param sc holds the new score to be set.
   **/
   public void setScore(int sc) {score = sc;}
   
   /**
   * This is a getter method.
   *
-  * @returns the total shots fired by the space ship
+  * @returns the total shots fired by the space ship.
   **/
   public int getShots() {return shots;}
   
   /**
   * This is a setter method.
   *
-  * @param sh holds the new number of shots to be set
+  * @param sh holds the new number of shots to be set.
   **/
   public void setShots(int sh) {shots = sh;}
   
   /**
   * This is a getter method.
   *
-  * @returns the collected items
+  * @returns the collected items.
   **/
   public int getItems() {return items;}
   
@@ -464,35 +464,35 @@ class Engine
   /**
   * This is a getter method.
   *
-  * @returns the total played time
+  * @returns the total played time.
   **/
   public String getPlayTime() {return myTimer.getTime();}
   
   /**
   * This is a setter method.
   *
-  * @param pt holds the total new played time to be set
+  * @param pt holds the total new played time to be set.
   **/
   public void setPlayTime(String pt) {time_played = pt;}
   
   /**
   * This is a getter method.
   *
-  * @returns the strength of the shield (100 full / 50 damaged / 0 destroyed)
+  * @returns the strength of the shield (100 full / 50 damaged / 0 destroyed).
   **/
   public int getShield() {return sh.getShield();}
   
   /**
   * This is a getter method.
   *
-  * @returns the number of the asteroids generated in play ground
+  * @returns the number of the asteroids generated in play ground.
   **/
   public int getNrAsteroids() {return listAsteroids.size();}
   
   /**
   * This is a getter method.
   *
-  * @returns the number of explosions generated after collisions
+  * @returns the number of explosions generated after collisions.
   **/
   public int getNrExplosions() {return listExplosions.size();}
   

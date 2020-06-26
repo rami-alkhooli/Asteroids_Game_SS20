@@ -17,12 +17,12 @@ public class Asteroid
   private float[] yPoint;
   
   /**
-  * The constructor
+  * The constructor.
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param theLevel is an object of the class Level, that holds the current level of the game
-  * @param ragedness holds the rageddness of the generated asteroid in a float number (the distance between midpoint and surface)
-  * @param vertices holds the number of edges of the generated asteroid
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theLevel is an object of the class Level, that holds the current level of the game.
+  * @param ragedness holds the rageddness of the generated asteroid in a float number (the distance between midpoint and surface).
+  * @param vertices holds the number of edges of the generated asteroid.
   **/
   public Asteroid(PApplet theApp, Level theLevel, float rageddness, int vertices) {
     
@@ -53,7 +53,7 @@ public class Asteroid
   }
   
   /**
-  * This method updates the properties of the asteroid and draws it
+  * This method updates the properties of the asteroid and draws it.
   **/
   public void show() {
     
@@ -65,7 +65,7 @@ public class Asteroid
   }
   
   /**
-  * This method checks if the asteroid has passed the corners and reverses it from the other corner
+  * This method checks if the asteroid has passed the corners and reverses it from the other corner.
   **/
   private void checkBorders() {
     
@@ -77,7 +77,7 @@ public class Asteroid
   }
   
   /**
-  * This method draws a circle around the asteroid so that a collision can be easily detected
+  * This method draws a circle around the asteroid so that a collision can be easily detected.
   **/
   private void drawBoundary() {
     
@@ -87,7 +87,7 @@ public class Asteroid
   }
   
   /**
-  * This method draws the asteroid of the current level
+  * This method draws the asteroid of the current level.
   **/
   private void drawShape() {
     
@@ -104,7 +104,7 @@ public class Asteroid
   }
   
   /**
-  * This method updates the coordinates of the asteroid on the x and y axis
+  * This method updates the coordinates of the asteroid on the x and y axis.
   **/
   private void updateCoordinates() {
     
@@ -114,23 +114,23 @@ public class Asteroid
   }
   
   /**
-  * This is a getter method 
+  * This is a getter method.
   * 
-  * @returns the coordinate on the x axis
+  * @returns the coordinate on the x axis.
   **/
   public float getX() {return x;}
   
   /**
   * This is a getter method 
   * 
-  * @returns the coordinate on the y axis
+  * @returns the coordinate on the y axis.
   **/
   public float getY() {return y;}
   
   /**
   * This is a getter method 
   * 
-  * @returns the longest radius of the asteroid (the radius of the bounding circle)
+  * @returns the longest radius of the asteroid (the radius of the bounding circle).
   **/
   public float getRadius() {return MAXRADIUS;}
 }

@@ -28,7 +28,7 @@ public class PageGameWon extends GUIgamewon
   }
   
   /**
-  * This method shows the buttons of the game won page
+  * This method shows the buttons of the game won page.
   **/
   public void showButtons() {
     buttonBack.show();

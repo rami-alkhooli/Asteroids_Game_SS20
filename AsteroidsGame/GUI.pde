@@ -13,12 +13,12 @@ public interface GUI
   public void end();
   
   /**
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed();
   
   /**
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased();
 }
@@ -29,7 +29,7 @@ public abstract class GUIgameover implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -42,7 +42,7 @@ public abstract class GUIgameover implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -51,16 +51,16 @@ public abstract class GUIgameover implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
 
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
   }
@@ -80,7 +80,7 @@ public abstract class GUIgamewon implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -93,7 +93,7 @@ public abstract class GUIgamewon implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -102,16 +102,16 @@ public abstract class GUIgamewon implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
 
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
   }
@@ -131,7 +131,7 @@ public abstract class GUIlogin implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -143,7 +143,7 @@ public abstract class GUIlogin implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -152,16 +152,16 @@ public abstract class GUIlogin implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
     
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
     
@@ -181,7 +181,7 @@ public abstract class GUImenu implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -191,7 +191,7 @@ public abstract class GUImenu implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -200,16 +200,16 @@ public abstract class GUImenu implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
     
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
     
@@ -227,7 +227,7 @@ public abstract class GUIplay implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -236,7 +236,7 @@ public abstract class GUIplay implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -245,16 +245,16 @@ public abstract class GUIplay implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
     playKeyPressed();
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
     playKeyReleased();
@@ -272,7 +272,7 @@ public abstract class GUIregister implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -284,7 +284,7 @@ public abstract class GUIregister implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -293,16 +293,16 @@ public abstract class GUIregister implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
     
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
     
@@ -322,7 +322,7 @@ public abstract class GUIstatistics implements GUI
   protected int sHeight;
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method will be called in every frame as long the gui is running.
   * It draws the components of each gui page.
   **/
@@ -333,7 +333,7 @@ public abstract class GUIstatistics implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
+  * overwritten (from the interface GUI).
   * This method is called when the gui page will change.
   * It deletes the components of the old page and the layout.
   **/
@@ -342,16 +342,16 @@ public abstract class GUIstatistics implements GUI
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyPressed() {
     
   }
   
   /**
-  * overwritten (from the interface GUI)
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
+  * overwritten (from the interface GUI).
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
   **/
   public void checkKeyReleased() {
     

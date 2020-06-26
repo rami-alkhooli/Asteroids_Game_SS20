@@ -37,7 +37,7 @@ public class Laser
   /**
   * This method is called in every frame but it draws only a laser shot when the space ship fires.
   *
-  * @returns bool value: true if firing a laser shot / false if no laser shot was shot
+  * @returns bool value: true if firing a laser shot / false if no laser shot was shot.
   **/
   public boolean shoot() {
       if(ttl>0) {

@@ -30,7 +30,7 @@ public class PageMenu extends GUImenu
   }
   
   /**
-  * This method shows the buttons of the game won page
+  * This method shows the buttons of the game won page.
   **/
   public void showButtons() {
     buttonPlay.show();

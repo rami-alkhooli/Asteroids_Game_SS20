@@ -16,11 +16,11 @@ public class Explosion extends Thread
   private float y;
   
   /**
-  * The default constructor
+  * The default constructor.
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param theX holds the coordinate of the collison's position on the x axis 
-  * @param theY holds the coordinate of the collison's position on the y axis 
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param theX holds the coordinate of the collison's position on the x axis. 
+  * @param theY holds the coordinate of the collison's position on the y axis. 
   **/
   public Explosion(PApplet theApp, float theX, float theY) {
     
@@ -37,9 +37,9 @@ public class Explosion extends Thread
   }
   
   /**
-  * This method draws an explosion where two objects collide for a half second
+  * This method draws an explosion where two objects collide for a half second.
   *
-  * @returns bool value if finished: false if still drawing / true if finished drawing
+  * @returns bool value if finished: false if still drawing / true if finished drawing.
   **/
   public boolean show() {
     

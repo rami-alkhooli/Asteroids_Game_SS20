@@ -3,11 +3,11 @@ import processing.core.*;
 public class AccStateStoppedR implements AccelerationState
 {
   /**
-  * This method decreases the speed of the space ship while decelerating rewards
+  * This method decreases the speed of the space ship while decelerating rewards.
   * 
-  * @param speed holds the value of the space ship
-  * @param size holds the size of the space ship and indicates the mass of the it so that the deceleration is relative to the mass
-  * @returns the new speed after decreasing it
+  * @param speed holds the value of the space ship.
+  * @param size holds the size of the space ship and indicates the mass of the it so that the deceleration is relative to the mass.
+  * @returns the new speed after decreasing it.
   **/
   public float accelerate(float speed, float size) {
     
@@ -22,14 +22,14 @@ public class AccStateStoppedR implements AccelerationState
   }
   
   /**
-  * This method is overwritten and does nothing because when the space ship stops accelerating a thrust won't be generated
+  * This method is overwritten and does nothing because when the space ship stops accelerating a thrust won't be generated.
   *
-  * @param theApp is an object to access and use processing functions in the current application
-  * @param x holds the position of the midpoint of the space ship on the x axis
-  * @param y holds the position of the midpoint of the space ship on the y axis
-  * @param up holds the length of the space ship from the midpoint to the top
-  * @param down holds the length of the space ship from the midpoint to the bottom
-  * @param angle holds the current angle of the space ship
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param x holds the position of the midpoint of the space ship on the x axis.
+  * @param y holds the position of the midpoint of the space ship on the y axis.
+  * @param up holds the length of the space ship from the midpoint to the top.
+  * @param down holds the length of the space ship from the midpoint to the bottom.
+  * @param angle holds the current angle of the space ship.
   **/
   public void generateThrust(PApplet app, float x, float y, float up, float down, float angle) {
     

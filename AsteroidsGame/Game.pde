@@ -21,9 +21,9 @@ public class Game
   private MySQL dbconnection;
   
   /**
-  * The constructor
+  * The constructor.
   *
-  * @param theApp is an object to access and use processing functions in the current application
+  * @param theApp is an object to access and use processing functions in the current application.
   **/
   public Game (PApplet theApp) {
 
@@ -58,7 +58,7 @@ public class Game
   }
   
   /**
-  * This method starts the game, draws the objects and detects when the game is won or lost
+  * This method starts the game, draws the objects and detects when the game is won or lost.
   **/
   public void run() {
     gui.show();
@@ -76,7 +76,7 @@ public class Game
   }
   
   /**
-  * This method closes the application when the exit button is clicked
+  * This method closes the application when the exit button is clicked.
   **/
   public void end() {
     myApp.exit();
@@ -87,23 +87,23 @@ public class Game
   * This method runs the method "runHint" on another thread.
   * It was written for test purposes.
   *
-  * @param str !NOT USED! holds the string to be print
+  * @param str !NOT USED! holds the string to be print.
   **/
   public void showHint(String str) {
     myApp.thread("runHint");
   }
   
   /**
-  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing)
-  * This method uses the method "checkKeyPressed" from the gui
+  * This method handles events when pressing a key and is called in the processing main file (due to way of working of processing).
+  * This method uses the method "checkKeyPressed" from the gui.
   **/
   public void checkKeyPressed() {
     gui.checkKeyPressed();
   }
   
   /**
-  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing)
-  * This method uses the method "checkKeyPressed" from the gui
+  * This method handles events when releasing a key and is called in the processing main file (due to way of working of processing).
+  * This method uses the method "checkKeyReleased" from the gui.
   **/
   public void checkKeyReleased() {
     gui.checkKeyReleased();
@@ -130,9 +130,9 @@ public class Game
   public int getHits() {return hits;}
   
   /**
-  * This is a setter method
+  * This is a setter method.
   *
-  * @param hts holds the new number of hits to be set
+  * @param hts holds the new number of hits to be set.
   **/
   public void setHits(int hts) {hits = hts;}
   
@@ -188,7 +188,7 @@ public class Game
   public int getItems() {return items;}
   
   /**
-  * This is a setter method
+  * This is a setter method.
   *
   * @param it holds the new value of number of items to be set after collecting new ones.
   **/
@@ -228,9 +228,9 @@ public class Game
   public String getTotalPlayTime() {return total_time_played;}
   
   /**
-  * This is a setter method
+  * This is a setter method.
   *
-  * @param str holds the total played time. It will be retrieved from the data base
+  * @param str holds the total played time. It will be retrieved from the data base.
   **/
   public void setTotalPlayTime(String str) {total_time_played = str;}
   
@@ -244,7 +244,7 @@ public class Game
   /**
   * This method is used to log in to the data base.
   *
-  * @returns bool value: true if the login was successful / false if the login failed
+  * @returns bool value: true if the login was successful / false if the login failed.
   **/
   public boolean logIn() {
     if(dbprox.login(username,password)==1)
@@ -263,7 +263,7 @@ public class Game
   /**
   * This method is used to log out of the data base.
   *
-  * @returns bool value: true if the logout was successful / false if the logout failed
+  * @returns bool value: true if the logout was successful / false if the logout failed.
   **/
   public boolean logOut() {
       dbprox.logout();
@@ -282,7 +282,7 @@ public class Game
   /**
   * This method is used to sign up in the data base.
   *
-  * @returns bool value: true if the signup was successful / false if the signup failed
+  * @returns bool value: true if the signup was successful / false if the signup failed.
   **/
   public boolean signUp() {
     if(dbprox.register(email,username,password)==0) {
@@ -293,79 +293,79 @@ public class Game
   }
   
   /**
-  * This is a setter method to save the typed email address in a member-variable
+  * This is a setter method to save the typed email address in a member-variable.
   *
-  * @param str holds the typed email address
+  * @param str holds the typed email address.
   **/
   public void setEmail (String str) {email = str; myApp.println(str);}
   
   /**
-  * This is a setter method to save the typed username in a member-variable
+  * This is a setter method to save the typed username in a member-variable.
   *
-  * @param str holds the typed username
+  * @param str holds the typed username.
   **/
   public void setUsername (String str) {username = str; myApp.println(str);}
   
   /**
-  * This is a setter method to save the typed password in a member-variable
+  * This is a setter method to save the typed password in a member-variable.
   *
-  * @param str holds the typed password
+  * @param str holds the typed password.
   **/
   public void setPassword (String str) {password = str; myApp.println(str);}
   
   /**
   * This is a getter method.
   *
-  * @returns the email address saved in the member-variable
+  * @returns the email address saved in the member-variable.
   **/
   public String getEmail() {return email;}
   
   /**
   * This is a getter method.
   *
-  * @returns the username saved in the member-variable
+  * @returns the username saved in the member-variable.
   **/
   public String getUsername() {return username;}
   
   /**
   * This is a getter method.
   *
-  * @returns the password saved in the member-variable
+  * @returns the password saved in the member-variable.
   **/
   public String getPassword() {return password;}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to login page
+  * This method deletes the layout and the current components of te gui and changes to login page.
   **/
   public void change2Login () {gui.end(); gui = new PageLogin(myApp,this);}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to register page
+  * This method deletes the layout and the current components of te gui and changes to register page.
   **/
   public void change2Register () {gui.end(); gui = new PageRegister(myApp,this);}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to menu page
+  * This method deletes the layout and the current components of te gui and changes to menu page.
   **/
   public void change2Menu () { gui.end(); gui = new PageMenu(myApp,this);}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to play page
+  * This method deletes the layout and the current components of te gui and changes to play page.
   **/
   public void change2Play () {gui.end();dbprox.gameStartUpdateStats(); gui = new PagePlay(myApp,this,terminator,congratulator);}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to game over page
+  * This method deletes the layout and the current components of te gui and changes to game over page.
   **/
   public void change2Gameover () {gui.end(); gui = new PageGameover(myApp,this);}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to game won page
+  * This method deletes the layout and the current components of te gui and changes to game won page.
   **/
   public void change2Gamewon () {gui.end(); gui = new PageGameWon(myApp,this);}
   
   /**
-  * This method deletes the layout and the current components of te gui and changes to statistics page
+  * This method deletes the layout and the current components of te gui and changes to statistics page.
   **/
   public void change2Statistics () {
     

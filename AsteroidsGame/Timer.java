@@ -7,21 +7,37 @@ public class Timer
 
   private static PApplet myApp;
   
+  /**
+  * This constructor.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  **/
   public Timer(PApplet theApp) {
     myApp = theApp;
     startTime = myApp.millis();
     stopTime = myApp.millis();
   }
   
+  /**
+  * This method starts the timer.
+  **/
   public void run() {
     stopTime = myApp.millis();
   }
   
+  /**
+  * This method stops the timer.
+  **/
   public void stop() {
     startTime = myApp.millis();
     stopTime = myApp.millis();
   }
   
+  /**
+  * This is a getter method.
+  *
+  * @returns a string tha holds the recorded time in the form hh:mm:ss
+  **/
   public String getTime() {
     int wholeTime = (stopTime - startTime)/1000;
     int hr = (int)(wholeTime/3600);

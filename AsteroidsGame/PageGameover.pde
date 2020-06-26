@@ -29,7 +29,7 @@ public class PageGameover extends GUIgameover
   }
   
   /**
-  * This method shows the buttons of the game over page
+  * This method shows the buttons of the game over page.
   **/
   public void showButtons() {
     buttonBack.show();

@@ -26,6 +26,11 @@ public class SpaceShip
   private ShieldState shield;
   private static PApplet myApp;
   
+  /**
+  * This constructor (private).
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  **/
   private SpaceShip(PApplet theApp) {
     
     myApp = theApp;
@@ -49,6 +54,11 @@ public class SpaceShip
     
   }
   
+  /**
+  * This method implements the single ton pattern and is used to create one instance of the space ship.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  **/
   public static SpaceShip create(PApplet theApp) {
   
     if (mySpaceShip==null) {mySpaceShip = new SpaceShip(theApp);}
@@ -56,10 +66,16 @@ public class SpaceShip
     
   }
   
+  /**
+  * This method is used as a destructor to destroy the instance of the space ship.
+  **/
   public void destroy() {
     mySpaceShip=null;
   }
   
+  /**
+  * This method updates the angle, speed and shield of the space ship and draws it.
+  **/
   public void show() {
     
     // updating the angle
@@ -86,6 +102,9 @@ public class SpaceShip
     
   }
   
+  /**
+  * This method checks if the space ship has gone beyond the screen borders and draws it in the oppsite side.
+  **/
   private void checkBorders() {
     if(x<(0-UPSIDE)) {x = myApp.width+UPSIDE;}
     if(x>(myApp.width+UPSIDE)) {x = 0-UPSIDE;}
@@ -93,23 +112,44 @@ public class SpaceShip
     if(y>(myApp.height+UPSIDE)) {y = 0-UPSIDE;}
   }
   
+  /**
+  * This Method sets the acceleration state of the space ship.
+  *
+  * @param newState holds the new acceleration state to be set.
+  **/
   public void setAccState(AccelerationState newState) {
     accState = newState;
   }
   
+  /**
+  * This Method sets the rotation state of the space ship.
+  *
+  * @param newState holds the new rotation state to be set.
+  **/
   public void setRotState(RotationState newState) {
     rotState = newState;
   }
   
+  /**
+  * This Method sets the shield state (damage) of the space ship.
+  *
+  * @param newState holds the new shield state (damage) to be set.
+  **/
   public void setShieldState(ShieldState newShield) {
     shield = newShield;
   }
   
+  /**
+  * This method updates the coordinate on x and y axis regarding the speed of the space ship.
+  **/
   private void updateCoordinatesCenter() {
     x = x - v*myApp.cos(myApp.radians(phi));
     y = y - v*myApp.sin(myApp.radians(phi));
   }
   
+  /**
+  * This method updates the three points which is used to draw the triangle space ship.
+  **/
   private void updateCoordinatesTriangle() {
     xPoint[0] = x - SIDE*myApp.cos(myApp.radians(phi-135));
     yPoint[0] = y - SIDE*myApp.sin(myApp.radians(phi-135));
@@ -119,19 +159,37 @@ public class SpaceShip
     yPoint[2] = y - SIDE*myApp.sin(myApp.radians(phi+135));
   }
   
+  /**
+  * This method is called when the space ship collids with an item and collects the item.
+  *
+  * @param theItem holds the new item to be collected.
+  **/
   public void collectItem (Item theItem) {
     collectedItems.add(theItem);
   }
-  
+  /**
+  * This is a getter method.
+  *
+  * @returns a list of the collected items when the space ship delivers them at the space station.
+  **/
   public ArrayList <Item> getItems() {return collectedItems;}
   
+  /**
+  * This method is called when the space ship collids with an asteroid.
+  **/
   public void loseLive()
   {
     lives--;
   }
   
+  /**
+  * This method is called when the space ship collects an item, that holds a live inside it.
+  **/
   public void increaseLives() {lives++;}
   
+  /**
+  * This method is called when the space ship collects an item, that holds a shield boost inside it.
+  **/
   public void increaseShield() {
     
     switch(shieldStrength) {
@@ -150,8 +208,14 @@ public class SpaceShip
     
   }
   
+  /**
+  * This method is called after the space ship delivers the collected item at the space station.
+  **/
   public void clearItemsList() {collectedItems = new ArrayList <Item> ();}
   
+  /**
+  * This method is uesr to draw the space ship in the center when starting the game or a new level.
+  **/
   public void recenter() {
     x = myApp.width/2;
     y = myApp.height/2;
@@ -160,14 +224,73 @@ public class SpaceShip
     phiRot = 0;
   }
   
+  /**
+  * ! NOT USED ANYMORE ! This is a getter  method.
+  *
+  * @returns the score the collected item holds.
+  **/
   public int getItemScore() {return 200;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the number of the collected items.
+  **/
   public int getNumberItems() {return collectedItems.size();}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the coordinate on the x axis of the space ship.
+  **/
   public float getX() {return x;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the coordinate on the y axis of the space ship.
+  **/
   public float getY() {return y;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the radius of the round shield to be drawn.
+  **/
   public float getRadius() {return UPSIDE;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the mass of the space ship (it affects the speed).
+  **/
   public short getMass() {return m;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the angle of the space ship.
+  **/
   public float getPhi() {return phi;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the speed of the space ship.
+  **/
   public float getSpeed() {return v;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the remaining lives of the space ship.
+  **/
   public short getLives() {return lives;}
+  
+  /**
+  * This is a getter  method.
+  *
+  * @returns the shield strength of the space ship.
+  **/
   public short getShield() {return shieldStrength;}
 }

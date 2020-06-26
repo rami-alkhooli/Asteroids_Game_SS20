@@ -15,6 +15,13 @@ public class Thrust
   private static Thrust myThrust;
   private static PApplet myApp;
   
+  /**
+  * The constructor (private).
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param upSide holds the distance from the midpoint of the triangle thrust to the top. 
+  * @param downSide holds the distance from the midpoint of the triangle thrust to the bottom. 
+  **/
   private Thrust(PApplet theApp, float upSide, float downSide) {
     myApp = theApp;
     xb = new float[3];
@@ -27,6 +34,13 @@ public class Thrust
     SIDE2 = downSide/myApp.cos(myApp.radians(45/4)) ;
   }
   
+  /**
+  * This method implements the single ton pattern and is used to create one instance of the thrust.
+  *
+  * @param theApp is an object to access and use processing functions in the current application.
+  * @param upSide holds the distance from the midpoint of the triangle thrust to the top. 
+  * @param downSide holds the distance from the midpoint of the triangle thrust to the bottom. 
+  **/
   public static Thrust generateThrust(PApplet theApp, float upSide, float downSide)
   {
     if(myThrust==null){
@@ -36,6 +50,13 @@ public class Thrust
     return myThrust;
   }
   
+  /**
+  * This method draws the thrust at a specific point rotated with a specific angle.
+  *
+  * @param x the coordiante on the x axis of the reference point from which the thrust should be drawn.
+  * @param y the coordiante on the y axis of the reference point from which the thrust should be drawn.
+  * @param angle the rotation angle in which the thrust should be drawn.
+  **/
   public void show(float x, float y, float angle) {
     xb[0] = x - SIDE1*myApp.cos(myApp.radians((float)(angle-157.5)));
     yb[0] = y - SIDE1*myApp.sin(myApp.radians((float)(angle-157.5)));
