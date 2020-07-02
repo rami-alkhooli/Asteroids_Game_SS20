@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['readme_2etxt_127',['README.TXT',['../_r_e_a_d_m_e_8_t_x_t.html',1,'']]],
+  ['recenter_128',['recenter',['../class_space_ship.html#a52af8740d3f980b634a4aac6bda396cf',1,'SpaceShip']]],
+  ['removelayout_129',['removeLayout',['../class_page_gameover.html#a15cf8442b586989e177428271bd56090',1,'PageGameover.removeLayout()'],['../class_page_game_won.html#ae23fea49c3a6c19b06aa78dc71121fc0',1,'PageGameWon.removeLayout()'],['../class_page_login.html#af8d5e0ad1fb2dd6b14cdb200a7d0eee9',1,'PageLogin.removeLayout()'],['../class_page_menu.html#a632e7b2ce63592535cf4558db41c512d',1,'PageMenu.removeLayout()'],['../class_page_register.html#a14cf4e25c4570a37cbf7b6cc2ffe4059',1,'PageRegister.removeLayout()'],['../class_page_statistics.html#aaf9e43534eb28836cb883af28a5ef6de',1,'PageStatistics.removeLayout()']]],
+  ['restartgame_130',['restartGame',['../class_congratulator.html#a12a4d95ed40a8d6b29786a994edd39fb',1,'Congratulator.restartGame()'],['../class_terminator.html#a75c4764c05c8b5cc837caa30344f01eb',1,'Terminator.restartGame()']]],
+  ['rotate_131',['rotate',['../interface_rotation_state.html#a86c20e90b21fd579db7b45517fc90273',1,'RotationState.rotate()'],['../class_rot_state_left.html#a0eb66fa710bff627ab8e62bb578b611c',1,'RotStateLeft.rotate()'],['../class_rot_state_right.html#ac26b7945b79818f1b4b8df169ef171e8',1,'RotStateRight.rotate()'],['../class_rot_state_stopped_l.html#a2cee9634b3e1600c38195a70b16bc819',1,'RotStateStoppedL.rotate()'],['../class_rot_state_stopped_r.html#ab09c6020b12ca70a18cef7a0a8d6dd00',1,'RotStateStoppedR.rotate()']]],
+  ['rotating_5fcritical_132',['ROTATING_CRITICAL',['../interface_rotation_state.html#a779d70583965333651f5a8bd8ee4d973',1,'RotationState']]],
+  ['rotating_5flimit_133',['ROTATING_LIMIT',['../interface_rotation_state.html#a77f94d99f30df6c3c1a656a0aa8299f3',1,'RotationState']]],
+  ['rotating_5fstep_134',['ROTATING_STEP',['../interface_rotation_state.html#af8a581e5f76df76ef9e48df99015fdc6',1,'RotationState']]],
+  ['rotationstate_135',['RotationState',['../interface_rotation_state.html',1,'']]],
+  ['rotationstate_2ejava_136',['RotationState.java',['../_rotation_state_8java.html',1,'']]],
+  ['rotstateleft_137',['RotStateLeft',['../class_rot_state_left.html',1,'']]],
+  ['rotstateleft_2ejava_138',['RotStateLeft.java',['../_rot_state_left_8java.html',1,'']]],
+  ['rotstateright_139',['RotStateRight',['../class_rot_state_right.html',1,'']]],
+  ['rotstateright_2ejava_140',['RotStateRight.java',['../_rot_state_right_8java.html',1,'']]],
+  ['rotstatestoppedl_141',['RotStateStoppedL',['../class_rot_state_stopped_l.html',1,'']]],
+  ['rotstatestoppedl_2ejava_142',['RotStateStoppedL.java',['../_rot_state_stopped_l_8java.html',1,'']]],
+  ['rotstatestoppedr_143',['RotStateStoppedR',['../class_rot_state_stopped_r.html',1,'']]],
+  ['rotstatestoppedr_2ejava_144',['RotStateStoppedR.java',['../_rot_state_stopped_r_8java.html',1,'']]],
+  ['run_145',['run',['../class_game.html#a875e7c256b7c1b4e5d8bd1b89ed99879',1,'Game.run()'],['../class_timer.html#a78b3f8ab9ed304f1477fdac6ae9963c9',1,'Timer.run()']]],
+  ['rungame_146',['runGame',['../class_page_play.html#a7592bb172855a04e5b13e46103f1e802',1,'PagePlay']]]
+];
