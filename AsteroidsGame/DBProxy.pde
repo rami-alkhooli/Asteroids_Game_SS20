@@ -14,15 +14,31 @@ public class DBProxy
 
   MySQL dbconnection;
   
-  
+  /**
+  * The default constructor.
+  **/
   public DBProxy()
   {
     
   }
+
+  /**
+  * A special constructor for an exisiting connection.
+  *
+  * @param dbcon holds the existing connection to the data base.
+  **/
   public DBProxy(MySQL dbcon)
   {
       dbconnection=dbcon;
   }
+
+  /**
+  * A special constructor for an existing connection with the ip address of the data base and the device name.
+  *
+  * @param dbcon holds the existing connection to the data base.
+  * @param ip_adr holds the ip address of the data base.
+  * @param dev holds the name of the registered device in the data base.
+  **/
   public DBProxy(MySQL dbcon,String ip_adr,String dev)
   {
       dbconnection=dbcon;
@@ -31,17 +47,15 @@ public class DBProxy
   }
   
   /**
-  This method performs the login process.
-  It checks whether the given login credentials are valid. And updates the tables "PlayerHasDevice" and "Device".
-  uploads:
-  -PlayerHasDevice:   logintime,ipadress,PlayerID
-  -Device:            devicename/type,ipadress,PlayerID
-  
-  returns:
-  -1  accountname/email not found 
-  0   when the account has been found but the given password is wrong;
-  1   account found and password correct
-  (equal to varify Login)  
+  * This method performs the login process.
+  * It checks whether the given login credentials are valid. And updates the tables "PlayerHasDevice" and "Device".
+  * uploads:
+  * -PlayerHasDevice:   logintime,ipadress,PlayerID
+  * -Device:            devicename/type,ipadress,PlayerID
+  * 
+  * @param accountOrEmail holds the entered email address or username.
+  * @param password holds the entered password.
+  * @returns integer number:<br>-1 accountname/email not found <br>0 when the account has been found but the given password is wrong <br>1 account found and password correct (equal to varify Login)
   **/
   public int login(String accountOrEmail, String password)
   {
@@ -92,12 +106,10 @@ public class DBProxy
   }
   
   /**
-  this method handles the logout process for a certain Player
-  the given id has to be correct. There is no failsafe
-  uploads:
-  -PlayerHasDevice:    logoutTime
-  returns:
-  nothing
+  * This method handles the logout process for a certain Player.
+  * The given id has to be correct. There is no failsafe.
+  * uploads:
+  * -PlayerHasDevice:    logoutTime
   **/
   public void logout()
   {
@@ -111,12 +123,12 @@ public class DBProxy
   }
   
   /**
-  this methods registers a new Player
-  it returns:
-  0    for Email,accountname are available and have been signed in to the database -> registration complete
-  1    for email allready in use -> no registration
-  2    for accountname allready in use -> no registration
-  3    for Email and accountname are allready taken/not available -> no registration
+  * This method registers a new Player.
+  *
+  * @param email holds the email of the user account to be registered.
+  * @param name holds the name of the user account to be registered.
+  * @param password holds the password of the user account to be registered.
+  * @returns integer number:<br>0 for Email,accountname are available and have been signed in to the database -> registration complete <br>1 for email allready in use -> no registration <br>2 for accountname allready in use -> no registration <br>3 for Email and accountname are allready taken/not available -> no registration
   **/
   int register(String email,String name,String password)
   {
@@ -139,17 +151,12 @@ public class DBProxy
   }
   
   
- /**
-  varifyLogin(name,password) 
-  The Parameter name should have either the emailaddress or accoutname
-  
-  pulls PlayerID and saves it as a private parameter: playerid
-  
-  returns:
-  -1  accountname/email not found 
-  0   when the account has been found but the given password is wrong;
-  1   account found and password correct
-  
+  /**
+  * This method is used to varify login when an user sends a login request.
+  *
+  * @param nameOrEmail holds the name or the email address of the user trying to log in.
+  * @param password holds the password of the user trying to log in.
+  * @returns integer number:<br>1 accountname/email not found <br>0 when the account has been found but the given password is wrong <br>1 account found and password correct
   **/
  private int varifyLogin(String nameOrEmail, String password)
   {
@@ -178,13 +185,11 @@ public class DBProxy
   
   
   /**
-  checks availability of accountname and email
-  
-  returns:
-  0 accountname and email are available
-  1 accountname taken email available
-  2 email allready taken accontname available
-  3 email and accountname not available or allready in use
+  * This method checks the availability of accountname and email
+  *
+  * @param email holds the email address of the user to be checked in the data base.
+  * @param name holds the name of the user to be checked in the data base.
+  * @returns integer number:<br>0 accountname and email are available <br>1 accountname taken email available <br>2 email allready taken accontname available <br>3 email and accountname not available or allready in use
   **/
   public int checkAvailability(String email,String name)
   {
@@ -222,12 +227,10 @@ public class DBProxy
   }
   
   /**
-  This method handles the updates to the database at gamestart.
-  uploads:
-  -Game:            logintime,gamestart
-  -GameHasDevice:   PlayerID,GameID,ipadress
-  returns:
-  nothing
+  * This method handles the updates to the database at gamestart.
+  * uploads:
+  * -Game:            logintime,gamestart
+  * -GameHasDevice:   PlayerID,GameID,ipadress
   **/
   public void gameStartUpdateStats()
   {
@@ -254,9 +257,14 @@ public class DBProxy
   }
   
   /**
-  This method handles the updates to the database at gameend.
-  uploads:
-  -Game:  hits,shoots,items,highscore,game_end,timeplayed,
+  * This method handles the updates to the database at gameend.
+  * uploads:
+  * -Game:  hits,shoots,items,highscore,game_end,timeplayed
+  *
+  * @param hits holds the number of the laser shoots, which hitted an asteroid in the game session.
+  * @param shoots holds the number of the total fired laser shoots in the game session.
+  * @param items holds the number of the collected items in the game session.
+  * @param highscore holds the highscore made in the game session.
   **/
   public void gameEndUpdateStats( int hits, int shoots, int items, int highscore)
   {
@@ -282,11 +290,11 @@ public class DBProxy
   }
   
   /**
-  This method can be used to get the statistics of the last Game.
-  returns:
-  -Object "Game" which includes the statistics: highscore,hits,shoots,items,time_played
-  
-  all parameters of Game are 0 when the Player hasnt played a Game at all.
+  * This method can be used to get the statistics of the last Game.
+  * all parameters of Game are 0 when the Player hasnt played a Game at all.
+  *
+  * @param gamestats holds the pointer to the game object to get the statistics from.
+  * @returns bool value: true if it was successful or false if an error is thrown.
   **/
   public boolean getStats(Game gamestats)
   {
@@ -320,8 +328,11 @@ public class DBProxy
 
   }
   
-  
-  
+  /**
+  * This is a getter method.
+  *
+  * @returns the latest highscore of the player after requesting it from the data base.
+  **/
   public int getHighscore()
   {
     int highscore = 0;
@@ -352,8 +363,12 @@ public class DBProxy
     return highscore;
   }
   
-  
-   public String getTotalPlayedTime()
+  /**
+  * This is a getter method.
+  *
+  * @returns a string that holds the total played time in the format "year.month.day | hour.minute.second" since registering the player.
+  **/
+  public String getTotalPlayedTime()
   {
     String time = "0.0.0 | 0:0:0";
     int year,month,day,hours,min,sec;
