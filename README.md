@@ -1,10 +1,10 @@
 # Asteroids Game
 
 ## Version
-1.0
+3.0
 
 ## Stand
-03.06.2020
+02.07.2020
 
 ## Komponenten
 
