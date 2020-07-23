@@ -51,7 +51,7 @@ void controlEvent(ControlEvent theEvent) {
 
       break;
       case(6):
-      if(theGame.signUp()) {theGame.change2Menu();} break;
+      if(theGame.signUp()) {theGame.change2Login();} break;
       
       case(999):
       theGame.previousPage(); break;

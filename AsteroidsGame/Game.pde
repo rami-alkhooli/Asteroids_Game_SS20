@@ -42,7 +42,7 @@ public class Game
     username = "";
     password = "";
     
-    dbconnection = new MySQL(theApp, "localhost", "asteroidsV1", "DBHandler", "1234" );
+    dbconnection = new MySQL(theApp, "192.168.43.14", "asteroidsV1", "DBHandler", "1234" );
    if(dbconnection.connect())
    {
       if (args != null && args.length==2) {
@@ -286,7 +286,7 @@ public class Game
   **/
   public boolean signUp() {
     if(dbprox.register(email,username,password)==0) {
-      dbprox.login(username,password);
+      //dbprox.login(username,password);
       return true;
     }
     else return false;
