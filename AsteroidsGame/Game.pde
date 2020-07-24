@@ -42,7 +42,7 @@ public class Game
     username = "";
     password = "";
     
-    dbconnection = new MySQL(theApp, "192.168.43.14", "asteroidsV1", "DBHandler", "1234" );
+    dbconnection = new MySQL(theApp, "localhost", "asteroidsV1", "DBHandler", "1234" );
    if(dbconnection.connect())
    {
       if (args != null && args.length==2) {
@@ -149,7 +149,7 @@ public class Game
   * @param hs holds the new highscore to be set. If the new value is greater than the old one then it will be set otherwise not.
   **/
   public void addHighscore(int hs) {
-    if(hs>highscore) {highscore=hs;}
+    highscore=hs;
   }
   
   /**
